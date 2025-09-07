@@ -1,0 +1,1001 @@
+product_id,section,product_type,fit_type,size_accuracy,available_countries,material,fit_offset
+a_1,Female,Pants & Leggings,regular,true to size,[np.str_('Germany')],Polyester,0.22
+a_2,Other,T-Shirts & Tops,regular,true to size,[np.str_('Germany')],Recycled Polyester,0.01
+a_3,Other,Pants & Leggings,regular,true to size,"[np.str_('Japan'), np.str_('Germany'), np.str_('USA')]",Polyester,-0.09
+a_4,Female,Shoes,slim,true to size,[np.str_('Japan')],Primeknit,-0.32
+a_5,Male,Sportswear,loose,true to size,[np.str_('USA')],Aeroready Technology,0.69
+a_6,Female,Pants & Leggings,slim,true to size,[np.str_('UK')],Polyester,-0.78
+a_7,Other,Jackets,regular,true to size,[np.str_('Japan')],Polyester,-0.28
+a_8,Other,Jackets,loose,true to size,[np.str_('UK')],Polyester,0.38
+a_9,Female,Pants & Leggings,slim,true to size,"[np.str_('Germany'), np.str_('USA'), np.str_('Japan')]",Polyester,-0.64
+a_10,Other,Jackets,loose,true to size,[np.str_('Japan')],Polyester,0.41
+a_11,Female,Pants & Leggings,slim,runs small,[np.str_('Germany')],Polyester,-1.16
+a_12,Female,Jackets,slim,true to size,[np.str_('USA')],Polyester,-0.55
+a_13,Female,Shoes,regular,true to size,[np.str_('USA')],Recycled Polyester,-0.1
+a_14,Female,Pants & Leggings,regular,true to size,[np.str_('Germany')],Polyester,-0.21
+a_15,Other,Jackets,slim,true to size,[np.str_('USA')],Recycled Polyester,-0.64
+a_16,Female,Jackets,regular,true to size,[np.str_('UK')],Polyester,-0.44
+a_17,Other,Shoes,loose,true to size,"[np.str_('Japan'), np.str_('USA')]",Primeknit,0.7
+a_18,Female,Jackets,loose,runs small,[np.str_('USA')],Polyester,0.05
+a_19,Female,Sweatshirts/Hoodies,loose,true to size,[np.str_('Japan')],Cotton,0.35
+a_20,Other,Shoes,loose,runs small,"[np.str_('USA'), np.str_('Japan'), np.str_('UK')]",Recycled Polyester,-0.09
+a_21,Female,Pants & Leggings,regular,true to size,[np.str_('Germany')],Polyester,0.16
+a_22,Female,Shoes,regular,true to size,[np.str_('USA')],Parley Ocean Plastic,-0.06
+a_23,Female,Shoes,regular,true to size,"[np.str_('Japan'), np.str_('USA')]",Primeknit,-0.06
+a_24,Other,Pants & Leggings,regular,true to size,"[np.str_('Japan'), np.str_('USA')]",Recycled Polyester,-0.05
+a_25,Female,Pants & Leggings,slim,true to size,[np.str_('Germany')],Polyester,-0.57
+a_26,Other,Sportswear,slim,true to size,"[np.str_('USA'), np.str_('Japan')]",Recycled Polyester,-0.75
+a_27,Female,Jackets,slim,true to size,"[np.str_('Germany'), np.str_('UK')]",Polyester,-0.75
+a_28,Female,T-Shirts & Tops,slim,true to size,"[np.str_('UK'), np.str_('Japan'), np.str_('USA')]",Polyester,-0.51
+a_29,Female,Shoes,slim,true to size,[np.str_('UK')],Recycled Polyester,-0.5
+a_30,Other,Jackets,loose,runs large,"[np.str_('Germany'), np.str_('USA'), np.str_('Japan')]",Polyester,1.18
+a_31,Other,T-Shirts & Tops,regular,true to size,"[np.str_('UK'), np.str_('USA')]",Polyester,0.02
+a_32,Male,Jackets,loose,true to size,"[np.str_('USA'), np.str_('Germany')]",Polyester,0.5
+a_33,Male,Shoes,slim,true to size,"[np.str_('Japan'), np.str_('Germany')]",Recycled Polyester,-0.41
+a_34,Other,T-Shirts & Tops,regular,true to size,"[np.str_('UK'), np.str_('Germany')]",Recycled Polyester,-0.26
+a_35,Female,Shoes,loose,true to size,[np.str_('Germany')],Primeknit,0.73
+a_36,Male,T-Shirts & Tops,loose,true to size,"[np.str_('Germany'), np.str_('UK'), np.str_('Japan')]",Polyester,0.81
+a_37,Other,T-Shirts & Tops,regular,true to size,"[np.str_('UK'), np.str_('Germany')]",Cotton,0.23
+a_38,Female,Sweatshirts/Hoodies,regular,true to size,[np.str_('Japan')],Recycled Polyester,-0.34
+a_39,Female,Jackets,regular,true to size,"[np.str_('Japan'), np.str_('UK')]",Recycled Polyester,0.02
+a_40,Female,Sweatshirts/Hoodies,loose,true to size,[np.str_('Germany')],Recycled Polyester,0.26
+a_41,Other,Shoes,regular,true to size,[np.str_('USA')],Recycled Polyester,-0.14
+a_42,Other,Sweatshirts/Hoodies,slim,true to size,"[np.str_('Germany'), np.str_('UK')]",Recycled Polyester,-0.61
+a_43,Male,Pants & Leggings,regular,true to size,[np.str_('Japan')],Polyester,0.16
+a_44,Other,Pants & Leggings,loose,true to size,[np.str_('Japan')],Nylon,0.75
+a_45,Female,Sweatshirts/Hoodies,loose,true to size,"[np.str_('UK'), np.str_('USA')]",Recycled Polyester,0.28
+a_46,Other,Pants & Leggings,regular,true to size,"[np.str_('Germany'), np.str_('UK'), np.str_('USA')]",Spandex,0.35
+a_47,Other,Jackets,slim,true to size,[np.str_('Germany')],Nylon,-0.47
+a_48,Female,Sweatshirts/Hoodies,regular,true to size,"[np.str_('USA'), np.str_('Germany')]",Cotton,-0.22
+a_49,Male,Sweatshirts/Hoodies,slim,true to size,[np.str_('UK')],Cotton,-0.38
+a_50,Female,T-Shirts & Tops,regular,true to size,"[np.str_('USA'), np.str_('Germany'), np.str_('Japan')]",Cotton,-0.32
+a_51,Male,Shoes,loose,runs small,"[np.str_('USA'), np.str_('Japan')]",Parley Ocean Plastic,0.11
+a_52,Male,Shoes,loose,true to size,"[np.str_('Japan'), np.str_('UK')]",Primeknit,0.9
+a_53,Male,Shoes,regular,true to size,[np.str_('Japan')],Primeknit,0.56
+a_54,Male,Jackets,loose,runs small,[np.str_('Germany')],Primeknit,0.42
+a_55,Male,Sweatshirts/Hoodies,regular,true to size,"[np.str_('Germany'), np.str_('USA'), np.str_('UK')]",Recycled Polyester,-0.03
+a_56,Female,Sportswear,regular,true to size,"[np.str_('USA'), np.str_('Japan')]",Aeroready Technology,-0.03
+a_57,Male,Sportswear,regular,true to size,"[np.str_('USA'), np.str_('Germany')]",Spandex,0.2
+a_58,Female,Shoes,loose,true to size,"[np.str_('UK'), np.str_('Germany'), np.str_('USA')]",Primeknit,0.76
+a_59,Male,Pants & Leggings,loose,true to size,"[np.str_('USA'), np.str_('UK')]",Polyester,0.46
+a_60,Male,Pants & Leggings,regular,true to size,"[np.str_('USA'), np.str_('Japan'), np.str_('UK')]",Spandex,0.19
+a_61,Other,Jackets,regular,true to size,[np.str_('Japan')],Recycled Polyester,0.11
+a_62,Other,T-Shirts & Tops,regular,true to size,"[np.str_('UK'), np.str_('Japan'), np.str_('Germany')]",Cotton,-0.27
+a_63,Other,Jackets,slim,true to size,[np.str_('USA')],Polyester,-0.4
+a_64,Other,Sweatshirts/Hoodies,slim,true to size,[np.str_('UK')],Recycled Polyester,-0.54
+a_65,Female,Sportswear,loose,true to size,"[np.str_('UK'), np.str_('Germany')]",Recycled Polyester,0.24
+a_66,Male,Shoes,regular,true to size,[np.str_('USA')],Recycled Polyester,0.1
+a_67,Female,Sportswear,regular,true to size,"[np.str_('Japan'), np.str_('USA')]",Spandex,0.17
+a_68,Female,T-Shirts & Tops,regular,true to size,"[np.str_('Germany'), np.str_('UK')]",Cotton,-0.14
+a_69,Other,Jackets,regular,true to size,"[np.str_('UK'), np.str_('USA'), np.str_('Japan')]",Recycled Polyester,0.02
+a_70,Female,Pants & Leggings,slim,runs large,"[np.str_('USA'), np.str_('UK')]",Polyester,-0.19
+a_71,Male,Shoes,slim,true to size,"[np.str_('USA'), np.str_('UK')]",Recycled Polyester,-0.28
+a_72,Female,Sportswear,loose,true to size,[np.str_('Japan')],Aeroready Technology,0.47
+a_73,Other,Sweatshirts/Hoodies,loose,true to size,"[np.str_('Germany'), np.str_('USA'), np.str_('Japan')]",Cotton,0.26
+a_74,Other,Sweatshirts/Hoodies,loose,true to size,[np.str_('UK')],Recycled Polyester,0.52
+a_75,Other,T-Shirts & Tops,regular,true to size,"[np.str_('Germany'), np.str_('Japan'), np.str_('USA')]",Polyester,-0.1
+a_76,Male,Pants & Leggings,regular,true to size,[np.str_('UK')],Polyester,-0.09
+a_77,Female,T-Shirts & Tops,loose,true to size,"[np.str_('Japan'), np.str_('USA'), np.str_('UK')]",Recycled Polyester,0.42
+a_78,Female,T-Shirts & Tops,loose,runs large,[np.str_('UK')],Cotton,0.76
+a_79,Other,Jackets,slim,true to size,[np.str_('USA')],Polyester,-0.47
+a_80,Other,Sweatshirts/Hoodies,loose,runs large,[np.str_('Japan')],Recycled Polyester,1.01
+a_81,Male,T-Shirts & Tops,slim,true to size,"[np.str_('Germany'), np.str_('UK'), np.str_('USA')]",Recycled Polyester,-0.46
+a_82,Female,Sportswear,loose,true to size,"[np.str_('Japan'), np.str_('Germany')]",Spandex,0.52
+a_83,Other,Shoes,regular,true to size,[np.str_('Japan')],Primeknit,-0.14
+a_84,Male,Pants & Leggings,loose,true to size,"[np.str_('Germany'), np.str_('Japan')]",Nylon,0.7
+a_85,Other,T-Shirts & Tops,regular,true to size,[np.str_('USA')],Cotton,-0.01
+a_86,Male,Jackets,loose,true to size,"[np.str_('Japan'), np.str_('UK'), np.str_('Germany')]",Polyester,0.6
+a_87,Male,Shoes,regular,true to size,"[np.str_('Germany'), np.str_('Japan'), np.str_('USA')]",Parley Ocean Plastic,0.11
+a_88,Male,Pants & Leggings,loose,true to size,"[np.str_('Germany'), np.str_('Japan'), np.str_('USA')]",Polyester,0.36
+a_89,Female,Sweatshirts/Hoodies,slim,true to size,[np.str_('Japan')],Cotton,-0.64
+a_90,Other,Jackets,slim,true to size,[np.str_('Japan')],Recycled Polyester,-0.78
+a_91,Other,Jackets,slim,true to size,"[np.str_('Japan'), np.str_('USA')]",Polyester,-0.61
+a_92,Female,Sportswear,slim,true to size,[np.str_('Germany')],Spandex,-0.46
+a_93,Female,Sweatshirts/Hoodies,regular,true to size,"[np.str_('USA'), np.str_('UK')]",Recycled Polyester,-0.2
+a_94,Female,T-Shirts & Tops,loose,true to size,[np.str_('Germany')],Cotton,0.33
+a_95,Other,Pants & Leggings,slim,true to size,"[np.str_('UK'), np.str_('Japan')]",Polyester,-0.48
+a_96,Female,T-Shirts & Tops,loose,true to size,"[np.str_('Germany'), np.str_('Japan'), np.str_('USA')]",Cotton,0.13
+a_97,Female,Sweatshirts/Hoodies,loose,true to size,"[np.str_('USA'), np.str_('Germany'), np.str_('Japan')]",Cotton,0.41
+a_98,Male,Sportswear,regular,true to size,"[np.str_('Germany'), np.str_('Japan'), np.str_('USA')]",Recycled Polyester,0.29
+a_99,Female,Pants & Leggings,regular,runs large,[np.str_('Germany')],Nylon,0.62
+a_100,Other,Sportswear,slim,true to size,[np.str_('UK')],Recycled Polyester,-0.57
+a_101,Other,Shoes,loose,true to size,[np.str_('Japan')],Parley Ocean Plastic,0.73
+a_102,Female,Pants & Leggings,loose,runs large,[np.str_('UK')],Polyester,0.76
+a_103,Male,Pants & Leggings,regular,true to size,[np.str_('Germany')],Polyester,0.21
+a_104,Male,T-Shirts & Tops,slim,true to size,[np.str_('USA')],Cotton,-0.38
+a_105,Other,Jackets,regular,true to size,[np.str_('Germany')],Recycled Polyester,-0.05
+a_106,Other,T-Shirts & Tops,slim,true to size,"[np.str_('UK'), np.str_('Germany'), np.str_('USA')]",Cotton,-0.65
+a_107,Female,Jackets,regular,runs large,"[np.str_('Germany'), np.str_('Japan')]",Nylon,0.69
+a_108,Female,Sportswear,slim,true to size,"[np.str_('Germany'), np.str_('Japan')]",Recycled Polyester,-0.41
+a_109,Male,Sweatshirts/Hoodies,slim,true to size,"[np.str_('USA'), np.str_('Germany')]",Cotton,-0.63
+a_110,Female,Shoes,slim,true to size,[np.str_('Japan')],Primeknit,-0.69
+a_111,Male,T-Shirts & Tops,regular,true to size,"[np.str_('Germany'), np.str_('Japan'), np.str_('USA')]",Cotton,0.05
+a_112,Other,T-Shirts & Tops,slim,true to size,[np.str_('Germany')],Cotton,-0.66
+a_113,Female,Shoes,loose,runs large,[np.str_('UK')],Primeknit,1.14
+a_114,Other,T-Shirts & Tops,regular,true to size,"[np.str_('Japan'), np.str_('Germany'), np.str_('UK')]",Cotton,-0.12
+a_115,Female,Sweatshirts/Hoodies,regular,true to size,"[np.str_('Germany'), np.str_('UK')]",Recycled Polyester,-0.15
+a_116,Male,Sportswear,loose,true to size,[np.str_('USA')],Recycled Polyester,0.78
+a_117,Female,Jackets,slim,true to size,"[np.str_('USA'), np.str_('UK')]",Polyester,-0.35
+a_118,Male,Shoes,slim,runs large,[np.str_('Germany')],Primeknit,0.23
+a_119,Male,Sportswear,slim,true to size,"[np.str_('UK'), np.str_('USA')]",Aeroready Technology,-0.41
+a_120,Female,Jackets,slim,runs small,[np.str_('Japan')],Nylon,-0.83
+a_121,Female,T-Shirts & Tops,loose,true to size,[np.str_('Japan')],Recycled Polyester,0.14
+a_122,Other,Shoes,loose,true to size,[np.str_('Japan')],Recycled Polyester,0.28
+a_123,Male,Jackets,slim,runs small,"[np.str_('USA'), np.str_('UK'), np.str_('Japan')]",Polyester,-0.84
+a_124,Female,Shoes,loose,true to size,"[np.str_('Japan'), np.str_('UK'), np.str_('USA')]",Primeknit,0.79
+a_125,Male,Shoes,slim,true to size,[np.str_('USA')],Primeknit,-0.22
+a_126,Other,Pants & Leggings,regular,true to size,[np.str_('USA')],Spandex,0.01
+a_127,Female,T-Shirts & Tops,regular,true to size,"[np.str_('USA'), np.str_('Japan')]",Cotton,-0.5
+a_128,Male,T-Shirts & Tops,regular,true to size,[np.str_('Japan')],Cotton,-0.14
+a_129,Male,Sportswear,slim,true to size,[np.str_('Germany')],Spandex,-0.13
+a_130,Male,Sweatshirts/Hoodies,loose,true to size,"[np.str_('USA'), np.str_('Germany')]",Cotton,0.42
+a_131,Female,Sportswear,loose,true to size,"[np.str_('UK'), np.str_('Germany')]",Spandex,0.51
+a_132,Female,Jackets,slim,true to size,"[np.str_('Japan'), np.str_('UK')]",Nylon,-0.57
+a_133,Male,Pants & Leggings,loose,true to size,"[np.str_('UK'), np.str_('Japan'), np.str_('Germany')]",Polyester,0.63
+a_134,Other,Pants & Leggings,slim,true to size,"[np.str_('Japan'), np.str_('USA'), np.str_('Germany')]",Spandex,-0.24
+a_135,Other,Sweatshirts/Hoodies,regular,true to size,[np.str_('Japan')],Cotton,-0.22
+a_136,Female,Sportswear,loose,true to size,[np.str_('Japan')],Aeroready Technology,0.41
+a_137,Other,Sweatshirts/Hoodies,loose,runs large,"[np.str_('USA'), np.str_('UK')]",Cotton,0.82
+a_138,Male,T-Shirts & Tops,slim,true to size,[np.str_('USA')],Polyester,-0.42
+a_139,Female,Sportswear,regular,runs small,[np.str_('UK')],Recycled Polyester,-0.86
+a_140,Other,Jackets,regular,true to size,[np.str_('USA')],Recycled Polyester,0.12
+a_141,Male,Pants & Leggings,regular,runs small,"[np.str_('USA'), np.str_('Germany'), np.str_('UK')]",Polyester,-0.31
+a_142,Male,Jackets,loose,true to size,"[np.str_('USA'), np.str_('UK'), np.str_('Germany')]",Polyester,0.64
+a_143,Female,T-Shirts & Tops,slim,true to size,[np.str_('Japan')],Cotton,-0.56
+a_144,Male,Shoes,regular,runs small,[np.str_('Germany')],Primeknit,-0.11
+a_145,Male,T-Shirts & Tops,loose,true to size,"[np.str_('Germany'), np.str_('USA'), np.str_('UK')]",Polyester,0.56
+a_146,Other,Sweatshirts/Hoodies,loose,runs large,"[np.str_('UK'), np.str_('Japan'), np.str_('USA')]",Cotton,0.99
+a_147,Female,Jackets,loose,true to size,[np.str_('UK')],Recycled Polyester,0.28
+a_148,Female,Sportswear,regular,true to size,"[np.str_('Germany'), np.str_('USA')]",Aeroready Technology,-0.0
+a_149,Other,Sweatshirts/Hoodies,regular,true to size,[np.str_('Germany')],Cotton,-0.32
+a_150,Female,T-Shirts & Tops,loose,true to size,"[np.str_('Japan'), np.str_('UK')]",Cotton,0.28
+a_151,Other,Jackets,regular,true to size,[np.str_('UK')],Polyester,0.08
+a_152,Male,Sweatshirts/Hoodies,slim,true to size,[np.str_('Japan')],Cotton,-0.23
+a_153,Male,Sweatshirts/Hoodies,slim,runs large,[np.str_('Japan')],Cotton,-0.05
+a_154,Other,Pants & Leggings,loose,true to size,"[np.str_('USA'), np.str_('Japan'), np.str_('UK')]",Recycled Polyester,0.69
+a_155,Female,Sportswear,loose,true to size,[np.str_('Germany')],Recycled Polyester,0.39
+a_156,Male,Pants & Leggings,loose,true to size,[np.str_('USA')],Spandex,0.88
+a_157,Male,Pants & Leggings,loose,true to size,"[np.str_('Japan'), np.str_('USA')]",Polyester,0.54
+a_158,Female,Jackets,slim,true to size,[np.str_('Japan')],Recycled Polyester,-0.78
+a_159,Male,Jackets,loose,runs small,[np.str_('Japan')],Polyester,0.06
+a_160,Female,Sportswear,regular,true to size,[np.str_('UK')],Aeroready Technology,-0.07
+a_161,Other,Pants & Leggings,slim,true to size,"[np.str_('UK'), np.str_('USA'), np.str_('Japan')]",Spandex,-0.18
+a_162,Male,Sweatshirts/Hoodies,slim,runs large,[np.str_('USA')],Cotton,-0.07
+a_163,Male,Pants & Leggings,slim,true to size,[np.str_('USA')],Spandex,-0.32
+a_164,Other,T-Shirts & Tops,slim,runs small,"[np.str_('USA'), np.str_('UK')]",Cotton,-1.0
+a_165,Female,Sweatshirts/Hoodies,regular,true to size,"[np.str_('USA'), np.str_('UK')]",Polyester,0.24
+a_166,Other,Jackets,loose,true to size,[np.str_('USA')],Nylon,0.49
+a_167,Male,Shoes,loose,true to size,[np.str_('UK')],Primeknit,0.69
+a_168,Female,Shoes,regular,true to size,"[np.str_('Germany'), np.str_('UK')]",Primeknit,0.02
+a_169,Female,Jackets,regular,true to size,[np.str_('Germany')],Polyester,0.14
+a_170,Male,T-Shirts & Tops,slim,true to size,[np.str_('Germany')],Cotton,-0.4
+a_171,Female,Shoes,regular,true to size,[np.str_('UK')],Primeknit,0.12
+a_172,Female,Sportswear,regular,true to size,[np.str_('Germany')],Aeroready Technology,-0.03
+a_173,Female,T-Shirts & Tops,loose,true to size,[np.str_('Germany')],Recycled Polyester,0.32
+a_174,Female,Sweatshirts/Hoodies,slim,runs large,"[np.str_('Japan'), np.str_('UK')]",Recycled Polyester,-0.2
+a_175,Male,Pants & Leggings,loose,true to size,[np.str_('Germany')],Recycled Polyester,0.57
+a_176,Male,Pants & Leggings,slim,runs small,[np.str_('Germany')],Recycled Polyester,-0.96
+a_177,Female,Sweatshirts/Hoodies,slim,true to size,[np.str_('Japan')],Cotton,-0.65
+a_178,Male,Jackets,loose,true to size,[np.str_('Japan')],Polyester,0.42
+a_179,Other,Sportswear,slim,true to size,[np.str_('Germany')],Aeroready Technology,-0.45
+a_180,Other,Sweatshirts/Hoodies,regular,runs large,"[np.str_('Japan'), np.str_('USA')]",Recycled Polyester,0.3
+a_181,Other,Sweatshirts/Hoodies,slim,true to size,[np.str_('Japan')],Cotton,-0.84
+a_182,Other,Pants & Leggings,slim,true to size,[np.str_('UK')],Polyester,-0.61
+a_183,Other,T-Shirts & Tops,regular,true to size,"[np.str_('USA'), np.str_('UK')]",Polyester,0.06
+a_184,Other,Sportswear,slim,true to size,"[np.str_('UK'), np.str_('Germany')]",Aeroready Technology,-0.39
+a_185,Female,Jackets,regular,true to size,"[np.str_('UK'), np.str_('Japan')]",Primeknit,0.21
+a_186,Other,T-Shirts & Tops,regular,true to size,[np.str_('UK')],Cotton,-0.29
+a_187,Male,Jackets,slim,true to size,[np.str_('USA')],Nylon,-0.24
+a_188,Female,Shoes,regular,runs small,"[np.str_('Japan'), np.str_('UK')]",Primeknit,-0.43
+a_189,Male,Shoes,regular,true to size,[np.str_('UK')],Primeknit,0.51
+a_190,Female,T-Shirts & Tops,regular,true to size,"[np.str_('Japan'), np.str_('USA')]",Cotton,-0.47
+a_191,Male,T-Shirts & Tops,loose,runs small,[np.str_('Germany')],Polyester,0.11
+a_192,Male,Jackets,loose,runs small,"[np.str_('USA'), np.str_('Germany')]",Recycled Polyester,-0.08
+a_193,Male,T-Shirts & Tops,slim,runs large,"[np.str_('Japan'), np.str_('Germany'), np.str_('UK')]",Cotton,0.0
+a_194,Other,T-Shirts & Tops,slim,true to size,[np.str_('Germany')],Cotton,-0.66
+a_195,Male,Sportswear,regular,true to size,[np.str_('Japan')],Aeroready Technology,0.13
+a_196,Other,Jackets,regular,true to size,[np.str_('USA')],Primeknit,0.25
+a_197,Female,Pants & Leggings,regular,runs small,[np.str_('USA')],Spandex,-0.64
+a_198,Female,T-Shirts & Tops,loose,runs small,[np.str_('UK')],Cotton,-0.22
+a_199,Male,Shoes,slim,runs small,"[np.str_('Germany'), np.str_('UK')]",Recycled Polyester,-0.84
+a_200,Female,T-Shirts & Tops,slim,runs small,[np.str_('Germany')],Cotton,-1.32
+a_201,Male,Jackets,slim,true to size,"[np.str_('Japan'), np.str_('UK'), np.str_('Germany')]",Primeknit,-0.36
+a_202,Male,Pants & Leggings,loose,runs small,"[np.str_('Japan'), np.str_('USA')]",Polyester,0.04
+a_203,Male,Sweatshirts/Hoodies,regular,true to size,[np.str_('Germany')],Recycled Polyester,0.22
+a_204,Male,Sportswear,regular,true to size,"[np.str_('Japan'), np.str_('UK')]",Recycled Polyester,0.02
+a_205,Male,Pants & Leggings,loose,true to size,"[np.str_('UK'), np.str_('USA'), np.str_('Japan')]",Polyester,0.6
+a_206,Male,Shoes,slim,true to size,"[np.str_('USA'), np.str_('Germany'), np.str_('Japan')]",Primeknit,-0.18
+a_207,Female,T-Shirts & Tops,loose,true to size,[np.str_('Germany')],Recycled Polyester,0.45
+a_208,Male,T-Shirts & Tops,slim,true to size,"[np.str_('UK'), np.str_('Germany')]",Cotton,-0.51
+a_209,Female,Shoes,loose,true to size,[np.str_('USA')],Parley Ocean Plastic,0.67
+a_210,Male,Shoes,slim,true to size,"[np.str_('Germany'), np.str_('USA')]",Recycled Polyester,-0.6
+a_211,Female,T-Shirts & Tops,slim,true to size,[np.str_('Japan')],Polyester,-0.55
+a_212,Male,T-Shirts & Tops,regular,true to size,"[np.str_('Germany'), np.str_('USA')]",Polyester,-0.06
+a_213,Female,Sportswear,slim,true to size,"[np.str_('Japan'), np.str_('Germany')]",Recycled Polyester,-0.63
+a_214,Other,Sportswear,slim,true to size,[np.str_('UK')],Recycled Polyester,-0.65
+a_215,Male,Sportswear,regular,runs small,"[np.str_('Japan'), np.str_('UK'), np.str_('Germany')]",Recycled Polyester,-0.45
+a_216,Other,Sportswear,loose,true to size,[np.str_('Germany')],Recycled Polyester,0.4
+a_217,Female,Sportswear,regular,true to size,[np.str_('USA')],Aeroready Technology,0.1
+a_218,Other,Pants & Leggings,regular,runs small,"[np.str_('USA'), np.str_('Japan'), np.str_('UK')]",Recycled Polyester,-0.69
+a_219,Other,Sweatshirts/Hoodies,loose,true to size,[np.str_('Germany')],Recycled Polyester,0.62
+a_220,Other,Shoes,slim,true to size,"[np.str_('USA'), np.str_('UK')]",Parley Ocean Plastic,-0.3
+a_221,Male,Jackets,regular,runs small,"[np.str_('Japan'), np.str_('UK')]",Polyester,-0.51
+a_222,Male,Pants & Leggings,regular,true to size,"[np.str_('UK'), np.str_('Japan')]",Spandex,0.31
+a_223,Female,Pants & Leggings,slim,true to size,"[np.str_('Japan'), np.str_('UK')]",Polyester,-0.45
+a_224,Male,Sweatshirts/Hoodies,regular,true to size,[np.str_('UK')],Polyester,0.02
+a_225,Male,Pants & Leggings,loose,runs small,"[np.str_('USA'), np.str_('UK')]",Polyester,0.1
+a_226,Other,Jackets,slim,true to size,"[np.str_('USA'), np.str_('Japan'), np.str_('Germany')]",Nylon,-0.44
+a_227,Female,Pants & Leggings,loose,true to size,[np.str_('Japan')],Polyester,0.52
+a_228,Male,Jackets,slim,true to size,[np.str_('UK')],Nylon,-0.36
+a_229,Other,Sportswear,regular,true to size,[np.str_('USA')],Spandex,0.22
+a_230,Other,Pants & Leggings,regular,runs large,"[np.str_('USA'), np.str_('UK')]",Spandex,0.62
+a_231,Female,Sportswear,regular,true to size,"[np.str_('Germany'), np.str_('Japan')]",Spandex,0.04
+a_232,Other,T-Shirts & Tops,regular,true to size,[np.str_('Germany')],Recycled Polyester,-0.02
+a_233,Female,T-Shirts & Tops,regular,true to size,"[np.str_('Germany'), np.str_('USA'), np.str_('UK')]",Polyester,-0.34
+a_234,Male,T-Shirts & Tops,slim,true to size,"[np.str_('Japan'), np.str_('Germany'), np.str_('UK')]",Cotton,-0.76
+a_235,Female,Jackets,loose,true to size,"[np.str_('Germany'), np.str_('UK'), np.str_('USA')]",Nylon,0.75
+a_236,Female,Sweatshirts/Hoodies,regular,true to size,[np.str_('USA')],Cotton,-0.45
+a_237,Other,Sportswear,regular,true to size,[np.str_('USA')],Aeroready Technology,-0.02
+a_238,Other,Pants & Leggings,regular,true to size,"[np.str_('Japan'), np.str_('UK'), np.str_('Germany')]",Polyester,0.09
+a_239,Other,Jackets,slim,true to size,"[np.str_('Germany'), np.str_('UK')]",Nylon,-0.28
+a_240,Other,Shoes,regular,true to size,"[np.str_('Germany'), np.str_('USA')]",Primeknit,0.24
+a_241,Other,Pants & Leggings,loose,true to size,"[np.str_('USA'), np.str_('Germany'), np.str_('Japan')]",Polyester,0.36
+a_242,Other,Shoes,slim,true to size,[np.str_('UK')],Recycled Polyester,-0.46
+a_243,Other,Sportswear,slim,true to size,[np.str_('Germany')],Recycled Polyester,-0.65
+a_244,Other,T-Shirts & Tops,loose,true to size,"[np.str_('USA'), np.str_('Japan'), np.str_('Germany')]",Cotton,0.36
+a_245,Other,Sportswear,regular,true to size,[np.str_('UK')],Spandex,0.17
+a_246,Female,Pants & Leggings,loose,true to size,"[np.str_('USA'), np.str_('Germany')]",Polyester,0.26
+a_247,Male,Sweatshirts/Hoodies,regular,true to size,"[np.str_('Germany'), np.str_('Japan'), np.str_('UK')]",Recycled Polyester,0.38
+a_248,Other,Jackets,loose,true to size,"[np.str_('UK'), np.str_('USA'), np.str_('Germany')]",Nylon,0.83
+a_249,Female,Sweatshirts/Hoodies,loose,true to size,"[np.str_('UK'), np.str_('USA'), np.str_('Germany')]",Polyester,0.54
+a_250,Other,Sportswear,loose,true to size,[np.str_('Germany')],Spandex,0.77
+a_251,Male,Pants & Leggings,regular,true to size,"[np.str_('USA'), np.str_('Germany')]",Recycled Polyester,0.26
+a_252,Other,Pants & Leggings,slim,true to size,"[np.str_('Japan'), np.str_('Germany'), np.str_('USA')]",Nylon,-0.47
+a_253,Other,Jackets,slim,true to size,[np.str_('Germany')],Polyester,-0.28
+a_254,Other,T-Shirts & Tops,loose,true to size,[np.str_('Japan')],Polyester,0.38
+a_255,Male,T-Shirts & Tops,loose,true to size,"[np.str_('Germany'), np.str_('UK'), np.str_('Japan')]",Polyester,0.48
+a_256,Male,Shoes,slim,true to size,[np.str_('USA')],Primeknit,-0.26
+a_257,Male,Sportswear,regular,runs large,"[np.str_('Germany'), np.str_('Japan')]",Spandex,0.57
+a_258,Male,T-Shirts & Tops,slim,runs large,"[np.str_('Japan'), np.str_('USA')]",Polyester,0.12
+a_259,Female,Sweatshirts/Hoodies,loose,runs small,"[np.str_('Germany'), np.str_('USA'), np.str_('Japan')]",Recycled Polyester,-0.17
+a_260,Male,Pants & Leggings,regular,true to size,[np.str_('Germany')],Nylon,0.28
+a_261,Female,T-Shirts & Tops,slim,true to size,"[np.str_('Japan'), np.str_('Germany'), np.str_('USA')]",Cotton,-0.85
+a_262,Female,Sportswear,slim,true to size,"[np.str_('UK'), np.str_('Japan')]",Aeroready Technology,-0.21
+a_263,Female,Pants & Leggings,slim,runs small,"[np.str_('UK'), np.str_('Japan')]",Recycled Polyester,-1.02
+a_264,Male,T-Shirts & Tops,loose,runs small,"[np.str_('Japan'), np.str_('Germany')]",Cotton,-0.09
+a_265,Other,Jackets,regular,true to size,[np.str_('USA')],Polyester,0.15
+a_266,Female,T-Shirts & Tops,regular,true to size,"[np.str_('USA'), np.str_('Germany')]",Cotton,-0.08
+a_267,Female,Pants & Leggings,regular,true to size,[np.str_('UK')],Spandex,0.2
+a_268,Male,Sportswear,regular,true to size,[np.str_('USA')],Aeroready Technology,0.46
+a_269,Female,Sweatshirts/Hoodies,slim,true to size,[np.str_('UK')],Cotton,-0.56
+a_270,Other,Sportswear,loose,true to size,"[np.str_('USA'), np.str_('Germany')]",Spandex,0.62
+a_271,Other,Sweatshirts/Hoodies,regular,true to size,[np.str_('UK')],Polyester,0.32
+a_272,Male,Jackets,loose,runs small,[np.str_('Germany')],Recycled Polyester,0.02
+a_273,Other,Sweatshirts/Hoodies,regular,true to size,"[np.str_('Germany'), np.str_('USA'), np.str_('Japan')]",Recycled Polyester,-0.07
+a_274,Female,Pants & Leggings,loose,runs large,[np.str_('USA')],Polyester,0.81
+a_275,Male,Sweatshirts/Hoodies,loose,true to size,[np.str_('Germany')],Cotton,0.53
+a_276,Female,Sweatshirts/Hoodies,regular,runs large,"[np.str_('USA'), np.str_('Germany'), np.str_('UK')]",Cotton,0.26
+a_277,Other,T-Shirts & Tops,regular,runs small,[np.str_('UK')],Cotton,-0.53
+a_278,Other,Jackets,regular,true to size,[np.str_('UK')],Polyester,0.11
+a_279,Female,Shoes,regular,runs large,[np.str_('USA')],Recycled Polyester,0.16
+a_280,Other,Sportswear,slim,true to size,[np.str_('Germany')],Aeroready Technology,-0.2
+a_281,Other,Jackets,regular,true to size,[np.str_('UK')],Recycled Polyester,-0.1
+a_282,Male,Jackets,loose,true to size,[np.str_('Japan')],Recycled Polyester,0.75
+a_283,Male,Pants & Leggings,slim,runs small,"[np.str_('Japan'), np.str_('Germany')]",Polyester,-1.07
+a_284,Other,Sportswear,slim,true to size,[np.str_('USA')],Recycled Polyester,-0.55
+a_285,Other,Jackets,slim,true to size,[np.str_('Germany')],Polyester,-0.43
+a_286,Male,Sweatshirts/Hoodies,regular,true to size,[np.str_('UK')],Recycled Polyester,0.31
+a_287,Male,Sportswear,regular,true to size,"[np.str_('USA'), np.str_('Germany'), np.str_('UK')]",Aeroready Technology,0.24
+a_288,Other,Pants & Leggings,regular,true to size,"[np.str_('Germany'), np.str_('Japan'), np.str_('UK')]",Polyester,-0.08
+a_289,Other,Jackets,slim,runs small,[np.str_('Germany')],Nylon,-0.96
+a_290,Other,Sweatshirts/Hoodies,slim,true to size,"[np.str_('Japan'), np.str_('USA')]",Cotton,-0.48
+a_291,Other,Sportswear,slim,runs large,"[np.str_('Germany'), np.str_('UK'), np.str_('Japan')]",Aeroready Technology,0.05
+a_292,Other,Jackets,loose,true to size,"[np.str_('UK'), np.str_('Japan')]",Polyester,0.5
+a_293,Male,Sweatshirts/Hoodies,slim,true to size,[np.str_('UK')],Cotton,-0.56
+a_294,Other,Shoes,loose,true to size,[np.str_('Germany')],Primeknit,0.5
+a_295,Male,Pants & Leggings,loose,runs large,[np.str_('Japan')],Polyester,1.25
+a_296,Other,T-Shirts & Tops,regular,true to size,[np.str_('USA')],Cotton,-0.02
+a_297,Male,Jackets,loose,true to size,"[np.str_('Germany'), np.str_('USA')]",Nylon,0.6
+a_298,Other,Sportswear,loose,true to size,[np.str_('UK')],Spandex,0.73
+a_299,Other,Pants & Leggings,slim,runs large,"[np.str_('USA'), np.str_('Germany'), np.str_('Japan')]",Polyester,-0.05
+a_300,Other,T-Shirts & Tops,slim,runs small,[np.str_('USA')],Cotton,-1.13
+a_301,Other,Pants & Leggings,loose,true to size,[np.str_('UK')],Recycled Polyester,0.63
+a_302,Male,Shoes,regular,true to size,[np.str_('Germany')],Parley Ocean Plastic,0.18
+a_303,Other,T-Shirts & Tops,regular,true to size,"[np.str_('UK'), np.str_('Japan'), np.str_('Germany')]",Cotton,-0.1
+a_304,Female,Sportswear,regular,true to size,"[np.str_('Germany'), np.str_('Japan'), np.str_('UK')]",Recycled Polyester,-0.12
+a_305,Male,Jackets,slim,runs small,"[np.str_('UK'), np.str_('Japan')]",Recycled Polyester,-0.85
+a_306,Other,Sportswear,regular,true to size,"[np.str_('USA'), np.str_('UK'), np.str_('Germany')]",Aeroready Technology,0.34
+a_307,Male,Sweatshirts/Hoodies,regular,runs small,"[np.str_('USA'), np.str_('Germany'), np.str_('UK')]",Cotton,-0.41
+a_308,Female,Shoes,regular,true to size,"[np.str_('Germany'), np.str_('USA'), np.str_('UK')]",Parley Ocean Plastic,-0.15
+a_309,Female,T-Shirts & Tops,slim,true to size,[np.str_('Germany')],Cotton,-0.94
+a_310,Other,Sportswear,slim,true to size,"[np.str_('USA'), np.str_('UK'), np.str_('Japan')]",Aeroready Technology,-0.3
+a_311,Other,T-Shirts & Tops,loose,true to size,"[np.str_('Germany'), np.str_('UK')]",Polyester,0.26
+a_312,Male,Shoes,slim,true to size,"[np.str_('USA'), np.str_('Germany'), np.str_('Japan')]",Parley Ocean Plastic,-0.07
+a_313,Female,Shoes,regular,runs small,[np.str_('Japan')],Recycled Polyester,-0.57
+a_314,Female,Sweatshirts/Hoodies,regular,true to size,[np.str_('UK')],Cotton,-0.08
+a_315,Female,Jackets,slim,runs large,[np.str_('USA')],Recycled Polyester,-0.18
+a_316,Female,Pants & Leggings,regular,true to size,[np.str_('Germany')],Polyester,0.23
+a_317,Male,Pants & Leggings,regular,true to size,[np.str_('USA')],Polyester,0.3
+a_318,Other,Sweatshirts/Hoodies,regular,true to size,[np.str_('USA')],Recycled Polyester,-0.25
+a_319,Female,T-Shirts & Tops,loose,true to size,"[np.str_('USA'), np.str_('Germany'), np.str_('Japan')]",Polyester,0.24
+a_320,Female,Jackets,loose,true to size,[np.str_('UK')],Polyester,0.33
+a_321,Other,T-Shirts & Tops,loose,true to size,"[np.str_('Germany'), np.str_('Japan')]",Cotton,0.4
+a_322,Female,Sweatshirts/Hoodies,regular,true to size,"[np.str_('Germany'), np.str_('USA'), np.str_('Japan')]",Cotton,-0.1
+a_323,Other,Sportswear,loose,true to size,[np.str_('USA')],Recycled Polyester,0.28
+a_324,Female,Shoes,slim,true to size,"[np.str_('Germany'), np.str_('UK')]",Primeknit,-0.37
+a_325,Male,T-Shirts & Tops,slim,true to size,[np.str_('Germany')],Cotton,-0.73
+a_326,Female,Sportswear,regular,runs small,"[np.str_('Germany'), np.str_('UK')]",Spandex,-0.35
+a_327,Male,Shoes,slim,true to size,"[np.str_('Germany'), np.str_('USA')]",Recycled Polyester,-0.65
+a_328,Female,Sweatshirts/Hoodies,loose,true to size,"[np.str_('Germany'), np.str_('UK')]",Cotton,0.2
+a_329,Male,Jackets,regular,true to size,"[np.str_('UK'), np.str_('Germany'), np.str_('Japan')]",Polyester,-0.17
+a_330,Other,T-Shirts & Tops,slim,true to size,"[np.str_('Japan'), np.str_('UK'), np.str_('Germany')]",Recycled Polyester,-0.5
+a_331,Other,T-Shirts & Tops,regular,true to size,"[np.str_('UK'), np.str_('USA'), np.str_('Germany')]",Recycled Polyester,-0.13
+a_332,Other,Pants & Leggings,loose,true to size,"[np.str_('USA'), np.str_('Japan'), np.str_('UK')]",Polyester,0.6
+a_333,Female,Shoes,regular,true to size,[np.str_('Germany')],Primeknit,0.38
+a_334,Female,Shoes,regular,true to size,[np.str_('UK')],Recycled Polyester,-0.42
+a_335,Female,T-Shirts & Tops,regular,true to size,"[np.str_('Japan'), np.str_('Germany'), np.str_('UK')]",Cotton,-0.26
+a_336,Male,Shoes,slim,runs large,[np.str_('Japan')],Parley Ocean Plastic,0.17
+a_337,Female,Shoes,slim,runs small,"[np.str_('Japan'), np.str_('USA')]",Parley Ocean Plastic,-0.93
+a_338,Male,Sweatshirts/Hoodies,regular,true to size,"[np.str_('Japan'), np.str_('UK'), np.str_('Germany')]",Cotton,0.06
+a_339,Female,Pants & Leggings,slim,true to size,"[np.str_('Germany'), np.str_('Japan')]",Polyester,-0.68
+a_340,Other,Sportswear,loose,true to size,"[np.str_('UK'), np.str_('USA')]",Aeroready Technology,0.46
+a_341,Female,Shoes,regular,true to size,"[np.str_('Japan'), np.str_('USA'), np.str_('UK')]",Primeknit,-0.09
+a_342,Other,Sportswear,regular,true to size,[np.str_('UK')],Recycled Polyester,-0.3
+a_343,Female,Jackets,loose,true to size,[np.str_('Japan')],Recycled Polyester,0.49
+a_344,Other,Sportswear,regular,true to size,[np.str_('Germany')],Spandex,0.03
+a_345,Female,T-Shirts & Tops,regular,runs small,[np.str_('USA')],Cotton,-0.57
+a_346,Other,Jackets,slim,runs large,[np.str_('UK')],Recycled Polyester,-0.01
+a_347,Female,Shoes,regular,true to size,[np.str_('Japan')],Primeknit,-0.0
+a_348,Other,Sweatshirts/Hoodies,regular,true to size,"[np.str_('USA'), np.str_('Germany')]",Recycled Polyester,-0.03
+a_349,Male,Sweatshirts/Hoodies,loose,true to size,[np.str_('USA')],Polyester,0.42
+a_350,Male,Shoes,loose,true to size,[np.str_('UK')],Parley Ocean Plastic,0.51
+a_351,Other,Sportswear,regular,true to size,"[np.str_('UK'), np.str_('USA')]",Aeroready Technology,0.08
+a_352,Male,Jackets,regular,true to size,"[np.str_('UK'), np.str_('USA'), np.str_('Germany')]",Polyester,0.3
+a_353,Female,Shoes,regular,true to size,"[np.str_('Germany'), np.str_('UK')]",Primeknit,-0.14
+a_354,Male,Sportswear,regular,true to size,"[np.str_('Japan'), np.str_('Germany')]",Aeroready Technology,0.43
+a_355,Male,Sportswear,regular,true to size,[np.str_('UK')],Recycled Polyester,0.01
+a_356,Female,Sweatshirts/Hoodies,regular,true to size,[np.str_('Germany')],Recycled Polyester,-0.32
+a_357,Female,Shoes,slim,true to size,[np.str_('USA')],Recycled Polyester,-0.61
+a_358,Female,Pants & Leggings,slim,runs large,[np.str_('UK')],Polyester,-0.12
+a_359,Male,Sweatshirts/Hoodies,loose,runs small,"[np.str_('Germany'), np.str_('USA')]",Cotton,0.06
+a_360,Male,Sweatshirts/Hoodies,regular,true to size,"[np.str_('USA'), np.str_('Germany')]",Cotton,0.18
+a_361,Other,Jackets,regular,true to size,"[np.str_('Japan'), np.str_('USA'), np.str_('UK')]",Primeknit,0.29
+a_362,Female,Sportswear,slim,true to size,"[np.str_('UK'), np.str_('USA'), np.str_('Germany')]",Spandex,-0.38
+a_363,Male,Sweatshirts/Hoodies,slim,true to size,[np.str_('Japan')],Recycled Polyester,-0.43
+a_364,Male,Jackets,regular,true to size,[np.str_('Germany')],Recycled Polyester,0.06
+a_365,Other,Sportswear,slim,true to size,[np.str_('USA')],Recycled Polyester,-0.52
+a_366,Female,Pants & Leggings,slim,runs small,"[np.str_('Japan'), np.str_('UK')]",Polyester,-1.04
+a_367,Other,Pants & Leggings,loose,true to size,"[np.str_('USA'), np.str_('Germany')]",Recycled Polyester,0.41
+a_368,Male,Sweatshirts/Hoodies,loose,true to size,"[np.str_('Japan'), np.str_('Germany'), np.str_('UK')]",Polyester,0.52
+a_369,Other,Sweatshirts/Hoodies,regular,true to size,"[np.str_('UK'), np.str_('Germany'), np.str_('USA')]",Cotton,0.1
+a_370,Other,Sportswear,regular,runs large,[np.str_('UK')],Aeroready Technology,0.66
+a_371,Other,Sportswear,slim,true to size,[np.str_('Japan')],Spandex,-0.2
+a_372,Female,T-Shirts & Tops,slim,true to size,[np.str_('Germany')],Recycled Polyester,-0.46
+a_373,Female,Pants & Leggings,loose,true to size,[np.str_('UK')],Nylon,0.29
+a_374,Other,Shoes,loose,runs small,[np.str_('Germany')],Primeknit,0.2
+a_375,Male,Jackets,loose,true to size,[np.str_('USA')],Polyester,0.55
+a_376,Female,Sweatshirts/Hoodies,slim,true to size,"[np.str_('Japan'), np.str_('UK')]",Cotton,-0.87
+a_377,Other,Jackets,loose,true to size,"[np.str_('UK'), np.str_('Germany')]",Polyester,0.38
+a_378,Other,Sportswear,regular,true to size,"[np.str_('Germany'), np.str_('Japan')]",Recycled Polyester,-0.01
+a_379,Male,T-Shirts & Tops,loose,true to size,[np.str_('USA')],Polyester,0.83
+a_380,Male,Sportswear,loose,true to size,[np.str_('USA')],Aeroready Technology,0.6
+a_381,Female,Sweatshirts/Hoodies,regular,true to size,"[np.str_('USA'), np.str_('Japan')]",Cotton,-0.19
+a_382,Other,T-Shirts & Tops,regular,true to size,[np.str_('USA')],Cotton,-0.16
+a_383,Female,Sweatshirts/Hoodies,regular,runs large,"[np.str_('USA'), np.str_('Germany'), np.str_('Japan')]",Cotton,0.23
+a_384,Other,Sweatshirts/Hoodies,regular,true to size,"[np.str_('UK'), np.str_('Germany'), np.str_('Japan')]",Cotton,-0.34
+a_385,Female,T-Shirts & Tops,regular,true to size,[np.str_('UK')],Recycled Polyester,-0.17
+a_386,Male,Shoes,loose,true to size,"[np.str_('USA'), np.str_('UK')]",Parley Ocean Plastic,0.63
+a_387,Other,Sweatshirts/Hoodies,slim,true to size,[np.str_('USA')],Polyester,-0.57
+a_388,Male,Sportswear,loose,true to size,"[np.str_('USA'), np.str_('UK')]",Spandex,0.84
+a_389,Female,Sportswear,regular,true to size,"[np.str_('UK'), np.str_('USA')]",Recycled Polyester,-0.21
+a_390,Other,Pants & Leggings,loose,true to size,[np.str_('Germany')],Polyester,0.58
+a_391,Male,T-Shirts & Tops,regular,true to size,"[np.str_('Germany'), np.str_('USA')]",Polyester,0.19
+a_392,Male,Shoes,regular,true to size,"[np.str_('USA'), np.str_('UK')]",Parley Ocean Plastic,0.06
+a_393,Male,Shoes,slim,runs small,"[np.str_('UK'), np.str_('Japan'), np.str_('USA')]",Recycled Polyester,-0.91
+a_394,Other,Sweatshirts/Hoodies,slim,true to size,"[np.str_('Germany'), np.str_('USA'), np.str_('Japan')]",Cotton,-0.48
+a_395,Male,Shoes,slim,runs large,"[np.str_('Japan'), np.str_('Germany')]",Primeknit,0.15
+a_396,Other,Sweatshirts/Hoodies,loose,runs small,[np.str_('Japan')],Cotton,0.04
+a_397,Other,Pants & Leggings,regular,true to size,[np.str_('Japan')],Polyester,0.35
+a_398,Other,Sportswear,loose,true to size,[np.str_('USA')],Aeroready Technology,0.62
+a_399,Male,Shoes,loose,true to size,[np.str_('USA')],Recycled Polyester,0.6
+a_400,Male,Sweatshirts/Hoodies,loose,runs large,[np.str_('Japan')],Recycled Polyester,1.07
+a_401,Female,Sweatshirts/Hoodies,regular,true to size,"[np.str_('Japan'), np.str_('Germany')]",Cotton,-0.06
+a_402,Other,Shoes,regular,true to size,"[np.str_('USA'), np.str_('UK')]",Parley Ocean Plastic,0.12
+a_403,Male,Jackets,slim,true to size,"[np.str_('UK'), np.str_('Germany')]",Recycled Polyester,-0.55
+a_404,Female,Shoes,loose,true to size,"[np.str_('Japan'), np.str_('USA'), np.str_('Germany')]",Recycled Polyester,0.12
+a_405,Male,Sweatshirts/Hoodies,regular,true to size,"[np.str_('USA'), np.str_('UK'), np.str_('Germany')]",Recycled Polyester,0.02
+a_406,Male,Sweatshirts/Hoodies,slim,true to size,[np.str_('UK')],Recycled Polyester,-0.41
+a_407,Female,Sportswear,loose,true to size,"[np.str_('UK'), np.str_('USA')]",Aeroready Technology,0.61
+a_408,Other,T-Shirts & Tops,regular,true to size,[np.str_('Japan')],Cotton,-0.16
+a_409,Other,Shoes,regular,true to size,[np.str_('Japan')],Parley Ocean Plastic,0.25
+a_410,Other,Jackets,loose,true to size,[np.str_('UK')],Polyester,0.36
+a_411,Female,Jackets,regular,true to size,[np.str_('UK')],Polyester,0.11
+a_412,Other,Pants & Leggings,slim,true to size,"[np.str_('USA'), np.str_('Germany'), np.str_('UK')]",Nylon,-0.33
+a_413,Other,Jackets,loose,runs small,[np.str_('Germany')],Recycled Polyester,-0.04
+a_414,Other,Shoes,regular,runs large,"[np.str_('Germany'), np.str_('USA'), np.str_('UK')]",Primeknit,0.9
+a_415,Female,T-Shirts & Tops,loose,true to size,"[np.str_('Japan'), np.str_('USA')]",Cotton,0.3
+a_416,Other,Sweatshirts/Hoodies,loose,true to size,[np.str_('USA')],Cotton,0.32
+a_417,Other,Jackets,loose,true to size,"[np.str_('USA'), np.str_('Germany')]",Polyester,0.35
+a_418,Male,Sweatshirts/Hoodies,slim,runs large,"[np.str_('UK'), np.str_('Germany'), np.str_('Japan')]",Cotton,-0.02
+a_419,Female,Jackets,regular,runs small,[np.str_('Germany')],Nylon,-0.57
+a_420,Other,Jackets,slim,true to size,[np.str_('Germany')],Polyester,-0.59
+a_421,Other,Sportswear,regular,runs small,[np.str_('USA')],Spandex,-0.07
+a_422,Male,Sweatshirts/Hoodies,regular,true to size,[np.str_('UK')],Cotton,0.02
+a_423,Female,Pants & Leggings,loose,runs small,[np.str_('USA')],Polyester,-0.24
+a_424,Female,Sportswear,slim,true to size,[np.str_('Japan')],Aeroready Technology,-0.6
+a_425,Other,Shoes,loose,runs small,"[np.str_('UK'), np.str_('USA')]",Parley Ocean Plastic,0.13
+a_426,Other,T-Shirts & Tops,loose,true to size,"[np.str_('USA'), np.str_('Germany')]",Cotton,0.39
+a_427,Other,Shoes,regular,true to size,[np.str_('Germany')],Primeknit,0.33
+a_428,Other,Shoes,regular,runs small,[np.str_('Japan')],Primeknit,-0.2
+a_429,Other,Pants & Leggings,regular,true to size,"[np.str_('USA'), np.str_('Japan')]",Polyester,0.26
+a_430,Female,Sportswear,loose,true to size,"[np.str_('Japan'), np.str_('UK')]",Aeroready Technology,0.47
+a_431,Other,Sportswear,loose,runs small,[np.str_('Germany')],Spandex,0.25
+a_432,Male,Sportswear,loose,true to size,[np.str_('UK')],Recycled Polyester,0.39
+a_433,Other,Jackets,loose,runs large,"[np.str_('UK'), np.str_('USA')]",Polyester,1.0
+a_434,Male,Sportswear,slim,true to size,"[np.str_('USA'), np.str_('UK')]",Recycled Polyester,-0.53
+a_435,Male,Shoes,loose,true to size,[np.str_('Japan')],Primeknit,0.74
+a_436,Other,T-Shirts & Tops,regular,runs small,[np.str_('UK')],Recycled Polyester,-0.73
+a_437,Male,Jackets,regular,runs large,[np.str_('UK')],Polyester,0.46
+a_438,Male,Jackets,slim,true to size,[np.str_('UK')],Polyester,-0.33
+a_439,Male,T-Shirts & Tops,regular,true to size,[np.str_('USA')],Cotton,0.08
+a_440,Male,Sportswear,loose,true to size,[np.str_('Germany')],Spandex,0.96
+a_441,Female,Shoes,regular,true to size,[np.str_('Japan')],Parley Ocean Plastic,0.28
+a_442,Other,Jackets,regular,true to size,"[np.str_('Japan'), np.str_('UK'), np.str_('USA')]",Nylon,0.11
+a_443,Male,Jackets,regular,runs large,[np.str_('Germany')],Recycled Polyester,0.63
+a_444,Male,Pants & Leggings,loose,runs small,[np.str_('USA')],Polyester,0.08
+a_445,Male,Sportswear,loose,true to size,"[np.str_('Germany'), np.str_('Japan')]",Aeroready Technology,0.51
+a_446,Male,Shoes,regular,true to size,[np.str_('UK')],Primeknit,0.29
+a_447,Other,T-Shirts & Tops,loose,true to size,[np.str_('UK')],Cotton,0.37
+a_448,Female,Sweatshirts/Hoodies,regular,true to size,"[np.str_('Japan'), np.str_('UK')]",Polyester,-0.32
+a_449,Female,Pants & Leggings,regular,true to size,[np.str_('UK')],Nylon,-0.02
+a_450,Other,Sportswear,slim,true to size,"[np.str_('Japan'), np.str_('USA')]",Aeroready Technology,-0.52
+a_451,Male,T-Shirts & Tops,regular,runs large,[np.str_('UK')],Polyester,0.53
+a_452,Female,Sweatshirts/Hoodies,slim,true to size,[np.str_('USA')],Recycled Polyester,-0.56
+a_453,Male,Pants & Leggings,regular,true to size,"[np.str_('UK'), np.str_('Germany'), np.str_('USA')]",Polyester,0.21
+a_454,Female,Pants & Leggings,loose,true to size,[np.str_('Japan')],Spandex,0.7
+a_455,Other,Shoes,slim,true to size,[np.str_('Japan')],Primeknit,-0.52
+a_456,Other,T-Shirts & Tops,loose,true to size,"[np.str_('UK'), np.str_('Germany'), np.str_('Japan')]",Polyester,0.59
+a_457,Male,Sweatshirts/Hoodies,regular,true to size,[np.str_('Japan')],Polyester,0.02
+a_458,Male,T-Shirts & Tops,loose,true to size,[np.str_('Germany')],Cotton,0.37
+a_459,Other,T-Shirts & Tops,slim,true to size,"[np.str_('Germany'), np.str_('Japan')]",Cotton,-0.41
+a_460,Male,Sportswear,regular,runs large,"[np.str_('Japan'), np.str_('Germany'), np.str_('UK')]",Recycled Polyester,0.6
+a_461,Female,Sweatshirts/Hoodies,loose,runs small,"[np.str_('UK'), np.str_('Germany'), np.str_('USA')]",Recycled Polyester,-0.12
+a_462,Male,Pants & Leggings,loose,runs large,[np.str_('Japan')],Polyester,1.07
+a_463,Male,Jackets,regular,true to size,[np.str_('Germany')],Polyester,0.37
+a_464,Female,T-Shirts & Tops,loose,runs small,[np.str_('UK')],Recycled Polyester,-0.19
+a_465,Other,Sweatshirts/Hoodies,slim,true to size,"[np.str_('Japan'), np.str_('Germany'), np.str_('UK')]",Cotton,-0.38
+a_466,Other,Shoes,loose,true to size,[np.str_('UK')],Primeknit,0.55
+a_467,Other,Pants & Leggings,regular,true to size,"[np.str_('UK'), np.str_('Germany')]",Polyester,0.08
+a_468,Male,Jackets,loose,true to size,"[np.str_('USA'), np.str_('UK')]",Recycled Polyester,0.5
+a_469,Female,Sportswear,slim,true to size,[np.str_('USA')],Aeroready Technology,-0.52
+a_470,Female,Jackets,regular,runs large,"[np.str_('Japan'), np.str_('UK')]",Polyester,0.37
+a_471,Male,Shoes,slim,runs small,"[np.str_('USA'), np.str_('Japan'), np.str_('UK')]",Primeknit,-0.7
+a_472,Other,Sportswear,slim,true to size,"[np.str_('UK'), np.str_('Japan')]",Aeroready Technology,-0.44
+a_473,Male,Shoes,loose,true to size,[np.str_('USA')],Recycled Polyester,0.49
+a_474,Female,T-Shirts & Tops,regular,true to size,"[np.str_('Japan'), np.str_('USA')]",Polyester,-0.02
+a_475,Other,Jackets,regular,true to size,"[np.str_('Germany'), np.str_('Japan'), np.str_('USA')]",Polyester,-0.12
+a_476,Other,Shoes,loose,true to size,"[np.str_('Japan'), np.str_('Germany'), np.str_('UK')]",Recycled Polyester,0.21
+a_477,Female,Sweatshirts/Hoodies,slim,runs small,[np.str_('Japan')],Cotton,-1.28
+a_478,Other,Jackets,loose,true to size,[np.str_('Japan')],Recycled Polyester,0.27
+a_479,Female,Pants & Leggings,regular,true to size,[np.str_('USA')],Recycled Polyester,-0.4
+a_480,Female,Pants & Leggings,loose,true to size,[np.str_('Japan')],Polyester,0.27
+a_481,Female,Sportswear,loose,runs large,"[np.str_('USA'), np.str_('UK')]",Aeroready Technology,0.99
+a_482,Male,Pants & Leggings,loose,runs large,[np.str_('USA')],Recycled Polyester,1.1
+a_483,Female,Sportswear,slim,true to size,"[np.str_('USA'), np.str_('UK')]",Spandex,-0.31
+a_484,Female,Shoes,slim,runs small,[np.str_('UK')],Recycled Polyester,-1.02
+a_485,Female,Shoes,slim,true to size,[np.str_('USA')],Parley Ocean Plastic,-0.45
+a_486,Male,T-Shirts & Tops,regular,true to size,"[np.str_('UK'), np.str_('Japan'), np.str_('Germany')]",Cotton,-0.29
+a_487,Female,Pants & Leggings,regular,true to size,"[np.str_('Japan'), np.str_('Germany')]",Polyester,-0.28
+a_488,Other,Shoes,regular,runs large,"[np.str_('Japan'), np.str_('USA'), np.str_('UK')]",Primeknit,0.5
+a_489,Male,Shoes,regular,true to size,[np.str_('USA')],Primeknit,0.46
+a_490,Female,Jackets,loose,true to size,[np.str_('USA')],Recycled Polyester,0.3
+a_491,Other,Sweatshirts/Hoodies,loose,true to size,"[np.str_('UK'), np.str_('USA')]",Recycled Polyester,0.57
+a_492,Other,Jackets,regular,true to size,"[np.str_('UK'), np.str_('Japan'), np.str_('USA')]",Polyester,-0.26
+a_493,Male,Shoes,slim,true to size,"[np.str_('UK'), np.str_('USA')]",Primeknit,-0.19
+a_494,Female,Sportswear,slim,true to size,[np.str_('USA')],Aeroready Technology,-0.68
+a_495,Male,Pants & Leggings,slim,runs large,[np.str_('UK')],Polyester,0.17
+a_496,Female,Pants & Leggings,slim,true to size,[np.str_('UK')],Recycled Polyester,-0.83
+a_497,Other,Sportswear,loose,runs large,[np.str_('Germany')],Recycled Polyester,0.87
+a_498,Female,Shoes,slim,runs large,"[np.str_('Japan'), np.str_('UK')]",Parley Ocean Plastic,-0.12
+a_499,Male,Jackets,loose,runs large,"[np.str_('UK'), np.str_('USA')]",Polyester,1.07
+a_500,Female,Pants & Leggings,regular,true to size,[np.str_('USA')],Spandex,0.09
+a_501,Female,T-Shirts & Tops,slim,runs large,[np.str_('Japan')],Cotton,-0.1
+a_502,Female,T-Shirts & Tops,slim,true to size,[np.str_('Japan')],Recycled Polyester,-0.83
+a_503,Female,T-Shirts & Tops,slim,true to size,"[np.str_('Japan'), np.str_('UK')]",Polyester,-0.53
+a_504,Female,Sportswear,regular,runs large,[np.str_('UK')],Aeroready Technology,0.3
+a_505,Male,Jackets,slim,true to size,[np.str_('UK')],Polyester,-0.21
+a_506,Female,Sportswear,regular,runs small,"[np.str_('Germany'), np.str_('USA')]",Aeroready Technology,-0.4
+a_507,Other,Jackets,slim,true to size,"[np.str_('USA'), np.str_('UK'), np.str_('Germany')]",Polyester,-0.56
+a_508,Female,Shoes,loose,true to size,[np.str_('USA')],Recycled Polyester,0.32
+a_509,Male,Sportswear,loose,true to size,"[np.str_('Germany'), np.str_('UK'), np.str_('USA')]",Spandex,0.69
+a_510,Male,Sweatshirts/Hoodies,loose,true to size,"[np.str_('USA'), np.str_('Japan')]",Recycled Polyester,0.61
+a_511,Other,T-Shirts & Tops,loose,true to size,"[np.str_('Germany'), np.str_('UK'), np.str_('Japan')]",Cotton,0.3
+a_512,Female,T-Shirts & Tops,slim,true to size,[np.str_('UK')],Polyester,-0.71
+a_513,Male,T-Shirts & Tops,slim,true to size,[np.str_('Japan')],Recycled Polyester,-0.56
+a_514,Other,Shoes,regular,true to size,"[np.str_('Germany'), np.str_('USA')]",Parley Ocean Plastic,-0.01
+a_515,Female,Pants & Leggings,slim,true to size,"[np.str_('Japan'), np.str_('Germany'), np.str_('UK')]",Recycled Polyester,-0.69
+a_516,Other,Sweatshirts/Hoodies,slim,true to size,[np.str_('Japan')],Cotton,-0.67
+a_517,Female,Sweatshirts/Hoodies,regular,true to size,"[np.str_('Japan'), np.str_('Germany')]",Polyester,-0.34
+a_518,Male,Sportswear,loose,true to size,[np.str_('Germany')],Spandex,0.98
+a_519,Female,T-Shirts & Tops,slim,true to size,[np.str_('UK')],Cotton,-0.55
+a_520,Male,Sportswear,regular,runs large,[np.str_('USA')],Aeroready Technology,0.48
+a_521,Male,Jackets,regular,true to size,"[np.str_('UK'), np.str_('Japan')]",Recycled Polyester,0.11
+a_522,Female,T-Shirts & Tops,slim,true to size,[np.str_('Germany')],Recycled Polyester,-0.77
+a_523,Male,Shoes,loose,true to size,[np.str_('Germany')],Recycled Polyester,0.71
+a_524,Other,Pants & Leggings,loose,runs small,"[np.str_('Japan'), np.str_('UK'), np.str_('Germany')]",Polyester,0.01
+a_525,Female,Sportswear,regular,true to size,"[np.str_('USA'), np.str_('UK')]",Recycled Polyester,0.02
+a_526,Female,Pants & Leggings,slim,runs small,[np.str_('USA')],Polyester,-1.06
+a_527,Other,Jackets,regular,true to size,[np.str_('USA')],Polyester,-0.01
+a_528,Female,Pants & Leggings,slim,true to size,[np.str_('USA')],Recycled Polyester,-0.44
+a_529,Male,Jackets,regular,true to size,"[np.str_('UK'), np.str_('Germany')]",Primeknit,-0.01
+a_530,Male,Sweatshirts/Hoodies,slim,true to size,"[np.str_('UK'), np.str_('Germany')]",Cotton,-0.36
+a_531,Male,Shoes,regular,true to size,[np.str_('Japan')],Primeknit,0.31
+a_532,Male,Pants & Leggings,regular,runs large,[np.str_('Germany')],Polyester,0.57
+a_533,Male,T-Shirts & Tops,regular,true to size,[np.str_('Germany')],Recycled Polyester,0.01
+a_534,Female,Sportswear,regular,true to size,[np.str_('Japan')],Aeroready Technology,-0.18
+a_535,Other,Jackets,regular,true to size,[np.str_('Germany')],Recycled Polyester,0.19
+a_536,Female,Shoes,slim,runs large,"[np.str_('UK'), np.str_('USA')]",Primeknit,0.23
+a_537,Female,T-Shirts & Tops,loose,true to size,"[np.str_('USA'), np.str_('UK')]",Cotton,0.15
+a_538,Female,Shoes,slim,true to size,[np.str_('Germany')],Parley Ocean Plastic,-0.53
+a_539,Other,Sweatshirts/Hoodies,regular,true to size,"[np.str_('Japan'), np.str_('UK'), np.str_('Germany')]",Cotton,0.17
+a_540,Other,Shoes,regular,true to size,"[np.str_('Japan'), np.str_('UK'), np.str_('Germany')]",Primeknit,0.12
+a_541,Other,Sportswear,regular,true to size,"[np.str_('Japan'), np.str_('UK')]",Spandex,0.23
+a_542,Female,T-Shirts & Tops,regular,true to size,[np.str_('Japan')],Recycled Polyester,-0.14
+a_543,Other,Sweatshirts/Hoodies,slim,true to size,[np.str_('USA')],Polyester,-0.66
+a_544,Female,T-Shirts & Tops,loose,runs small,[np.str_('USA')],Cotton,-0.21
+a_545,Other,Jackets,regular,true to size,"[np.str_('Germany'), np.str_('UK'), np.str_('Japan')]",Primeknit,-0.05
+a_546,Female,Sportswear,slim,runs small,[np.str_('Japan')],Spandex,-0.9
+a_547,Female,Pants & Leggings,slim,true to size,"[np.str_('Japan'), np.str_('Germany')]",Recycled Polyester,-0.71
+a_548,Female,Jackets,loose,true to size,[np.str_('UK')],Polyester,0.38
+a_549,Female,Jackets,slim,true to size,[np.str_('UK')],Nylon,-0.54
+a_550,Female,Sweatshirts/Hoodies,loose,true to size,"[np.str_('USA'), np.str_('UK')]",Cotton,0.19
+a_551,Female,Sportswear,regular,true to size,"[np.str_('UK'), np.str_('Germany'), np.str_('Japan')]",Spandex,0.15
+a_552,Male,Sportswear,regular,true to size,"[np.str_('USA'), np.str_('UK'), np.str_('Japan')]",Spandex,0.16
+a_553,Female,Pants & Leggings,loose,true to size,[np.str_('Japan')],Polyester,0.41
+a_554,Other,Sportswear,regular,true to size,"[np.str_('UK'), np.str_('Germany'), np.str_('USA')]",Spandex,0.23
+a_555,Female,Shoes,loose,runs large,"[np.str_('USA'), np.str_('Germany'), np.str_('Japan')]",Parley Ocean Plastic,0.97
+a_556,Other,Jackets,slim,true to size,[np.str_('Japan')],Nylon,-0.25
+a_557,Female,Shoes,loose,true to size,"[np.str_('Japan'), np.str_('Germany')]",Recycled Polyester,0.51
+a_558,Other,Jackets,slim,true to size,"[np.str_('Germany'), np.str_('Japan')]",Nylon,-0.27
+a_559,Other,Jackets,regular,true to size,[np.str_('Germany')],Polyester,0.08
+a_560,Female,Pants & Leggings,slim,true to size,[np.str_('USA')],Polyester,-0.6
+a_561,Other,Jackets,regular,true to size,"[np.str_('USA'), np.str_('Germany')]",Polyester,-0.01
+a_562,Other,Shoes,regular,true to size,[np.str_('Germany')],Parley Ocean Plastic,0.11
+a_563,Male,Jackets,slim,true to size,[np.str_('UK')],Recycled Polyester,-0.28
+a_564,Other,Jackets,regular,true to size,"[np.str_('UK'), np.str_('Japan')]",Polyester,0.15
+a_565,Other,T-Shirts & Tops,loose,true to size,"[np.str_('Japan'), np.str_('Germany'), np.str_('UK')]",Cotton,0.19
+a_566,Male,Pants & Leggings,regular,runs large,[np.str_('Germany')],Polyester,0.8
+a_567,Other,Shoes,loose,true to size,[np.str_('Germany')],Recycled Polyester,0.29
+a_568,Other,Sportswear,slim,true to size,[np.str_('UK')],Recycled Polyester,-0.64
+a_569,Female,Pants & Leggings,regular,runs large,"[np.str_('Germany'), np.str_('UK')]",Recycled Polyester,0.22
+a_570,Other,T-Shirts & Tops,regular,true to size,"[np.str_('Japan'), np.str_('UK')]",Cotton,0.02
+a_571,Female,Jackets,regular,runs large,"[np.str_('Japan'), np.str_('USA'), np.str_('UK')]",Recycled Polyester,0.27
+a_572,Female,Shoes,regular,true to size,"[np.str_('UK'), np.str_('Japan')]",Primeknit,0.09
+a_573,Other,Shoes,loose,true to size,"[np.str_('UK'), np.str_('Japan'), np.str_('Germany')]",Primeknit,0.62
+a_574,Other,Shoes,loose,true to size,[np.str_('UK')],Parley Ocean Plastic,0.48
+a_575,Male,Shoes,regular,true to size,[np.str_('Japan')],Recycled Polyester,0.27
+a_576,Male,Sweatshirts/Hoodies,regular,true to size,[np.str_('USA')],Cotton,-0.09
+a_577,Other,Jackets,regular,true to size,[np.str_('Germany')],Recycled Polyester,-0.0
+a_578,Other,Sweatshirts/Hoodies,loose,true to size,"[np.str_('USA'), np.str_('Japan')]",Recycled Polyester,0.42
+a_579,Female,Shoes,loose,true to size,[np.str_('Germany')],Recycled Polyester,0.41
+a_580,Other,Jackets,regular,true to size,"[np.str_('Japan'), np.str_('Germany'), np.str_('USA')]",Polyester,0.1
+a_581,Female,Jackets,loose,true to size,"[np.str_('USA'), np.str_('UK'), np.str_('Japan')]",Polyester,0.19
+a_582,Male,Pants & Leggings,loose,runs small,[np.str_('USA')],Spandex,0.28
+a_583,Other,Jackets,slim,true to size,"[np.str_('UK'), np.str_('USA'), np.str_('Japan')]",Polyester,-0.64
+a_584,Other,Pants & Leggings,regular,true to size,[np.str_('Germany')],Spandex,-0.18
+a_585,Male,Pants & Leggings,regular,true to size,[np.str_('Germany')],Polyester,-0.08
+a_586,Male,Sportswear,slim,true to size,[np.str_('Japan')],Recycled Polyester,-0.57
+a_587,Female,Shoes,loose,runs small,[np.str_('Japan')],Primeknit,0.1
+a_588,Other,Pants & Leggings,slim,true to size,[np.str_('Germany')],Nylon,-0.17
+a_589,Female,T-Shirts & Tops,loose,true to size,[np.str_('Japan')],Cotton,0.41
+a_590,Other,Pants & Leggings,loose,true to size,"[np.str_('UK'), np.str_('USA'), np.str_('Germany')]",Polyester,0.62
+a_591,Female,Sportswear,slim,true to size,"[np.str_('USA'), np.str_('Japan'), np.str_('Germany')]",Aeroready Technology,-0.38
+a_592,Male,Sportswear,regular,true to size,"[np.str_('Germany'), np.str_('USA')]",Aeroready Technology,0.55
+a_593,Male,Pants & Leggings,regular,true to size,"[np.str_('Germany'), np.str_('Japan')]",Spandex,0.22
+a_594,Other,Jackets,loose,true to size,[np.str_('UK')],Recycled Polyester,0.17
+a_595,Other,Sweatshirts/Hoodies,regular,true to size,[np.str_('USA')],Cotton,-0.03
+a_596,Other,T-Shirts & Tops,slim,true to size,[np.str_('UK')],Recycled Polyester,-0.4
+a_597,Female,Jackets,regular,true to size,"[np.str_('UK'), np.str_('Germany')]",Polyester,-0.06
+a_598,Male,Pants & Leggings,loose,true to size,[np.str_('USA')],Spandex,0.8
+a_599,Male,Shoes,loose,true to size,"[np.str_('Germany'), np.str_('Japan'), np.str_('USA')]",Primeknit,0.63
+a_600,Female,Shoes,regular,true to size,"[np.str_('Germany'), np.str_('UK')]",Primeknit,0.07
+a_601,Other,Pants & Leggings,loose,true to size,[np.str_('Japan')],Recycled Polyester,0.6
+a_602,Male,Sweatshirts/Hoodies,loose,runs small,"[np.str_('Germany'), np.str_('USA'), np.str_('Japan')]",Cotton,0.02
+a_603,Female,Sportswear,regular,true to size,"[np.str_('USA'), np.str_('Japan')]",Recycled Polyester,-0.18
+a_604,Other,Sportswear,loose,true to size,"[np.str_('UK'), np.str_('USA'), np.str_('Germany')]",Aeroready Technology,0.74
+a_605,Female,Sweatshirts/Hoodies,slim,runs large,"[np.str_('Japan'), np.str_('USA'), np.str_('UK')]",Polyester,-0.15
+a_606,Other,Sweatshirts/Hoodies,loose,true to size,[np.str_('UK')],Cotton,0.29
+a_607,Male,Shoes,loose,true to size,"[np.str_('Germany'), np.str_('USA')]",Parley Ocean Plastic,0.84
+a_608,Female,Shoes,slim,true to size,[np.str_('Japan')],Primeknit,-0.42
+a_609,Female,Shoes,regular,true to size,"[np.str_('Japan'), np.str_('UK')]",Recycled Polyester,0.1
+a_610,Other,Shoes,loose,runs small,[np.str_('Germany')],Recycled Polyester,0.02
+a_611,Other,Jackets,regular,runs large,"[np.str_('Germany'), np.str_('UK')]",Primeknit,0.43
+a_612,Male,Shoes,loose,runs large,"[np.str_('Japan'), np.str_('USA')]",Primeknit,1.2
+a_613,Male,Sportswear,loose,true to size,"[np.str_('Germany'), np.str_('UK'), np.str_('Japan')]",Spandex,0.68
+a_614,Male,Pants & Leggings,regular,runs small,"[np.str_('UK'), np.str_('USA')]",Recycled Polyester,-0.67
+a_615,Male,T-Shirts & Tops,regular,true to size,"[np.str_('Germany'), np.str_('Japan')]",Cotton,-0.2
+a_616,Female,Shoes,loose,true to size,[np.str_('Japan')],Primeknit,0.43
+a_617,Other,Jackets,loose,true to size,"[np.str_('Japan'), np.str_('UK')]",Nylon,0.68
+a_618,Female,Sweatshirts/Hoodies,slim,true to size,[np.str_('USA')],Recycled Polyester,-0.76
+a_619,Other,Jackets,loose,true to size,"[np.str_('UK'), np.str_('Japan')]",Recycled Polyester,0.57
+a_620,Female,Sweatshirts/Hoodies,regular,true to size,[np.str_('USA')],Recycled Polyester,-0.45
+a_621,Male,Sportswear,slim,true to size,[np.str_('UK')],Aeroready Technology,-0.27
+a_622,Other,Sweatshirts/Hoodies,regular,true to size,"[np.str_('USA'), np.str_('Japan')]",Recycled Polyester,-0.05
+a_623,Female,T-Shirts & Tops,regular,true to size,"[np.str_('UK'), np.str_('Germany')]",Cotton,-0.18
+a_624,Male,Jackets,slim,true to size,"[np.str_('Germany'), np.str_('Japan')]",Polyester,-0.58
+a_625,Male,Pants & Leggings,loose,true to size,[np.str_('USA')],Recycled Polyester,0.65
+a_626,Female,Pants & Leggings,loose,runs large,"[np.str_('Japan'), np.str_('UK')]",Polyester,0.93
+a_627,Male,Jackets,slim,true to size,[np.str_('Germany')],Recycled Polyester,-0.38
+a_628,Other,Sportswear,loose,runs large,[np.str_('USA')],Aeroready Technology,1.05
+a_629,Other,Pants & Leggings,regular,true to size,"[np.str_('USA'), np.str_('Germany'), np.str_('Japan')]",Spandex,0.47
+a_630,Female,Sportswear,loose,true to size,"[np.str_('USA'), np.str_('Japan')]",Recycled Polyester,0.17
+a_631,Other,Pants & Leggings,regular,true to size,"[np.str_('Japan'), np.str_('Germany')]",Polyester,-0.1
+a_632,Male,Sportswear,regular,true to size,[np.str_('Germany')],Recycled Polyester,0.02
+a_633,Female,Sweatshirts/Hoodies,slim,true to size,"[np.str_('UK'), np.str_('Germany')]",Cotton,-0.82
+a_634,Female,Jackets,regular,runs large,"[np.str_('Japan'), np.str_('UK')]",Nylon,0.65
+a_635,Male,Jackets,regular,true to size,"[np.str_('UK'), np.str_('Japan')]",Polyester,0.18
+a_636,Male,Pants & Leggings,loose,true to size,[np.str_('Japan')],Spandex,0.87
+a_637,Male,Sweatshirts/Hoodies,loose,true to size,"[np.str_('Germany'), np.str_('USA'), np.str_('Japan')]",Cotton,0.23
+a_638,Male,Sportswear,slim,true to size,[np.str_('Germany')],Aeroready Technology,-0.44
+a_639,Other,Jackets,slim,true to size,[np.str_('Germany')],Polyester,-0.71
+a_640,Other,Sportswear,slim,true to size,"[np.str_('Germany'), np.str_('USA'), np.str_('UK')]",Recycled Polyester,-0.62
+a_641,Other,Sweatshirts/Hoodies,regular,true to size,[np.str_('Germany')],Recycled Polyester,-0.16
+a_642,Male,Jackets,loose,runs large,"[np.str_('USA'), np.str_('Japan')]",Polyester,0.99
+a_643,Male,Pants & Leggings,slim,true to size,[np.str_('USA')],Polyester,-0.51
+a_644,Other,Sweatshirts/Hoodies,regular,true to size,"[np.str_('Germany'), np.str_('Japan'), np.str_('UK')]",Cotton,0.01
+a_645,Female,Shoes,regular,runs large,"[np.str_('UK'), np.str_('USA')]",Recycled Polyester,0.3
+a_646,Other,Pants & Leggings,regular,true to size,[np.str_('USA')],Recycled Polyester,-0.05
+a_647,Female,Shoes,loose,runs small,[np.str_('Japan')],Recycled Polyester,-0.22
+a_648,Other,Sweatshirts/Hoodies,regular,true to size,"[np.str_('UK'), np.str_('USA')]",Recycled Polyester,0.16
+a_649,Female,Sportswear,regular,true to size,"[np.str_('UK'), np.str_('Japan')]",Aeroready Technology,-0.26
+a_650,Female,T-Shirts & Tops,regular,true to size,"[np.str_('UK'), np.str_('Japan')]",Polyester,-0.2
+a_651,Other,Pants & Leggings,regular,true to size,"[np.str_('Germany'), np.str_('Japan'), np.str_('UK')]",Polyester,-0.06
+a_652,Male,Shoes,loose,true to size,"[np.str_('UK'), np.str_('Japan')]",Recycled Polyester,0.6
+a_653,Other,Sportswear,regular,true to size,[np.str_('UK')],Recycled Polyester,0.17
+a_654,Other,Jackets,loose,true to size,"[np.str_('UK'), np.str_('Japan')]",Polyester,0.49
+a_655,Other,Pants & Leggings,regular,true to size,"[np.str_('USA'), np.str_('Japan'), np.str_('UK')]",Spandex,0.23
+a_656,Female,Jackets,loose,true to size,[np.str_('USA')],Polyester,0.34
+a_657,Male,Jackets,regular,true to size,"[np.str_('UK'), np.str_('Germany'), np.str_('USA')]",Primeknit,0.19
+a_658,Other,T-Shirts & Tops,regular,true to size,[np.str_('UK')],Recycled Polyester,-0.05
+a_659,Female,Shoes,slim,true to size,[np.str_('UK')],Recycled Polyester,-0.76
+a_660,Male,Shoes,loose,true to size,"[np.str_('Japan'), np.str_('USA'), np.str_('Germany')]",Parley Ocean Plastic,0.75
+a_661,Male,Shoes,loose,runs small,"[np.str_('Japan'), np.str_('UK'), np.str_('USA')]",Primeknit,0.23
+a_662,Female,Shoes,slim,true to size,[np.str_('Japan')],Recycled Polyester,-0.61
+a_663,Other,T-Shirts & Tops,slim,runs large,"[np.str_('Germany'), np.str_('USA')]",Recycled Polyester,-0.02
+a_664,Female,Sweatshirts/Hoodies,regular,true to size,"[np.str_('USA'), np.str_('UK')]",Cotton,-0.04
+a_665,Other,T-Shirts & Tops,loose,true to size,"[np.str_('UK'), np.str_('Germany'), np.str_('USA')]",Cotton,0.31
+a_666,Other,T-Shirts & Tops,loose,runs large,[np.str_('UK')],Recycled Polyester,0.92
+a_667,Female,T-Shirts & Tops,loose,true to size,[np.str_('USA')],Cotton,0.05
+a_668,Female,Pants & Leggings,loose,true to size,"[np.str_('UK'), np.str_('Japan'), np.str_('USA')]",Polyester,0.43
+a_669,Female,Pants & Leggings,regular,true to size,"[np.str_('Japan'), np.str_('UK'), np.str_('USA')]",Nylon,0.11
+a_670,Other,T-Shirts & Tops,loose,true to size,"[np.str_('UK'), np.str_('Germany'), np.str_('Japan')]",Cotton,0.34
+a_671,Other,Jackets,regular,true to size,"[np.str_('Germany'), np.str_('USA')]",Polyester,0.26
+a_672,Female,Sweatshirts/Hoodies,loose,runs small,"[np.str_('UK'), np.str_('Japan')]",Cotton,-0.25
+a_673,Female,T-Shirts & Tops,loose,runs small,"[np.str_('UK'), np.str_('Germany'), np.str_('USA')]",Cotton,-0.13
+a_674,Male,Sportswear,regular,true to size,"[np.str_('Germany'), np.str_('UK'), np.str_('USA')]",Aeroready Technology,0.19
+a_675,Male,T-Shirts & Tops,slim,true to size,"[np.str_('Germany'), np.str_('Japan'), np.str_('USA')]",Recycled Polyester,-0.53
+a_676,Female,Sweatshirts/Hoodies,loose,true to size,"[np.str_('UK'), np.str_('Japan'), np.str_('Germany')]",Cotton,0.39
+a_677,Male,Sweatshirts/Hoodies,slim,true to size,[np.str_('Germany')],Cotton,-0.53
+a_678,Other,Pants & Leggings,regular,runs large,"[np.str_('Germany'), np.str_('Japan'), np.str_('UK')]",Polyester,0.62
+a_679,Female,Sweatshirts/Hoodies,regular,runs large,"[np.str_('USA'), np.str_('Japan'), np.str_('UK')]",Polyester,0.43
+a_680,Female,Sweatshirts/Hoodies,regular,true to size,"[np.str_('UK'), np.str_('Japan'), np.str_('USA')]",Cotton,-0.19
+a_681,Other,Jackets,regular,runs large,"[np.str_('Germany'), np.str_('Japan')]",Nylon,0.71
+a_682,Other,Jackets,slim,true to size,[np.str_('UK')],Polyester,-0.24
+a_683,Female,Jackets,slim,true to size,[np.str_('Germany')],Polyester,-0.5
+a_684,Female,Pants & Leggings,slim,true to size,"[np.str_('UK'), np.str_('Japan')]",Polyester,-0.65
+a_685,Other,T-Shirts & Tops,loose,true to size,"[np.str_('UK'), np.str_('Japan')]",Cotton,0.46
+a_686,Other,T-Shirts & Tops,loose,true to size,"[np.str_('UK'), np.str_('USA')]",Polyester,0.57
+a_687,Female,T-Shirts & Tops,regular,runs small,"[np.str_('Germany'), np.str_('Japan'), np.str_('UK')]",Polyester,-0.38
+a_688,Male,Sportswear,slim,true to size,[np.str_('USA')],Spandex,-0.05
+a_689,Other,Shoes,regular,true to size,"[np.str_('Japan'), np.str_('Germany')]",Primeknit,0.07
+a_690,Female,Sweatshirts/Hoodies,slim,true to size,[np.str_('UK')],Cotton,-0.78
+a_691,Other,Pants & Leggings,regular,true to size,[np.str_('Germany')],Polyester,0.01
+a_692,Male,Shoes,regular,true to size,[np.str_('Germany')],Recycled Polyester,-0.25
+a_693,Male,Sweatshirts/Hoodies,loose,true to size,[np.str_('UK')],Recycled Polyester,0.51
+a_694,Other,Sweatshirts/Hoodies,slim,runs large,"[np.str_('USA'), np.str_('Japan')]",Cotton,-0.01
+a_695,Female,Pants & Leggings,loose,true to size,"[np.str_('UK'), np.str_('USA'), np.str_('Germany')]",Polyester,0.57
+a_696,Female,Pants & Leggings,slim,true to size,[np.str_('UK')],Polyester,-0.52
+a_697,Male,Shoes,slim,true to size,[np.str_('Germany')],Primeknit,-0.23
+a_698,Male,T-Shirts & Tops,slim,runs small,[np.str_('USA')],Cotton,-1.02
+a_699,Female,Sportswear,regular,runs small,[np.str_('Germany')],Recycled Polyester,-0.64
+a_700,Male,Sweatshirts/Hoodies,regular,true to size,"[np.str_('Japan'), np.str_('USA'), np.str_('Germany')]",Cotton,-0.27
+a_701,Other,Jackets,regular,true to size,"[np.str_('UK'), np.str_('Germany')]",Recycled Polyester,0.05
+a_702,Female,T-Shirts & Tops,slim,runs large,[np.str_('USA')],Polyester,-0.15
+a_703,Male,Sportswear,loose,true to size,[np.str_('Germany')],Recycled Polyester,0.47
+a_704,Male,Pants & Leggings,loose,true to size,"[np.str_('UK'), np.str_('Germany'), np.str_('Japan')]",Polyester,0.5
+a_705,Female,T-Shirts & Tops,loose,true to size,"[np.str_('Japan'), np.str_('UK')]",Cotton,0.44
+a_706,Male,Pants & Leggings,slim,true to size,"[np.str_('Germany'), np.str_('USA')]",Spandex,-0.28
+a_707,Other,Jackets,slim,true to size,"[np.str_('Japan'), np.str_('Germany'), np.str_('UK')]",Polyester,-0.52
+a_708,Other,Sportswear,regular,true to size,[np.str_('Germany')],Aeroready Technology,0.22
+a_709,Female,Sweatshirts/Hoodies,regular,true to size,"[np.str_('UK'), np.str_('USA'), np.str_('Japan')]",Recycled Polyester,-0.24
+a_710,Female,T-Shirts & Tops,slim,true to size,"[np.str_('UK'), np.str_('Germany')]",Polyester,-0.84
+a_711,Female,Pants & Leggings,slim,true to size,"[np.str_('Germany'), np.str_('Japan'), np.str_('USA')]",Spandex,-0.32
+a_712,Female,Jackets,loose,true to size,[np.str_('Germany')],Recycled Polyester,0.19
+a_713,Other,Jackets,regular,true to size,[np.str_('Germany')],Recycled Polyester,-0.16
+a_714,Other,Jackets,regular,true to size,[np.str_('USA')],Polyester,-0.05
+a_715,Other,Jackets,loose,true to size,"[np.str_('Japan'), np.str_('Germany'), np.str_('USA')]",Polyester,0.3
+a_716,Other,T-Shirts & Tops,loose,true to size,[np.str_('UK')],Cotton,0.39
+a_717,Female,Sweatshirts/Hoodies,regular,true to size,[np.str_('UK')],Cotton,-0.24
+a_718,Female,T-Shirts & Tops,regular,true to size,[np.str_('Germany')],Cotton,-0.24
+a_719,Male,T-Shirts & Tops,loose,true to size,"[np.str_('UK'), np.str_('USA')]",Cotton,0.6
+a_720,Male,Sportswear,slim,true to size,[np.str_('UK')],Spandex,-0.28
+a_721,Other,Jackets,regular,true to size,"[np.str_('Germany'), np.str_('UK')]",Polyester,-0.04
+a_722,Female,Shoes,slim,runs small,"[np.str_('Japan'), np.str_('USA')]",Recycled Polyester,-1.04
+a_723,Other,T-Shirts & Tops,slim,true to size,"[np.str_('UK'), np.str_('Japan')]",Recycled Polyester,-0.54
+a_724,Male,Shoes,slim,true to size,[np.str_('UK')],Recycled Polyester,-0.5
+a_725,Female,Jackets,regular,true to size,[np.str_('USA')],Polyester,-0.16
+a_726,Other,Shoes,regular,true to size,[np.str_('Germany')],Primeknit,0.25
+a_727,Female,Sportswear,slim,true to size,[np.str_('Germany')],Aeroready Technology,-0.39
+a_728,Other,T-Shirts & Tops,loose,runs large,[np.str_('UK')],Recycled Polyester,1.0
+a_729,Female,Jackets,slim,true to size,"[np.str_('Germany'), np.str_('UK')]",Recycled Polyester,-0.67
+a_730,Other,Sportswear,loose,runs small,[np.str_('UK')],Recycled Polyester,-0.08
+a_731,Male,T-Shirts & Tops,slim,runs large,"[np.str_('Germany'), np.str_('Japan')]",Cotton,-0.16
+a_732,Female,Sportswear,slim,true to size,[np.str_('Japan')],Recycled Polyester,-0.67
+a_733,Female,Sweatshirts/Hoodies,regular,runs small,"[np.str_('UK'), np.str_('Japan'), np.str_('Germany')]",Cotton,-0.44
+a_734,Other,Sportswear,regular,true to size,[np.str_('UK')],Recycled Polyester,-0.03
+a_735,Male,Sportswear,regular,true to size,[np.str_('USA')],Spandex,0.38
+a_736,Female,T-Shirts & Tops,slim,true to size,[np.str_('UK')],Cotton,-0.56
+a_737,Other,Pants & Leggings,loose,true to size,"[np.str_('Japan'), np.str_('UK'), np.str_('USA')]",Spandex,0.49
+a_738,Other,Jackets,regular,true to size,[np.str_('Germany')],Polyester,-0.07
+a_739,Female,Jackets,regular,true to size,[np.str_('USA')],Polyester,-0.34
+a_740,Male,T-Shirts & Tops,regular,true to size,[np.str_('UK')],Cotton,0.18
+a_741,Female,Sportswear,regular,true to size,"[np.str_('Japan'), np.str_('UK')]",Spandex,0.27
+a_742,Male,Sweatshirts/Hoodies,loose,true to size,[np.str_('USA')],Recycled Polyester,0.7
+a_743,Male,Sweatshirts/Hoodies,loose,true to size,[np.str_('Germany')],Recycled Polyester,0.42
+a_744,Other,Sweatshirts/Hoodies,slim,true to size,[np.str_('Germany')],Polyester,-0.39
+a_745,Female,Sportswear,slim,true to size,"[np.str_('Germany'), np.str_('UK'), np.str_('Japan')]",Aeroready Technology,-0.72
+a_746,Other,Sportswear,loose,true to size,[np.str_('Germany')],Aeroready Technology,0.56
+a_747,Female,T-Shirts & Tops,loose,runs large,"[np.str_('Germany'), np.str_('USA'), np.str_('Japan')]",Recycled Polyester,0.87
+a_748,Male,Jackets,slim,true to size,[np.str_('UK')],Recycled Polyester,-0.45
+a_749,Other,Pants & Leggings,regular,true to size,[np.str_('Japan')],Polyester,-0.01
+a_750,Male,T-Shirts & Tops,loose,true to size,[np.str_('Japan')],Recycled Polyester,0.57
+a_751,Male,Shoes,regular,true to size,[np.str_('Japan')],Parley Ocean Plastic,0.34
+a_752,Female,Pants & Leggings,loose,true to size,"[np.str_('USA'), np.str_('Japan')]",Polyester,0.37
+a_753,Male,Shoes,slim,true to size,"[np.str_('Germany'), np.str_('USA')]",Recycled Polyester,-0.43
+a_754,Female,Sportswear,slim,true to size,"[np.str_('Germany'), np.str_('USA'), np.str_('Japan')]",Aeroready Technology,-0.44
+a_755,Female,Sweatshirts/Hoodies,regular,true to size,[np.str_('USA')],Recycled Polyester,-0.23
+a_756,Other,Pants & Leggings,regular,runs small,"[np.str_('Germany'), np.str_('Japan'), np.str_('UK')]",Spandex,-0.16
+a_757,Other,Jackets,slim,runs large,[np.str_('Germany')],Polyester,0.05
+a_758,Other,Pants & Leggings,loose,true to size,"[np.str_('UK'), np.str_('Germany')]",Recycled Polyester,0.43
+a_759,Other,Pants & Leggings,loose,true to size,"[np.str_('UK'), np.str_('USA')]",Polyester,0.49
+a_760,Male,Jackets,slim,runs large,[np.str_('USA')],Recycled Polyester,0.02
+a_761,Female,Pants & Leggings,slim,true to size,"[np.str_('UK'), np.str_('USA'), np.str_('Japan')]",Polyester,-0.64
+a_762,Female,T-Shirts & Tops,slim,true to size,[np.str_('USA')],Recycled Polyester,-0.58
+a_763,Female,Pants & Leggings,slim,true to size,"[np.str_('Germany'), np.str_('UK'), np.str_('Japan')]",Polyester,-0.51
+a_764,Other,T-Shirts & Tops,regular,true to size,"[np.str_('UK'), np.str_('Germany')]",Cotton,-0.18
+a_765,Female,Jackets,loose,runs small,"[np.str_('Germany'), np.str_('USA'), np.str_('Japan')]",Polyester,-0.2
+a_766,Other,T-Shirts & Tops,regular,true to size,"[np.str_('UK'), np.str_('USA'), np.str_('Germany')]",Cotton,-0.33
+a_767,Other,Sportswear,slim,true to size,[np.str_('Japan')],Spandex,-0.26
+a_768,Female,Sportswear,loose,true to size,"[np.str_('USA'), np.str_('Germany')]",Aeroready Technology,0.55
+a_769,Female,Pants & Leggings,slim,runs large,[np.str_('Japan')],Spandex,-0.04
+a_770,Other,Shoes,loose,runs large,"[np.str_('UK'), np.str_('Japan')]",Primeknit,1.12
+a_771,Other,Jackets,regular,true to size,[np.str_('Germany')],Polyester,-0.15
+a_772,Other,Shoes,loose,true to size,[np.str_('Japan')],Parley Ocean Plastic,0.54
+a_773,Female,Shoes,regular,true to size,[np.str_('UK')],Parley Ocean Plastic,-0.14
+a_774,Male,Jackets,regular,true to size,[np.str_('Germany')],Recycled Polyester,0.09
+a_775,Other,T-Shirts & Tops,regular,true to size,[np.str_('Germany')],Polyester,-0.06
+a_776,Other,Jackets,loose,runs small,"[np.str_('USA'), np.str_('Japan')]",Primeknit,0.25
+a_777,Other,Pants & Leggings,regular,true to size,"[np.str_('Japan'), np.str_('USA')]",Polyester,-0.04
+a_778,Female,Sportswear,regular,true to size,[np.str_('Germany')],Aeroready Technology,-0.12
+a_779,Other,Sportswear,regular,runs large,"[np.str_('Germany'), np.str_('UK'), np.str_('Japan')]",Spandex,0.7
+a_780,Other,Sweatshirts/Hoodies,regular,true to size,[np.str_('Japan')],Cotton,-0.14
+a_781,Other,T-Shirts & Tops,loose,runs large,[np.str_('USA')],Cotton,1.07
+a_782,Other,Shoes,regular,runs small,"[np.str_('UK'), np.str_('Germany')]",Primeknit,-0.31
+a_783,Female,T-Shirts & Tops,slim,true to size,[np.str_('UK')],Polyester,-0.79
+a_784,Female,Pants & Leggings,slim,true to size,[np.str_('Japan')],Polyester,-0.46
+a_785,Male,Jackets,regular,runs large,[np.str_('Japan')],Nylon,0.64
+a_786,Male,Jackets,loose,true to size,"[np.str_('Germany'), np.str_('Japan')]",Polyester,0.49
+a_787,Male,Shoes,regular,true to size,[np.str_('Germany')],Recycled Polyester,0.19
+a_788,Other,T-Shirts & Tops,slim,true to size,[np.str_('USA')],Polyester,-0.43
+a_789,Other,Shoes,regular,true to size,[np.str_('USA')],Parley Ocean Plastic,0.21
+a_790,Male,Jackets,slim,runs large,[np.str_('Japan')],Polyester,0.22
+a_791,Other,Shoes,regular,true to size,"[np.str_('UK'), np.str_('USA')]",Recycled Polyester,0.1
+a_792,Other,Sweatshirts/Hoodies,loose,true to size,"[np.str_('UK'), np.str_('Germany')]",Cotton,0.34
+a_793,Female,Sweatshirts/Hoodies,slim,true to size,"[np.str_('USA'), np.str_('Japan')]",Recycled Polyester,-0.69
+a_794,Female,Sweatshirts/Hoodies,loose,runs large,[np.str_('USA')],Recycled Polyester,0.7
+a_795,Other,Jackets,regular,true to size,[np.str_('USA')],Recycled Polyester,-0.15
+a_796,Male,Sweatshirts/Hoodies,regular,true to size,"[np.str_('UK'), np.str_('USA')]",Cotton,-0.28
+a_797,Male,Pants & Leggings,regular,runs small,"[np.str_('USA'), np.str_('Germany')]",Nylon,-0.14
+a_798,Female,Jackets,slim,true to size,"[np.str_('Germany'), np.str_('Japan'), np.str_('UK')]",Polyester,-0.47
+a_799,Female,Shoes,slim,true to size,[np.str_('USA')],Primeknit,-0.23
+a_800,Male,Jackets,loose,true to size,[np.str_('USA')],Recycled Polyester,0.74
+a_801,Other,Jackets,regular,true to size,[np.str_('Germany')],Recycled Polyester,-0.41
+a_802,Female,T-Shirts & Tops,loose,runs large,"[np.str_('UK'), np.str_('Japan'), np.str_('Germany')]",Polyester,1.04
+a_803,Male,Pants & Leggings,loose,runs small,[np.str_('Japan')],Spandex,0.29
+a_804,Male,Pants & Leggings,loose,true to size,"[np.str_('Japan'), np.str_('UK')]",Polyester,0.73
+a_805,Female,Sportswear,regular,true to size,[np.str_('Japan')],Aeroready Technology,-0.31
+a_806,Other,Shoes,regular,true to size,[np.str_('USA')],Parley Ocean Plastic,0.18
+a_807,Female,Sweatshirts/Hoodies,slim,true to size,[np.str_('Germany')],Recycled Polyester,-0.58
+a_808,Male,Sweatshirts/Hoodies,regular,true to size,[np.str_('UK')],Cotton,-0.08
+a_809,Other,Sweatshirts/Hoodies,slim,true to size,"[np.str_('USA'), np.str_('UK')]",Cotton,-0.56
+a_810,Male,Pants & Leggings,regular,runs small,"[np.str_('Germany'), np.str_('USA'), np.str_('Japan')]",Polyester,-0.38
+a_811,Male,Sportswear,regular,runs small,"[np.str_('Germany'), np.str_('USA')]",Recycled Polyester,-0.43
+a_812,Female,Sportswear,regular,true to size,"[np.str_('UK'), np.str_('Japan')]",Spandex,0.07
+a_813,Other,Sportswear,regular,true to size,[np.str_('Japan')],Aeroready Technology,-0.11
+a_814,Male,Shoes,regular,true to size,"[np.str_('USA'), np.str_('Germany')]",Recycled Polyester,-0.26
+a_815,Male,Shoes,regular,true to size,"[np.str_('USA'), np.str_('Japan')]",Parley Ocean Plastic,0.27
+a_816,Male,Pants & Leggings,slim,runs large,"[np.str_('UK'), np.str_('Japan'), np.str_('Germany')]",Recycled Polyester,0.05
+a_817,Female,T-Shirts & Tops,regular,runs large,[np.str_('USA')],Recycled Polyester,0.26
+a_818,Female,Pants & Leggings,slim,runs large,"[np.str_('Germany'), np.str_('USA'), np.str_('Japan')]",Spandex,0.02
+a_819,Female,Sportswear,loose,true to size,"[np.str_('USA'), np.str_('Japan'), np.str_('UK')]",Spandex,0.46
+a_820,Other,Sweatshirts/Hoodies,slim,true to size,"[np.str_('Japan'), np.str_('USA'), np.str_('UK')]",Cotton,-0.56
+a_821,Female,Sportswear,loose,true to size,"[np.str_('USA'), np.str_('Japan'), np.str_('UK')]",Recycled Polyester,0.54
+a_822,Other,Sportswear,slim,true to size,"[np.str_('Germany'), np.str_('Japan')]",Aeroready Technology,-0.28
+a_823,Male,Pants & Leggings,slim,true to size,"[np.str_('Germany'), np.str_('UK')]",Spandex,-0.06
+a_824,Other,Sportswear,slim,true to size,[np.str_('Japan')],Aeroready Technology,-0.47
+a_825,Other,Pants & Leggings,loose,runs small,"[np.str_('Germany'), np.str_('Japan')]",Spandex,0.21
+a_826,Other,Shoes,slim,true to size,"[np.str_('Germany'), np.str_('Japan'), np.str_('USA')]",Parley Ocean Plastic,-0.37
+a_827,Female,T-Shirts & Tops,loose,true to size,[np.str_('Japan')],Polyester,0.35
+a_828,Other,Shoes,loose,true to size,"[np.str_('Japan'), np.str_('Germany')]",Parley Ocean Plastic,0.64
+a_829,Male,Jackets,loose,runs small,"[np.str_('UK'), np.str_('Germany')]",Polyester,0.13
+a_830,Other,Shoes,regular,true to size,[np.str_('Japan')],Primeknit,0.27
+a_831,Male,Shoes,regular,true to size,"[np.str_('Germany'), np.str_('Japan')]",Recycled Polyester,-0.02
+a_832,Other,Pants & Leggings,slim,true to size,[np.str_('Germany')],Polyester,-0.63
+a_833,Other,Jackets,loose,true to size,[np.str_('Japan')],Recycled Polyester,0.6
+a_834,Other,Pants & Leggings,slim,runs small,[np.str_('UK')],Nylon,-0.7
+a_835,Male,T-Shirts & Tops,regular,true to size,[np.str_('Japan')],Cotton,-0.08
+a_836,Female,Shoes,slim,true to size,[np.str_('Germany')],Primeknit,-0.43
+a_837,Other,Pants & Leggings,slim,true to size,[np.str_('USA')],Polyester,-0.58
+a_838,Other,T-Shirts & Tops,regular,runs small,"[np.str_('USA'), np.str_('Japan'), np.str_('UK')]",Polyester,-0.36
+a_839,Male,Sportswear,regular,runs large,"[np.str_('UK'), np.str_('Japan')]",Spandex,1.0
+a_840,Other,Sweatshirts/Hoodies,regular,runs large,"[np.str_('UK'), np.str_('USA')]",Cotton,0.55
+a_841,Male,Pants & Leggings,slim,runs small,[np.str_('Germany')],Nylon,-0.8
+a_842,Other,Sportswear,loose,true to size,[np.str_('Germany')],Spandex,0.79
+a_843,Female,Sportswear,loose,true to size,"[np.str_('Germany'), np.str_('Japan')]",Recycled Polyester,0.42
+a_844,Female,Jackets,regular,true to size,"[np.str_('Germany'), np.str_('USA'), np.str_('UK')]",Polyester,0.08
+a_845,Other,Sportswear,regular,true to size,"[np.str_('Germany'), np.str_('USA'), np.str_('Japan')]",Aeroready Technology,0.02
+a_846,Male,T-Shirts & Tops,slim,true to size,[np.str_('UK')],Cotton,-0.68
+a_847,Other,Sportswear,regular,true to size,"[np.str_('Germany'), np.str_('Japan')]",Spandex,0.3
+a_848,Other,Shoes,loose,true to size,"[np.str_('USA'), np.str_('UK')]",Primeknit,0.71
+a_849,Female,Pants & Leggings,slim,true to size,[np.str_('Germany')],Spandex,-0.25
+a_850,Male,Pants & Leggings,slim,true to size,[np.str_('UK')],Polyester,-0.14
+a_851,Female,Sweatshirts/Hoodies,slim,true to size,"[np.str_('Germany'), np.str_('UK'), np.str_('Japan')]",Recycled Polyester,-0.93
+a_852,Male,T-Shirts & Tops,loose,true to size,[np.str_('USA')],Cotton,0.45
+a_853,Male,Pants & Leggings,slim,runs large,"[np.str_('Germany'), np.str_('UK'), np.str_('Japan')]",Recycled Polyester,-0.09
+a_854,Female,Shoes,slim,true to size,[np.str_('USA')],Recycled Polyester,-0.7
+a_855,Other,Sweatshirts/Hoodies,slim,runs large,[np.str_('UK')],Cotton,-0.14
+a_856,Male,Sportswear,regular,runs large,"[np.str_('Germany'), np.str_('UK')]",Spandex,0.85
+a_857,Other,Shoes,regular,runs small,"[np.str_('Germany'), np.str_('UK'), np.str_('USA')]",Primeknit,-0.28
+a_858,Female,Pants & Leggings,regular,true to size,"[np.str_('UK'), np.str_('Japan')]",Polyester,0.12
+a_859,Female,Jackets,loose,runs small,[np.str_('UK')],Polyester,-0.27
+a_860,Female,Sportswear,regular,runs large,[np.str_('UK')],Aeroready Technology,0.57
+a_861,Other,Sportswear,regular,true to size,"[np.str_('USA'), np.str_('Japan')]",Aeroready Technology,-0.01
+a_862,Other,T-Shirts & Tops,loose,runs small,"[np.str_('USA'), np.str_('Japan')]",Cotton,-0.12
+a_863,Female,Shoes,loose,true to size,"[np.str_('USA'), np.str_('Germany')]",Primeknit,0.71
+a_864,Male,Jackets,slim,runs small,"[np.str_('UK'), np.str_('USA'), np.str_('Japan')]",Polyester,-0.96
+a_865,Other,Shoes,loose,true to size,[np.str_('Japan')],Primeknit,0.86
+a_866,Male,Sweatshirts/Hoodies,loose,runs small,"[np.str_('UK'), np.str_('Germany')]",Recycled Polyester,-0.03
+a_867,Male,Pants & Leggings,slim,true to size,"[np.str_('Japan'), np.str_('Germany')]",Recycled Polyester,-0.24
+a_868,Male,T-Shirts & Tops,regular,true to size,[np.str_('Japan')],Cotton,0.26
+a_869,Male,Pants & Leggings,regular,true to size,[np.str_('USA')],Polyester,0.09
+a_870,Other,Shoes,regular,runs large,[np.str_('USA')],Primeknit,0.74
+a_871,Other,Pants & Leggings,regular,runs small,"[np.str_('UK'), np.str_('USA')]",Polyester,-0.7
+a_872,Male,T-Shirts & Tops,loose,true to size,"[np.str_('Japan'), np.str_('UK')]",Cotton,0.49
+a_873,Male,Jackets,regular,true to size,[np.str_('Germany')],Recycled Polyester,-0.04
+a_874,Male,Pants & Leggings,regular,true to size,"[np.str_('Japan'), np.str_('UK')]",Nylon,0.21
+a_875,Male,Jackets,loose,true to size,"[np.str_('UK'), np.str_('Germany'), np.str_('USA')]",Polyester,0.58
+a_876,Other,Pants & Leggings,loose,true to size,[np.str_('Germany')],Nylon,0.62
+a_877,Other,Shoes,regular,true to size,"[np.str_('USA'), np.str_('UK')]",Primeknit,0.32
+a_878,Female,Sportswear,regular,runs large,[np.str_('Japan')],Aeroready Technology,0.63
+a_879,Male,Sportswear,regular,true to size,[np.str_('UK')],Aeroready Technology,0.37
+a_880,Male,Pants & Leggings,regular,true to size,[np.str_('Germany')],Recycled Polyester,-0.04
+a_881,Male,Sportswear,regular,true to size,"[np.str_('USA'), np.str_('Japan'), np.str_('UK')]",Recycled Polyester,0.11
+a_882,Female,Sportswear,regular,true to size,"[np.str_('Germany'), np.str_('UK')]",Recycled Polyester,0.2
+a_883,Female,Sweatshirts/Hoodies,slim,true to size,[np.str_('USA')],Cotton,-0.81
+a_884,Female,Sportswear,regular,true to size,[np.str_('Germany')],Aeroready Technology,-0.13
+a_885,Male,T-Shirts & Tops,regular,runs large,[np.str_('UK')],Cotton,0.54
+a_886,Male,Sportswear,slim,runs small,"[np.str_('Germany'), np.str_('UK')]",Recycled Polyester,-0.96
+a_887,Other,Jackets,regular,true to size,[np.str_('UK')],Recycled Polyester,-0.11
+a_888,Female,Sweatshirts/Hoodies,slim,true to size,"[np.str_('UK'), np.str_('Japan'), np.str_('USA')]",Cotton,-0.5
+a_889,Male,Shoes,loose,true to size,"[np.str_('Germany'), np.str_('Japan')]",Recycled Polyester,0.63
+a_890,Female,Sportswear,slim,true to size,[np.str_('Japan')],Aeroready Technology,-0.43
+a_891,Female,T-Shirts & Tops,slim,true to size,[np.str_('UK')],Recycled Polyester,-0.66
+a_892,Other,T-Shirts & Tops,slim,runs large,[np.str_('Germany')],Polyester,0.1
+a_893,Female,Jackets,regular,true to size,"[np.str_('UK'), np.str_('USA'), np.str_('Japan')]",Polyester,0.01
+a_894,Female,Sweatshirts/Hoodies,regular,true to size,[np.str_('USA')],Recycled Polyester,-0.42
+a_895,Other,Pants & Leggings,regular,true to size,[np.str_('Germany')],Spandex,0.4
+a_896,Other,Jackets,slim,true to size,[np.str_('USA')],Polyester,-0.3
+a_897,Male,Shoes,regular,runs large,[np.str_('Germany')],Recycled Polyester,0.44
+a_898,Male,Sweatshirts/Hoodies,loose,true to size,[np.str_('USA')],Cotton,0.56
+a_899,Female,Pants & Leggings,loose,true to size,[np.str_('UK')],Polyester,0.29
+a_900,Male,Jackets,regular,true to size,[np.str_('Japan')],Primeknit,0.58
+a_901,Male,Sportswear,regular,true to size,"[np.str_('UK'), np.str_('USA'), np.str_('Germany')]",Aeroready Technology,-0.08
+a_902,Female,Jackets,loose,true to size,[np.str_('Germany')],Polyester,0.29
+a_903,Female,Jackets,slim,true to size,"[np.str_('UK'), np.str_('USA')]",Polyester,-0.83
+a_904,Other,Sportswear,regular,true to size,[np.str_('UK')],Aeroready Technology,-0.18
+a_905,Female,Sweatshirts/Hoodies,loose,true to size,[np.str_('Japan')],Recycled Polyester,0.31
+a_906,Other,Sweatshirts/Hoodies,loose,true to size,"[np.str_('Japan'), np.str_('USA')]",Cotton,0.34
+a_907,Male,Sportswear,slim,true to size,"[np.str_('UK'), np.str_('Japan'), np.str_('USA')]",Spandex,-0.33
+a_908,Female,Jackets,loose,true to size,"[np.str_('USA'), np.str_('Japan')]",Recycled Polyester,0.28
+a_909,Male,Sweatshirts/Hoodies,slim,true to size,"[np.str_('Japan'), np.str_('UK')]",Cotton,-0.52
+a_910,Female,Shoes,loose,true to size,"[np.str_('Germany'), np.str_('UK')]",Primeknit,0.52
+a_911,Female,Jackets,slim,true to size,"[np.str_('USA'), np.str_('Germany')]",Polyester,-0.73
+a_912,Other,Shoes,regular,true to size,[np.str_('USA')],Primeknit,0.15
+a_913,Other,Sweatshirts/Hoodies,loose,runs large,[np.str_('Germany')],Recycled Polyester,1.07
+a_914,Male,T-Shirts & Tops,slim,true to size,[np.str_('USA')],Recycled Polyester,-0.29
+a_915,Male,Shoes,loose,true to size,"[np.str_('Germany'), np.str_('UK')]",Recycled Polyester,0.5
+a_916,Female,Jackets,regular,true to size,"[np.str_('Germany'), np.str_('Japan')]",Recycled Polyester,-0.15
+a_917,Female,Shoes,slim,runs small,"[np.str_('Germany'), np.str_('Japan')]",Recycled Polyester,-1.06
+a_918,Other,T-Shirts & Tops,regular,runs large,[np.str_('USA')],Cotton,0.29
+a_919,Other,Sportswear,slim,true to size,"[np.str_('UK'), np.str_('USA')]",Spandex,-0.26
+a_920,Male,Pants & Leggings,regular,runs large,[np.str_('USA')],Polyester,0.63
+a_921,Female,Sweatshirts/Hoodies,loose,true to size,[np.str_('UK')],Polyester,0.28
+a_922,Other,Shoes,loose,true to size,[np.str_('Germany')],Primeknit,0.55
+a_923,Male,Jackets,slim,true to size,[np.str_('Germany')],Recycled Polyester,-0.35
+a_924,Other,Sportswear,regular,runs large,[np.str_('Germany')],Recycled Polyester,0.51
+a_925,Female,Pants & Leggings,regular,runs small,"[np.str_('USA'), np.str_('Japan'), np.str_('UK')]",Polyester,-0.83
+a_926,Other,Sweatshirts/Hoodies,regular,true to size,"[np.str_('Japan'), np.str_('Germany')]",Cotton,0.05
+a_927,Other,Jackets,slim,true to size,[np.str_('Germany')],Recycled Polyester,-0.35
+a_928,Other,Pants & Leggings,regular,true to size,"[np.str_('Germany'), np.str_('Japan')]",Spandex,-0.03
+a_929,Male,T-Shirts & Tops,regular,true to size,[np.str_('Germany')],Recycled Polyester,0.17
+a_930,Other,T-Shirts & Tops,regular,runs large,[np.str_('Japan')],Polyester,0.48
+a_931,Male,Shoes,regular,true to size,[np.str_('Germany')],Primeknit,0.44
+a_932,Other,Pants & Leggings,loose,runs small,"[np.str_('UK'), np.str_('USA'), np.str_('Germany')]",Polyester,0.12
+a_933,Male,T-Shirts & Tops,loose,true to size,[np.str_('Japan')],Cotton,0.54
+a_934,Male,Jackets,regular,runs small,"[np.str_('Japan'), np.str_('UK'), np.str_('Germany')]",Polyester,-0.23
+a_935,Male,Pants & Leggings,regular,true to size,[np.str_('USA')],Polyester,-0.01
+a_936,Female,Jackets,slim,runs small,"[np.str_('Germany'), np.str_('USA'), np.str_('UK')]",Polyester,-0.98
+a_937,Female,Pants & Leggings,loose,runs large,[np.str_('UK')],Spandex,1.06
+a_938,Other,Shoes,regular,runs large,"[np.str_('UK'), np.str_('USA')]",Primeknit,0.54
+a_939,Female,Sportswear,regular,true to size,"[np.str_('UK'), np.str_('USA'), np.str_('Germany')]",Spandex,0.24
+a_940,Other,T-Shirts & Tops,regular,true to size,"[np.str_('Japan'), np.str_('USA'), np.str_('UK')]",Polyester,0.01
+a_941,Other,Sweatshirts/Hoodies,regular,runs large,"[np.str_('Germany'), np.str_('USA'), np.str_('Japan')]",Cotton,0.34
+a_942,Male,Shoes,regular,true to size,"[np.str_('Germany'), np.str_('UK')]",Recycled Polyester,0.13
+a_943,Other,T-Shirts & Tops,loose,true to size,"[np.str_('UK'), np.str_('USA')]",Recycled Polyester,0.38
+a_944,Other,Sportswear,loose,runs small,[np.str_('UK')],Aeroready Technology,0.05
+a_945,Female,Shoes,loose,true to size,[np.str_('USA')],Parley Ocean Plastic,0.27
+a_946,Female,Pants & Leggings,regular,true to size,"[np.str_('Japan'), np.str_('USA')]",Polyester,0.22
+a_947,Male,Jackets,regular,true to size,"[np.str_('USA'), np.str_('UK')]",Recycled Polyester,-0.04
+a_948,Female,Jackets,loose,true to size,[np.str_('Germany')],Polyester,0.53
+a_949,Other,Shoes,loose,true to size,[np.str_('USA')],Recycled Polyester,0.48
+a_950,Other,Shoes,loose,runs large,[np.str_('Japan')],Primeknit,1.13
+a_951,Male,Sportswear,regular,runs large,[np.str_('Japan')],Aeroready Technology,0.66
+a_952,Other,Sweatshirts/Hoodies,loose,true to size,[np.str_('Germany')],Recycled Polyester,0.25
+a_953,Other,Shoes,slim,runs large,"[np.str_('Germany'), np.str_('UK'), np.str_('USA')]",Primeknit,0.29
+a_954,Male,Shoes,loose,true to size,[np.str_('Japan')],Parley Ocean Plastic,0.7
+a_955,Male,Pants & Leggings,slim,true to size,[np.str_('UK')],Polyester,-0.23
+a_956,Other,Sportswear,slim,true to size,"[np.str_('USA'), np.str_('Germany'), np.str_('Japan')]",Aeroready Technology,-0.61
+a_957,Other,Pants & Leggings,loose,runs small,"[np.str_('UK'), np.str_('Japan')]",Polyester,-0.07
+a_958,Female,Jackets,loose,true to size,"[np.str_('Japan'), np.str_('UK')]",Recycled Polyester,0.43
+a_959,Female,Sportswear,loose,true to size,[np.str_('USA')],Aeroready Technology,0.48
+a_960,Female,Sweatshirts/Hoodies,loose,runs large,[np.str_('UK')],Cotton,0.88
+a_961,Male,Pants & Leggings,loose,runs large,[np.str_('USA')],Nylon,1.35
+a_962,Other,Jackets,loose,true to size,[np.str_('Germany')],Polyester,0.39
+a_963,Male,Sweatshirts/Hoodies,loose,true to size,[np.str_('Germany')],Cotton,0.32
+a_964,Other,Jackets,regular,true to size,"[np.str_('Japan'), np.str_('USA')]",Polyester,-0.16
+a_965,Female,Sportswear,regular,true to size,[np.str_('Japan')],Recycled Polyester,-0.15
+a_966,Male,Pants & Leggings,slim,true to size,[np.str_('USA')],Polyester,-0.24
+a_967,Male,Sportswear,slim,true to size,"[np.str_('Germany'), np.str_('Japan')]",Recycled Polyester,-0.35
+a_968,Female,Jackets,loose,true to size,"[np.str_('Japan'), np.str_('Germany'), np.str_('USA')]",Polyester,0.43
+a_969,Female,Jackets,regular,true to size,[np.str_('Japan')],Polyester,-0.12
+a_970,Female,Pants & Leggings,loose,runs large,[np.str_('UK')],Recycled Polyester,0.77
+a_971,Female,Sweatshirts/Hoodies,regular,true to size,[np.str_('USA')],Recycled Polyester,-0.26
+a_972,Female,T-Shirts & Tops,regular,true to size,[np.str_('USA')],Cotton,-0.43
+a_973,Other,Sweatshirts/Hoodies,loose,true to size,[np.str_('Japan')],Recycled Polyester,0.24
+a_974,Female,T-Shirts & Tops,slim,true to size,[np.str_('UK')],Cotton,-0.93
+a_975,Male,T-Shirts & Tops,loose,true to size,"[np.str_('USA'), np.str_('Germany')]",Cotton,0.48
+a_976,Male,Sweatshirts/Hoodies,slim,true to size,[np.str_('UK')],Recycled Polyester,-0.54
+a_977,Female,Sweatshirts/Hoodies,slim,true to size,[np.str_('UK')],Polyester,-0.49
+a_978,Female,Pants & Leggings,slim,true to size,"[np.str_('UK'), np.str_('Germany')]",Recycled Polyester,-0.58
+a_979,Female,T-Shirts & Tops,loose,true to size,"[np.str_('Japan'), np.str_('UK')]",Cotton,0.2
+a_980,Male,Shoes,regular,true to size,[np.str_('USA')],Primeknit,0.17
+a_981,Other,Jackets,regular,true to size,[np.str_('USA')],Recycled Polyester,0.01
+a_982,Other,Sweatshirts/Hoodies,regular,true to size,[np.str_('Germany')],Cotton,0.02
+a_983,Other,Sportswear,regular,runs large,"[np.str_('Japan'), np.str_('UK')]",Spandex,0.85
+a_984,Female,Pants & Leggings,slim,true to size,[np.str_('USA')],Recycled Polyester,-0.56
+a_985,Other,Sweatshirts/Hoodies,regular,true to size,[np.str_('Germany')],Recycled Polyester,-0.26
+a_986,Other,T-Shirts & Tops,regular,true to size,"[np.str_('USA'), np.str_('UK')]",Cotton,-0.28
+a_987,Female,Pants & Leggings,loose,true to size,[np.str_('Germany')],Polyester,0.49
+a_988,Other,Sportswear,regular,runs large,[np.str_('Japan')],Aeroready Technology,0.57
+a_989,Male,Sweatshirts/Hoodies,slim,true to size,"[np.str_('USA'), np.str_('Germany'), np.str_('Japan')]",Recycled Polyester,-0.54
+a_990,Female,T-Shirts & Tops,slim,true to size,"[np.str_('Japan'), np.str_('Germany'), np.str_('UK')]",Cotton,-0.89
+a_991,Other,Sweatshirts/Hoodies,regular,true to size,[np.str_('Germany')],Cotton,-0.2
+a_992,Male,Sportswear,regular,true to size,[np.str_('USA')],Aeroready Technology,0.32
+a_993,Other,Jackets,regular,true to size,[np.str_('Japan')],Polyester,0.07
+a_994,Other,Sweatshirts/Hoodies,regular,true to size,"[np.str_('USA'), np.str_('Japan'), np.str_('Germany')]",Recycled Polyester,0.0
+a_995,Male,Jackets,regular,runs small,"[np.str_('Germany'), np.str_('Japan')]",Polyester,-0.67
+a_996,Female,Shoes,loose,runs small,"[np.str_('UK'), np.str_('Japan'), np.str_('Germany')]",Recycled Polyester,-0.17
+a_997,Male,Shoes,regular,runs small,"[np.str_('USA'), np.str_('Germany')]",Parley Ocean Plastic,-0.34
+a_998,Male,Jackets,regular,true to size,[np.str_('USA')],Primeknit,0.32
+a_999,Male,T-Shirts & Tops,regular,true to size,"[np.str_('UK'), np.str_('USA'), np.str_('Japan')]",Cotton,0.24
+a_1000,Male,Pants & Leggings,regular,true to size,"[np.str_('Germany'), np.str_('USA')]",Polyester,0.42
