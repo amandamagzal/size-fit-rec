@@ -1,0 +1,54 @@
+# ========= DATA =========
+data:
+  # Folder containing your CSVs from datagen (relative to repo root).
+  csv_dir: C:\Users\amand\size-fit-rec\size-fit-rec\data
+
+  # Max history steps the model can see (truncate to most recent L; left-pad shorter).
+  max_len: 128
+
+  # DataLoader
+  batch_size: 256
+  num_workers: 4
+
+  # Feature toggles (can ablate later without code changes)
+  use_section: true     # product's target segment per step (Male/Female/Other)
+  use_country: true     # consumer's country (broadcast to all steps)
+  use_timegap: false    # optional: binned time since previous purchase per step
+
+  # Age encoding as bins (inclusive left edges; last edge is "catch-all")
+  # Example: 18–24, 25–29, ..., 60–65, 66+
+  age_bins: [18, 25, 30, 35, 40, 45, 50, 55, 60, 66, 200]
+
+  # Fit-outcome label order (frozen for the whole project)
+  label_order: ["too small", "fit", "too large", "not applicable"]
+
+# ========= MODEL =========
+model:
+  type: transformer      # (kept for parity with future xlstm config)
+  d_model: 256           # embedding width / Transformer hidden size
+  n_layers: 4            # encoder layers
+  n_heads: 4             # attention heads (must divide d_model)
+  dropout: 0.1
+  use_cls: false         # false = pool last valid step; true = prepend CLS token
+
+# ========= TRAINING =========
+train:
+  epochs: 30
+  lr: 0.001              # AdamW learning rate
+  weight_decay: 0.01
+  betas: [0.9, 0.999]
+  label_smoothing: 0.0   # set 0.05 if you see overconfidence
+  class_weights: null    # or e.g., [w0, w1, w2, w3] aligned to data.label_order
+  grad_clip: 1.0
+  amp: true              # mixed precision
+
+  # Early stopping on validation loss
+  early_stopping_patience: 5
+  seed: 42
+
+# ========= EVAL / LOGGING =========
+logging:
+  out_dir: artifacts/runs     # per-run subfolder will be created inside
+  write_preds: true           # save per-example preds for val/test
+  profile_after_train: true   # run inference latency/memory sweep after training
+  topk: 3                     # report top-k along with top-1
