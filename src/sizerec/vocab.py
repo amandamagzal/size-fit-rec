@@ -15,11 +15,7 @@ from pathlib import Path
 import json
 import pandas as pd
 
-# Use your canonical apparel order from datagen (fallback included)
-try:
-    from datagen.constants import SIZES as CANON_APPAREL_SIZES
-except Exception:
-    CANON_APPAREL_SIZES = ["2XS", "XS", "S", "M", "L", "XL", "2XL"]
+from datagen.constants import SIZES
 
 
 # ------------------------
@@ -43,12 +39,13 @@ def _normalize_shoe_str(x):
 
 def infer_size_strings(transactions_df):
     """Return ordered size tokens (strings): apparel (canonical order) + shoes (numeric order)."""
+    
     vals = transactions_df["purchased_size"].dropna().unique().tolist()
 
     apparel = set()
     shoes = []
 
-    canon = set(CANON_APPAREL_SIZES)
+    canon = set(SIZES)
     for v in vals:
         if isinstance(v, str) and v in canon:
             apparel.add(v)
@@ -60,8 +57,8 @@ def infer_size_strings(transactions_df):
                 apparel.add(str(v))  # unknown string size
 
     # apparel: canonical first, then any extras sorted
-    extras = sorted([s for s in apparel if s not in CANON_APPAREL_SIZES])
-    apparel_ordered = [s for s in CANON_APPAREL_SIZES if s in apparel] + extras
+    extras = sorted([s for s in apparel if s not in SIZES])
+    apparel_ordered = [s for s in SIZES if s in apparel] + extras
 
     # shoes: numeric sort, then stringify
     shoes_ordered = [_normalize_shoe_str(x) for x in sorted(set(shoes))]

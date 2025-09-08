@@ -94,7 +94,7 @@ def main(cfg_path: str = "configs/transformer_base.yaml") -> None:
     _save_json(cfg, out_root / "config_resolved.json")
 
     # 2) Load raw CSVs
-    csv_dir = Path(data_cfg["csv_dir"])
+    csv_dir = Path.cwd().resolve().parent / "data"
     consumers = pd.read_csv(csv_dir / "consumers.csv", parse_dates=["start_date"])
     products = pd.read_csv(csv_dir / "products.csv", converters={"available_countries": json.loads})
     transactions = pd.read_csv(csv_dir / "transactions.csv", parse_dates=["transaction_date"])
@@ -232,11 +232,11 @@ def main(cfg_path: str = "configs/transformer_base.yaml") -> None:
                     logits = model(batch)
                     loss = criterion(logits, batch["label"])
                 val_loss += loss.item()
-                ys.append(batch["label"].detach().cpu().numpy())
-                ps.append(logits.argmax(dim=1).detach().cpu().numpy())
+                ys.extend(batch["label"].detach().cpu().tolist())
+                ps.extend(logits.argmax(dim=1).detach().cpu().tolist())
         val_loss /= max(len(val_loader), 1)
-        y_true = np.concatenate(ys) if ys else np.array([])
-        y_pred = np.concatenate(ps) if ps else np.array([])
+        y_true = np.asarray(ys, dtype=int) if ys else np.array([], dtype=int)
+        y_pred = np.asarray(ps, dtype=int) if ps else np.array([], dtype=int)
         val_acc = accuracy(y_true, y_pred)
 
         print(f"Epoch {epoch:03d} | train_loss={train_loss:.4f}  val_loss={val_loss:.4f}  val_acc={val_acc:.4f}")
@@ -266,10 +266,10 @@ def main(cfg_path: str = "configs/transformer_base.yaml") -> None:
                 for k, v in batch.items():
                     batch[k] = v.to(device) if torch.is_tensor(v) else v
                 logits = model(batch)
-                ys.append(batch["label"].detach().cpu().numpy())
-                ps.append(logits.argmax(dim=1).detach().cpu().numpy())
-        y_true = np.concatenate(ys) if ys else np.array([])
-        y_pred = np.concatenate(ps) if ps else np.array([])
+                ys.extend(batch["label"].detach().cpu().tolist())
+                ps.extend(logits.argmax(dim=1).detach().cpu().tolist())
+        y_true = np.asarray(ys, dtype=int) if ys else np.array([], dtype=int)
+        y_pred = np.asarray(ps, dtype=int) if ps else np.array([], dtype=int)
 
         # Metrics
         num_classes = len(label_order)

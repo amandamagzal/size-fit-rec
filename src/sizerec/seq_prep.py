@@ -23,6 +23,7 @@ from typing import Dict, List, Tuple
 import numpy as np
 import pandas as pd
 
+from sizerec.vocab import _normalize_shoe_str
 
 # ---------------------------
 # 1) Join product attributes
@@ -97,8 +98,14 @@ def encode_features(
     if use_section:
         df["section_id"] = df["section"].astype(str).map(vocabs["section"])
 
-    # size_token: unify apparel + shoes as strings then map
-    size_str = df["purchased_size"].apply(lambda x: f"{float(x)}" if isinstance(x, (int, float)) else str(x))
+    def _to_size_token(x):
+        # normalize numbers to the same string form the vocab used ("10" not "10.0")
+        try:
+            return _normalize_shoe_str(float(x))
+        except Exception:
+            return str(x)
+    
+    size_str = df["purchased_size"].apply(_to_size_token)
     df["size_id"] = size_str.map(size_vocab)
 
     # label
