@@ -140,8 +140,22 @@ class TransformerRec(nn.Module):
         last_idx = (lengths - 1).unsqueeze(1).unsqueeze(2).expand(B, 1, self.d_model)  # [B,1,d]
         last_states = enc.gather(dim=1, index=last_idx).squeeze(1)  # [B,d]
 
-        # ---- Head ----
-        logits = self.head(last_states)  # [B,num_classes]
+        # ---- Build target (current purchase at time t) embedding ----
+        # Expect these keys to be provided by collate: "pt_t", "mat_t", "size_t", optional "sec_t"
+        if not all(k in batch for k in ("pt_t", "mat_t", "size_t")):
+            raise KeyError("Batch is missing target-time fields (pt_t, mat_t, size_t). "
+                        "Add them in seq_prep.build_examples, SequenceDataset, and collate.")
+
+        cand = self.emb_product_type(batch["pt_t"]) \
+            + self.emb_material(batch["mat_t"])     \
+            + self.emb_size(batch["size_t"])        # [B, d_model]
+        if self.emb_section is not None and ("sec_t" in batch):
+            cand = cand + self.emb_section(batch["sec_t"])
+
+        # ---- Fuse history with current item and classify ----
+        fused = last_states + cand   # minimal fusion; or use torch.cat([...], dim=1) + larger head
+        logits = self.head(fused)    # [B, num_classes]
+        
         return logits
 
 

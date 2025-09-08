@@ -166,7 +166,12 @@ def build_examples(
                 "label_id": int(labels[t]),
                 "transaction_date_t": dates[t],
                 "product_type_id_t": int(grp["product_type_id"].iloc[t]),
+                "material_id_t": int(grp["material_id"].iloc[t]),
+                "size_id_t": int(grp["size_id"].iloc[t]),
             }
+
+            if use_section:
+                rec["section_id_t"] = int(grp["section_id"].iloc[t])
 
             # add step-wise lists (JSON strings)
             for col in step_cols:
@@ -182,9 +187,12 @@ def build_examples(
 
     # Keep a stable column order
     ordered = ["consumer_id", "seq_len"] \
-              + [f"{c}s" for c in step_cols] \
-              + static_cols \
-              + ["label_id", "product_type_id_t", "transaction_date_t"]
+          + [f"{c}s" for c in step_cols] \
+          + static_cols \
+          + ["label_id",
+             "product_type_id_t", "material_id_t", "size_id_t"] \
+          + (["section_id_t"] if use_section else []) \
+          + ["transaction_date_t"]
     return out[ordered]
 
 
