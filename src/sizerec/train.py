@@ -49,6 +49,8 @@ from sizerec.data_module import SequenceDataset, make_collate
 from sizerec.models.transformer import TransformerRec, count_params
 from sizerec.metrics import accuracy, precision_recall_f1_per_class, confusion_matrix
 
+from sizerec.paths import CONFIGS_DIR, DATA_DIR, RUNS_DIR, ensure_dir, run_dir
+
 
 # ---------------------------
 # Small helpers
@@ -74,8 +76,10 @@ def _save_json(obj: Dict[str, Any], path: Path) -> None:
 # ---------------------------
 # Main entry
 # ---------------------------
-def main(cfg_path: str = "configs/transformer_base.yaml") -> None:
+def main(cfg_path: str | None = None) -> None:
     # 1) Load config
+    cfg_path = str(CONFIGS_DIR / "transformer_base.yaml") if cfg_path is None else cfg_path
+
     with open(cfg_path, "r", encoding="utf-8") as f:
         cfg = yaml.safe_load(f)
 
@@ -87,14 +91,14 @@ def main(cfg_path: str = "configs/transformer_base.yaml") -> None:
 
     # Prepare run directory
     run_id = datetime.now().strftime("%Y%m%d-%H%M%S")
-    out_root = Path(log_cfg["out_dir"]) / run_id
+    out_root = run_dir(run_id)
     _ensure_dir(out_root)
 
     # Save resolved config for reproducibility
     _save_json(cfg, out_root / "config_resolved.json")
 
     # 2) Load raw CSVs
-    csv_dir = Path.cwd().resolve().parent / "data"
+    csv_dir = DATA_DIR
     consumers = pd.read_csv(csv_dir / "consumers.csv", parse_dates=["start_date"])
     products = pd.read_csv(csv_dir / "products.csv", converters={"available_countries": json.loads})
     transactions = pd.read_csv(csv_dir / "transactions.csv", parse_dates=["transaction_date"])
