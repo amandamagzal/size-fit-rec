@@ -4,3 +4,11 @@ pandas>=2.2
 
 # For truncated normal in generate_purchases()
 scipy>=1.10
+
+# Plotting (used in data exploration notebook)
+matplotlib>=3.8
+seaborn>=0.13
+
+# Jupyter
+ipykernel>=6.25
+jupyterlab>=4.0

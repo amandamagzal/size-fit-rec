@@ -1,121 +1,101 @@
-import pandas as pd
+"""Product data generation utilities.
+
+Functions:
+- assign_countries(): sample 1–3 available countries per product
+- select_material(product_type): pick a material based on type-specific probabilities
+- assign_fit_offset(row): compute fit offset from fit type, size accuracy, material, and section
+- generate_products(n_products): build the product catalog dataframe
+"""
+
 import numpy as np
-from datagen.constants import *
+import pandas as pd
+
+from datagen.constants import (
+    COUNTRIES,
+    GENDERS,
+    PRODUCT_TYPES,
+    FIT_TYPES,
+    SIZE_ACCURACY,
+    MATERIALS_BY_TYPE,
+    FIT_TYPE_OFFSET_RANGES,
+    SIZE_ACCURACY_OFFSET_RANGES,
+    MATERIAL_FIT_INFLUENCE,
+    GENDER_FIT_ADJUSTMENTS,
+)
 
 
-def assign_countries():
-
-    """
-    Assigns each product to 1-3 randomly selected countries where it is available.
+def assign_countries() -> list[str]:
+    """Assign 1–3 countries where the product is available.
 
     Returns:
-    - A list of randomly selected country names from the predefined 'countries' list.
+        A list of country names sampled without replacement from COUNTRIES.
     """
-    
-    # Select the number of countries for an product
-    num_countries = np.random.choice([1, 2, 3], p = [0.5, 0.3, 0.2])
-    
-    # Select random countries
-    available_countries = list(np.random.choice(countries, size = num_countries, replace = False))
-    
+    num_countries = np.random.choice([1, 2, 3], p=[0.5, 0.3, 0.2])
+    available_countries = list(np.random.choice(COUNTRIES, size=num_countries, replace=False))
     return available_countries
 
 
-def select_material(product_type):
+def select_material(product_type: str) -> str:
+    """Select a material for a given product type using predefined probabilities.
 
-    """
-    Selects a material for a given product type based on predefined probabilities.
-    
-    Parameters:
-    - product_type: Type of the product for which material needs to be selected.
-    
+    Args:
+        product_type: One of PRODUCT_TYPES.
+
     Returns:
-    - A selected material as a string.
+        The selected material name.
     """
-
-    # Extract materials and probabilities for the specific product type
-    materials, probs = materials_by_type[product_type]
-    
-    # Select a random material
-    selected_material = np.random.choice(materials, p = probs)
-    
+    materials, probs = MATERIALS_BY_TYPE[product_type]
+    selected_material = np.random.choice(materials, p=probs)
     return selected_material
 
 
-# Function to assign a variable fit offset based on both fit type and size accuracy
-def assign_fit_offset(row):
+def assign_fit_offset(row: pd.Series) -> float:
+    """Assign a fit offset based on fit type, size accuracy, material, and section."""
+    # Sample within configured ranges (adds natural per-item variability)
+    lo, hi = FIT_TYPE_OFFSET_RANGES[row["fit_type"]]
+    fit_offset = np.random.uniform(lo, hi)
 
-    """
-    Assigns a fit offset to a product based on its fit type, size accuracy, material, country and gender.
-    
-    Parameters:
-    - row: DataFrame row containing product information.
-    
-    Returns:
-    - A numerical fit offset that affects how the product fits.
-    """
-    
-    # Define adjustments by fit type with random variability
-    fit_type_offsets = {
-        'slim': np.random.uniform(-0.6, -0.4),  # Slim fits tend to be tighter
-        'regular': np.random.uniform(-0.2, 0.2),  # Regular fits are around standard
-        'loose': np.random.uniform(0.4, 0.6)   # Loose fits offer more room
-    }
-    fit_offset = fit_type_offsets[row['fit_type']]
+    lo, hi = SIZE_ACCURACY_OFFSET_RANGES[row["size_accuracy"]]
+    accuracy_offset = np.random.uniform(lo, hi)
 
-    # Define adjustments by size accuracy with random variability
-    size_accuracy_offsets = {
-        'runs small': np.random.uniform(-0.6, -0.4),  # Size smaller than expected
-        'true to size': np.random.uniform(-0.2, 0.2),   # Size as expected
-        'runs large': np.random.uniform(0.4, 0.6)    # Size larger than expected
-    }
-    acccuracy_offset = size_accuracy_offsets[row['size_accuracy']]
+    material_influence = MATERIAL_FIT_INFLUENCE.get(row["material"], 0.0)
+    section_offset = GENDER_FIT_ADJUSTMENTS.get(row["section"], 0.0)
 
-    # Define material influence on fit
-    material_fit_influence = {
-        'Cotton': -0.1,
-        'Recycled Polyester': -0.05,
-        'Polyester': 0,
-        'Spandex': 0.2,
-        'Aeroready Technology': 0.1,
-        'Nylon': 0.15,
-        'Primeknit': 0.2,
-        'Parley Ocean Plastic': 0.1
-    }
-    material_influence = material_fit_influence.get(row['material'], 0)
-
-    # Define gender adjustment
-    gender_adjustments = {
-        "Male": 0.1,  # Slightly larger fit for males
-        "Female": -0.1,  # Slightly smaller fit for females
-        "Other": 0.0,  # No adjustment for other genders
-    }
-    section_offset = gender_adjustments[row['section']]
-
-    # Calculate total offset by combining all dimensions
-    total_offset = fit_offset + acccuracy_offset + material_influence + section_offset
-    
+    total_offset = fit_offset + accuracy_offset + material_influence + section_offset
     return round(total_offset, 2)
 
 
-def generate_products(n_products):
+def generate_products(n_products: int) -> pd.DataFrame:
+    """Generate the product catalog with attributes and fit offsets.
 
-    # Generate product features
-    product_features = pd.DataFrame({
-        'product_id': [f'a_{i}' for i in range(1, n_products + 1)],
-        'section': np.random.choice(genders, size = n_products),
-        'product_type': np.random.choice(product_types, size = n_products),
-        'fit_type': np.random.choice(fit_types, size = n_products, p =[ 0.3, 0.4, 0.3]),
-        'size_accuracy': np.random.choice(size_accuracy, size = n_products, p = [0.1, 0.8, 0.1])
-    })
+    Args:
+        n_products: Number of products to generate.
 
-    # Assign each product to multiple countries
-    product_features['available_countries'] = product_features.apply(lambda _: assign_countries(), axis=1)
+    Returns:
+        DataFrame with columns:
+            - product_id (str), section (str), product_type (str)
+            - fit_type (str), size_accuracy (str), available_countries (list[str])
+            - material (str), fit_offset (float)
+    """
+    product_features = pd.DataFrame(
+        {
+            "product_id": [f"a_{i}" for i in range(1, n_products + 1)],
+            "section": np.random.choice(GENDERS, size=n_products),
+            "product_type": np.random.choice(PRODUCT_TYPES, size=n_products),
+            "fit_type": np.random.choice(FIT_TYPES, size=n_products, p=[0.3, 0.4, 0.3]),
+            "size_accuracy": np.random.choice(SIZE_ACCURACY, size=n_products, p=[0.1, 0.8, 0.1]),
+        }
+    )
 
-    # Assign material to each product based on its type
-    product_features['material'] = product_features['product_type'].apply(select_material)
+    # Availability
+    product_features["available_countries"] = product_features.apply(
+        lambda _: assign_countries(), axis=1
+    )
 
-    # Update product features with combined fit_offset
-    product_features['fit_offset'] = product_features.apply(assign_fit_offset, axis = 1)
+    # Material per product type
+    product_features["material"] = product_features["product_type"].apply(select_material)
+
+    # Fit offset
+    product_features["fit_offset"] = product_features.apply(assign_fit_offset, axis=1)
 
     return product_features
