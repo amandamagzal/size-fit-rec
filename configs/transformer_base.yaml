@@ -1,7 +1,7 @@
 # ========= DATA =========
 data:
   # Folder containing your CSVs from datagen (relative to repo root).
-  csv_dir: C:\Users\amand\size-fit-rec\size-fit-rec\data
+  csv_dir: data
 
   # Max history steps the model can see (truncate to most recent L; left-pad shorter).
   max_len: 128
