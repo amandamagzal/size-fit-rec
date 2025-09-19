@@ -35,9 +35,9 @@ def generate_and_read_data(out_dir: str, n_consumers: int, n_products: int, seed
 
     # If data already exists, load & return it
     if all(os.path.exists(p) for p in [consumers_path, products_path, transactions_path]):
-        consumers_df = pd.read_csv(consumers_path, parse_dates=["start_date"])
-        products_df = pd.read_csv(products_path, converters={"available_countries": json.loads})
-        transactions_df = pd.read_csv(transactions_path, parse_dates=["transaction_date"])
+        consumers_df = pd.read_csv(consumers_path, parse_dates = ["start_date"])
+        products_df = pd.read_csv(products_path, converters = {"available_countries": json.loads})
+        transactions_df = pd.read_csv(transactions_path, parse_dates = ["transaction_date"])
         return {"consumers": consumers_df, "products": products_df, "transactions": transactions_df}
 
     # Otherwise, generate and save
@@ -48,14 +48,14 @@ def generate_and_read_data(out_dir: str, n_consumers: int, n_products: int, seed
     transactions_df = generate_transactions(consumers_df, products_df)
 
     # Save (CSV only); serialize list columns as JSON strings
-    os.makedirs(out_dir, exist_ok=True)
+    os.makedirs(out_dir, exist_ok = True)
 
-    consumers_df.to_csv(consumers_path, index=False, encoding="utf-8")
+    consumers_df.to_csv(consumers_path, index = False, encoding = "utf-8")
 
     products_to_save = products_df.copy()
     products_to_save["available_countries"] = products_to_save["available_countries"].apply(json.dumps)
-    products_to_save.to_csv(products_path, index=False, encoding="utf-8")
+    products_to_save.to_csv(products_path, index = False, encoding = "utf-8")
 
-    transactions_df.to_csv(transactions_path, index=False, encoding="utf-8")
+    transactions_df.to_csv(transactions_path, index = False, encoding = "utf-8")
 
     return {"consumers": consumers_df, "products": products_df, "transactions": transactions_df}

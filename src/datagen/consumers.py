@@ -42,7 +42,7 @@ def assign_sizes(row: pd.Series) -> pd.Series:
         A pandas Series: [upper_size (str), lower_size (str), shoe_size (float)].
     """
     # Upper size index from gender distribution
-    upper_size_idx = np.random.choice(range(len(SIZES)), p=SIZE_DISTS[row["gender"]])
+    upper_size_idx = np.random.choice(range(len(SIZES)), p = SIZE_DISTS[row["gender"]])
 
     # Lower size index: usually same as upper, sometimes ±1
     if np.random.rand() < 0.80:
@@ -134,9 +134,9 @@ def generate_consumers(n_consumers: int) -> pd.DataFrame:
     consumer_features = pd.DataFrame(
         {
             "consumer_id": [f"c_{i}" for i in range(1, n_consumers + 1)],
-            "gender": np.random.choice(GENDERS, size=n_consumers, p=[0.4, 0.45, 0.15]),
-            "country": np.random.choice(COUNTRIES, size=n_consumers),
-            "age": np.clip(np.random.normal(AGE_MEAN, AGE_STD, size=n_consumers), 18, 65).astype(int),
+            "gender": np.random.choice(GENDERS, size = n_consumers, p=[0.4, 0.45, 0.15]),
+            "country": np.random.choice(COUNTRIES, size = n_consumers),
+            "age": np.clip(np.random.normal(AGE_MEAN, AGE_STD, size = n_consumers), 18, 65).astype(int),
         }
     )
 
@@ -153,7 +153,7 @@ def generate_consumers(n_consumers: int) -> pd.DataFrame:
 
     # First purchase date
     consumer_features["start_date"] = pd.to_datetime("2021-01-01") + pd.to_timedelta(
-        np.random.randint(0, 365, size=len(consumer_features)), unit="D"
+        np.random.randint(0, 365, size = len(consumer_features)), unit = "D"
     )
 
     return consumer_features

@@ -33,7 +33,7 @@ def join_product_attrs(transactions_df: pd.DataFrame, products_df: pd.DataFrame)
     cols = ["product_id", "product_type", "section", "material"]
     prod = products_df[cols].copy()
     # available_countries not needed for modeling inputs here
-    df = transactions_df.merge(prod, on="product_id", how="left")
+    df = transactions_df.merge(prod, on = "product_id", how = "left")
     return df
 
 
@@ -47,11 +47,11 @@ def _bin_ages(consumers_df: pd.DataFrame, age_bins: List[int]) -> pd.Series:
         labels.append(f"[{age_bins[i]},{age_bins[i+1]})")
     labels.append(f"[{age_bins[-2]},{age_bins[-1]}]")
     # right=False makes it [left,right)
-    bins = pd.cut(consumers_df["age"], bins=age_bins, right=False, include_lowest=True)
+    bins = pd.cut(consumers_df["age"], bins = age_bins, right = False, include_lowest = True)
     # map Interval -> label
     label_map = {}
     for i, lab in enumerate(labels):
-        label_map[pd.Interval(left=age_bins[i], right=age_bins[i+1], closed="left")] = lab
+        label_map[pd.Interval(left = age_bins[i], right = age_bins[i+1], closed = "left")] = lab
     # The final catch-all interval is closed='left' except pandas represents last with right edge
     # pd.cut with right=False already treats last as [left, right)
     # We'll handle any nulls by assigning the last label
@@ -77,7 +77,7 @@ def encode_features(
     df = join_product_attrs(transactions_df, products_df)
 
     # 2) Basic sorting
-    df = df.sort_values(["consumer_id", "transaction_date"]).reset_index(drop=True)
+    df = df.sort_values(["consumer_id", "transaction_date"]).reset_index(drop = True)
 
     # 3) Compute consumer-level age_bin and encode gender/country once
     consumers = consumers_df[["consumer_id", "gender", "country", "age"]].copy()
@@ -140,7 +140,7 @@ def build_examples(
     step_cols = ["product_type_id", "material_id", "size_id"] + (["section_id"] if use_section else [])
     static_cols = ["gender_id", "age_bin_id"] + (["country_id"] if use_country else [])
 
-    for cid, grp in encoded_df.groupby("consumer_id", sort=False):
+    for cid, grp in encoded_df.groupby("consumer_id", sort = False):
         grp = grp.sort_values("transaction_date")
         n = len(grp)
         if n < 2:
@@ -219,9 +219,9 @@ def split_by_consumer(
     val_ids = set(consumers[n_train : n_train + n_val])
     test_ids = set(consumers[n_train + n_val :])
 
-    train_df = examples_df[examples_df["consumer_id"].isin(train_ids)].reset_index(drop=True)
-    val_df   = examples_df[examples_df["consumer_id"].isin(val_ids)].reset_index(drop=True)
-    test_df  = examples_df[examples_df["consumer_id"].isin(test_ids)].reset_index(drop=True)
+    train_df = examples_df[examples_df["consumer_id"].isin(train_ids)].reset_index(drop = True)
+    val_df   = examples_df[examples_df["consumer_id"].isin(val_ids)].reset_index(drop = True)
+    test_df  = examples_df[examples_df["consumer_id"].isin(test_ids)].reset_index(drop = True)
     return train_df, val_df, test_df
 
 
@@ -231,7 +231,7 @@ def split_by_consumer(
 def save_processed_splits(train_df: pd.DataFrame, val_df: pd.DataFrame, test_df: pd.DataFrame, out_dir: Path) -> None:
     """Save train/val/test as CSVs with list columns already JSON-encoded."""
     out_dir = Path(out_dir)
-    out_dir.mkdir(parents=True, exist_ok=True)
-    train_df.to_csv(out_dir / "train.csv", index=False, encoding="utf-8")
-    val_df.to_csv(out_dir / "val.csv", index=False, encoding="utf-8")
-    test_df.to_csv(out_dir / "test.csv", index=False, encoding="utf-8")
+    out_dir.mkdir(parents=True, exist_ok = True)
+    train_df.to_csv(out_dir / "train.csv", index = False, encoding = "utf-8")
+    val_df.to_csv(out_dir / "val.csv", index = False, encoding = "utf-8")
+    test_df.to_csv(out_dir / "test.csv", index = False, encoding = "utf-8")

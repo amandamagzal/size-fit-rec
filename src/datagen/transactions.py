@@ -94,7 +94,7 @@ def sample_purchased_size(consumer: pd.Series, product_type: str):
     current_index = np.where(np.array(size_list) == true_size)[0][0]
 
     # Mostly buy true size, sometimes one size off
-    size_variation = np.random.choice([-1, 0, 1], p=[0.15, 0.7, 0.15])
+    size_variation = np.random.choice([-1, 0, 1], p = [0.15, 0.7, 0.15])
     new_index = current_index + size_variation
 
     # Clamp to valid range

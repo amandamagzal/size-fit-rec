@@ -132,11 +132,11 @@ def build_categorical_vocabs(
 def save_vocabs(vocabs, out_dir: Path):
     """Save all vocabs to <out_dir>/vocabs.json."""
     out_dir = Path(out_dir)
-    out_dir.mkdir(parents=True, exist_ok=True)
-    with (out_dir / "vocabs.json").open("w", encoding="utf-8") as f:
-        json.dump(vocabs, f, ensure_ascii=False, indent=2)
+    out_dir.mkdir(parents = True, exist_ok = True)
+    with (out_dir / "vocabs.json").open("w", encoding = "utf-8") as f:
+        json.dump(vocabs, f, ensure_ascii = False, indent =2 )
 
 def load_vocabs(out_dir: Path):
     """Load vocabs from <out_dir>/vocabs.json."""
-    with (Path(out_dir) / "vocabs.json").open("r", encoding="utf-8") as f:
+    with (Path(out_dir) / "vocabs.json").open("r", encoding = "utf-8") as f:
         return json.load(f)

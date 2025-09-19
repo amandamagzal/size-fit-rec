@@ -15,7 +15,7 @@ def accuracy(y_true: np.ndarray, y_pred: np.ndarray) -> float:
 
 def confusion_matrix(y_true: np.ndarray, y_pred: np.ndarray, num_classes: int) -> np.ndarray:
     """Confusion matrix [num_classes, num_classes] with counts (row=true, col=pred)."""
-    cm = np.zeros((num_classes, num_classes), dtype=np.int64)
+    cm = np.zeros((num_classes, num_classes), dtype = np.int64)
     for t, p in zip(y_true, y_pred):
         if 0 <= t < num_classes and 0 <= p < num_classes:
             cm[t, p] += 1

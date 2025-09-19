@@ -30,8 +30,8 @@ def assign_countries() -> list[str]:
     Returns:
         A list of country names sampled without replacement from COUNTRIES.
     """
-    num_countries = np.random.choice([1, 2, 3], p=[0.5, 0.3, 0.2])
-    available_countries = list(np.random.choice(COUNTRIES, size=num_countries, replace=False))
+    num_countries = np.random.choice([1, 2, 3], p = [0.5, 0.3, 0.2])
+    available_countries = list(np.random.choice(COUNTRIES, size = num_countries, replace = False))
     return available_countries
 
 
@@ -80,10 +80,10 @@ def generate_products(n_products: int) -> pd.DataFrame:
     product_features = pd.DataFrame(
         {
             "product_id": [f"a_{i}" for i in range(1, n_products + 1)],
-            "section": np.random.choice(GENDERS, size=n_products),
-            "product_type": np.random.choice(PRODUCT_TYPES, size=n_products),
-            "fit_type": np.random.choice(FIT_TYPES, size=n_products, p=[0.3, 0.4, 0.3]),
-            "size_accuracy": np.random.choice(SIZE_ACCURACY, size=n_products, p=[0.1, 0.8, 0.1]),
+            "section": np.random.choice(GENDERS, size = n_products),
+            "product_type": np.random.choice(PRODUCT_TYPES, size = n_products),
+            "fit_type": np.random.choice(FIT_TYPES, size = n_products, p = [0.3, 0.4, 0.3]),
+            "size_accuracy": np.random.choice(SIZE_ACCURACY, size = n_products, p = [0.1, 0.8, 0.1]),
         }
     )
 
