@@ -23,6 +23,7 @@ from dataclasses import asdict, dataclass
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict
+from time import perf_counter
 
 import numpy as np
 import pandas as pd
@@ -48,6 +49,7 @@ from sizerec.seq_prep import (
 from sizerec.data_module import SequenceDataset, make_collate
 from sizerec.models.encoders import TransformerEncoderBackbone, xLSTMEncoder
 from sizerec.models.seqrec import SeqRec
+from sizerec.models.utils import count_params
 from sizerec.metrics import accuracy, precision_recall_f1_per_class, confusion_matrix
 
 from sizerec.paths import CONFIGS_DIR, DATA_DIR, RUNS_DIR, ensure_dir, run_dir
@@ -95,6 +97,8 @@ def main(cfg_path: str | None = None) -> None:
     else:
         device = torch.device("cpu")
 
+    device = torch.device("cpu")
+    
     # Prepare run directory
     run_id = datetime.now().strftime("%Y%m%d-%H%M%S")
     out_root = run_dir(run_id)
@@ -205,10 +209,15 @@ def main(cfg_path: str | None = None) -> None:
         encoder = encoder,
     ).to(device)
 
+    epoch_times = []
+
+    num_params = count_params(model)
+    print(f"Model params: {num_params:,}")
+
     # 7) Train
     class_weights = train_cfg.get("class_weights", None)
     if class_weights:
-        cw = torch.tensor(class_weights, dtype = torch.float32, device=device)
+        cw = torch.tensor(class_weights, dtype = torch.float32, device = device)
         criterion = nn.CrossEntropyLoss(weight = cw, label_smoothing = float(train_cfg.get("label_smoothing", 0.0)))
     else:
         criterion = nn.CrossEntropyLoss(label_smoothing = float(train_cfg.get("label_smoothing", 0.0)))
@@ -227,6 +236,7 @@ def main(cfg_path: str | None = None) -> None:
     best_val_loss = float("inf"); best_state = None; stall = 0
 
     for epoch in range(1, epochs + 1):
+        t_epoch0 = perf_counter()
         model.train()
         running = 0.0; n_batches = 0
         for batch in train_loader:
@@ -267,6 +277,8 @@ def main(cfg_path: str | None = None) -> None:
 
         print(f"Epoch {epoch:03d} | train_loss={train_loss:.4f}  val_loss={val_loss:.4f}  val_acc={val_acc:.4f}")
 
+        epoch_times.append(perf_counter() - t_epoch0)
+
         # Early stopping
         if val_loss < best_val_loss - 1e-6:
             best_val_loss = val_loss
@@ -282,6 +294,21 @@ def main(cfg_path: str | None = None) -> None:
     if best_state is not None:
         torch.save(best_state, out_root / "checkpoint.pt")
         model.load_state_dict(best_state)
+
+    # Compute simple runtime stats
+    epoch_time_sec_mean = (sum(epoch_times) / len(epoch_times)) if epoch_times else None
+    peak_cuda_mb = None
+    if torch.cuda.is_available():
+        peak_cuda_mb = int(torch.cuda.max_memory_allocated() / (1024 ** 2))
+        torch.cuda.reset_peak_memory_stats()
+
+    # Write run_info.json
+    run_info = {
+        "params_millions": round(num_params / 1e6, 3),
+        "epoch_time_sec_mean": epoch_time_sec_mean,
+        "peak_cuda_mb": peak_cuda_mb,
+    }
+    (out_root / "run_info.json").write_text(json.dumps(run_info, ensure_ascii=False, indent=2), encoding="utf-8")
 
     # 8) Final evaluation (val & test), write metrics + preds
     def _eval_and_write(split_name: str, loader: torch.utils.data.DataLoader):
@@ -318,6 +345,8 @@ def main(cfg_path: str | None = None) -> None:
         _eval_and_write("test", test_loader)
 
     print(f"Run artifacts saved to: {out_root}")
+
+    return str(out_root)
 
 
 if __name__ == "__main__":

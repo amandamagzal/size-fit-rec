@@ -1,0 +1,30 @@
+# List of experiments. Each experiment = base config + small overrides.
+
+experiments:
+  - name: tf_len16_small_s1
+    base: configs/transformer_base.yaml
+    overrides:
+      data.max_len: 16
+      data.csv_dir: data
+      train.seed: 1
+
+  - name: xlstm_len16_small_s1
+    base: configs/xlstm_base.yaml
+    overrides:
+      data.max_len: 16
+      data.csv_dir: data
+      train.seed: 1
+
+  - name: tf_len32_small_s1
+    base: configs/transformer_base.yaml
+    overrides:
+      data.max_len: 32
+      data.csv_dir: data
+      train.seed: 1
+
+  - name: xlstm_len32_small_s1
+    base: configs/xlstm_base.yaml
+    overrides:
+      data.max_len: 32
+      data.csv_dir: data
+      train.seed: 1

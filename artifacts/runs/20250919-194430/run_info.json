@@ -1,0 +1,9 @@
+{
+  "params_millions": 3.186,
+  "epoch_time_sec_mean": 4.4879361481111095,
+  "peak_cuda_mb": null,
+  "experiment_name": "tf_len32_small_s1",
+  "merged_config_path": "/Users/amandamagzal/size-fit-rec/artifacts/tmp_configs/tf_len32_small_s1.yaml",
+  "fit_time_sec": 41.507525103999996,
+  "run_dir": "/Users/amandamagzal/size-fit-rec/artifacts/runs/20250919-194430"
+}

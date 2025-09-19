@@ -1,0 +1,82 @@
+{
+  "size": {
+    "2XS": 1,
+    "XS": 2,
+    "S": 3,
+    "M": 4,
+    "L": 5,
+    "XL": 6,
+    "2XL": 7,
+    "5": 8,
+    "5.5": 9,
+    "6": 10,
+    "6.5": 11,
+    "7": 12,
+    "7.5": 13,
+    "8": 14,
+    "8.5": 15,
+    "9": 16,
+    "9.5": 17,
+    "10": 18,
+    "10.5": 19,
+    "11": 20,
+    "11.5": 21,
+    "12": 22,
+    "12.5": 23,
+    "13": 24,
+    "13.5": 25,
+    "14": 26,
+    "14.5": 27,
+    "15": 28
+  },
+  "product_type": {
+    "Jackets": 1,
+    "Pants & Leggings": 2,
+    "Shoes": 3,
+    "Sportswear": 4,
+    "Sweatshirts/Hoodies": 5,
+    "T-Shirts & Tops": 6
+  },
+  "material": {
+    "Aeroready Technology": 1,
+    "Cotton": 2,
+    "Nylon": 3,
+    "Parley Ocean Plastic": 4,
+    "Polyester": 5,
+    "Primeknit": 6,
+    "Recycled Polyester": 7,
+    "Spandex": 8
+  },
+  "gender": {
+    "Female": 0,
+    "Male": 1,
+    "Other": 2
+  },
+  "section": {
+    "Female": 1,
+    "Male": 2,
+    "Other": 3
+  },
+  "country": {
+    "Germany": 0,
+    "Japan": 1,
+    "UK": 2,
+    "USA": 3
+  },
+  "age_bin": {
+    "[18,25)": 0,
+    "[25,30)": 1,
+    "[30,35)": 2,
+    "[35,40)": 3,
+    "[40,45)": 4,
+    "[45,50)": 5,
+    "[50,60)": 6,
+    "[60,200]": 7
+  },
+  "fit_label": {
+    "too small": 0,
+    "fit": 1,
+    "too large": 2,
+    "not applicable": 3
+  }
+}

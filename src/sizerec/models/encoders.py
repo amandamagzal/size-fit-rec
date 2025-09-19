@@ -68,9 +68,9 @@ class xLSTMEncoder(nn.Module):
         causal_mask: Optional[torch.Tensor] = None,  # ignored; recurrence is causal
     ) -> torch.Tensor:
         # lengths from padding mask
-        lengths = (~padding_mask).sum(dim=1).cpu()  # [B]
+        lengths = (~padding_mask).sum(dim = 1).cpu()  # [B]
         # sort by length desc for pack (PyTorch requirement)
-        lengths_sorted, idx_sort = torch.sort(lengths, descending=True)
+        lengths_sorted, idx_sort = torch.sort(lengths, descending = True)
         x_sorted = x.index_select(0, idx_sort)
 
         packed = pack_padded_sequence(x_sorted, lengths_sorted, batch_first = True, enforce_sorted = True)

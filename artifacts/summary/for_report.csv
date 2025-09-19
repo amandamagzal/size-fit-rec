@@ -1,0 +1,5 @@
+experiment_name,model_type,csv_dir,max_len,seed,params_millions,epoch_time_sec_mean,peak_cuda_mb,test_macro_f1,test_accuracy,run_dir
+tf_len16_small_s1,transformer,data,16,1,3.182,4.30522055,,0.3218029509635226,0.3775510204081632,/Users/amandamagzal/size-fit-rec/artifacts/runs/20250919-194323
+tf_len32_small_s1,transformer,data,32,1,3.186,4.4879361481111095,,0.2724655704766926,0.3290816326530612,/Users/amandamagzal/size-fit-rec/artifacts/runs/20250919-194430
+xlstm_len16_small_s1,xlstm,data,16,1,2.128,1.5125780512352929,,0.3192574075594814,0.3877551020408163,/Users/amandamagzal/size-fit-rec/artifacts/runs/20250919-194403
+xlstm_len32_small_s1,xlstm,data,32,1,2.132,1.5494041993333345,,0.2873065151496337,0.3673469387755102,/Users/amandamagzal/size-fit-rec/artifacts/runs/20250919-194512
