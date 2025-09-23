@@ -48,6 +48,8 @@ def collect(output_path: str | Path = ARTIFACTS_DIR / "summary" / "all_runs.csv"
             "test_accuracy": met_test.get("accuracy"),
             "test_macro_f1": (met_test.get("per_class", {}).get("macro", {}) or {}).get("f1"),
         }
+        row["n_consumers"] = ((cfg.get("data", {}).get("gen", {}) or {}).get("n_consumers"))
+        row["n_products"]  = ((cfg.get("data", {}).get("gen", {}) or {}).get("n_products"))
         rows.append(row)
 
     df = pd.DataFrame(rows).sort_values(["model_type", "max_len", "seed", "experiment_name"], na_position = "last")

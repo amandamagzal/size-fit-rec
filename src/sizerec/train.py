@@ -46,6 +46,9 @@ from sizerec.seq_prep import (
     save_processed_splits,
     join_product_attrs,
 )
+
+from datagen.build_data import generate_and_read_data
+
 from sizerec.data_module import SequenceDataset, make_collate
 from sizerec.models.encoders import TransformerEncoderBackbone, xLSTMEncoder
 from sizerec.models.seqrec import SeqRec
@@ -97,7 +100,7 @@ def main(cfg_path: str | None = None) -> None:
     else:
         device = torch.device("cpu")
 
-    device = torch.device("cpu")
+    # device = torch.device("cpu")
     
     # Prepare run directory
     run_id = datetime.now().strftime("%Y%m%d-%H%M%S")
@@ -108,7 +111,20 @@ def main(cfg_path: str | None = None) -> None:
     _save_json(cfg, out_root / "config_resolved.json")
 
     # 2) Load raw CSVs
-    csv_dir = DATA_DIR
+    csv_dir = Path(data_cfg["csv_dir"])
+
+    gen_cfg = (data_cfg.get("gen") or {})
+    if bool(gen_cfg.get("enable", False)):
+        if gen_cfg.get("force", False) and csv_dir.exists():
+            for p in csv_dir.glob("*.csv"): p.unlink()
+
+        generate_and_read_data(
+            out_dir = csv_dir,
+            n_consumers = int(gen_cfg.get("n_consumers", 1000)),
+            n_products = int(gen_cfg.get("n_products", 1000)),
+            seed = int(gen_cfg.get("seed", 10)),
+        )
+
     consumers = pd.read_csv(csv_dir / "consumers.csv", parse_dates = ["start_date"])
     products = pd.read_csv(csv_dir / "products.csv", converters = {"available_countries": json.loads})
     transactions = pd.read_csv(csv_dir / "transactions.csv", parse_dates = ["transaction_date"])
@@ -308,7 +324,16 @@ def main(cfg_path: str | None = None) -> None:
         "epoch_time_sec_mean": epoch_time_sec_mean,
         "peak_cuda_mb": peak_cuda_mb,
     }
-    (out_root / "run_info.json").write_text(json.dumps(run_info, ensure_ascii=False, indent=2), encoding="utf-8")
+    run_info.update({
+        "dataset_dir": str(csv_dir),
+        "data_gen": {
+            "enabled": bool(gen_cfg.get("enable", False)),
+            "n_consumers": gen_cfg.get("n_consumers"),
+            "n_products": gen_cfg.get("n_products"),
+            "seed": gen_cfg.get("seed"),
+        }
+    })
+    (out_root / "run_info.json").write_text(json.dumps(run_info, ensure_ascii = False, indent = 2), encoding = "utf-8")
 
     # 8) Final evaluation (val & test), write metrics + preds
     def _eval_and_write(split_name: str, loader: torch.utils.data.DataLoader):
