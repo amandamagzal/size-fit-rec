@@ -1,19 +1,12 @@
-# Experiment matrix for reproducible comparisons
-# - Base configs: configs/transformer_base.yaml, configs/xlstm_base.yaml
-# - Vary: model type, sequence length, dataset size, seed
-# - Each experiment writes/uses its own dataset folder under data/
-
 experiments:
 
-  # -------------------------------
-  # SMALL dataset (1k consumers, 1k products)
-  # -------------------------------
-  # max_len = 16
+  # ---------- SMALL ----------
   - name: tf_len16_small_s1
     base: configs/transformer_base.yaml
     overrides:
       data.csv_dir: data/synth_c1k_p1k_s10
       data.max_len: 16
+      data.batch_size: 256
       data.gen.enable: true
       data.gen.n_consumers: 1000
       data.gen.n_products: 1000
@@ -25,6 +18,7 @@ experiments:
     overrides:
       data.csv_dir: data/synth_c1k_p1k_s10
       data.max_len: 16
+      data.batch_size: 256
       data.gen.enable: true
       data.gen.n_consumers: 1000
       data.gen.n_products: 1000
@@ -36,6 +30,7 @@ experiments:
     overrides:
       data.csv_dir: data/synth_c1k_p1k_s10
       data.max_len: 16
+      data.batch_size: 256
       data.gen.enable: true
       data.gen.n_consumers: 1000
       data.gen.n_products: 1000
@@ -47,6 +42,7 @@ experiments:
     overrides:
       data.csv_dir: data/synth_c1k_p1k_s10
       data.max_len: 16
+      data.batch_size: 256
       data.gen.enable: true
       data.gen.n_consumers: 1000
       data.gen.n_products: 1000
@@ -58,6 +54,7 @@ experiments:
     overrides:
       data.csv_dir: data/synth_c1k_p1k_s10
       data.max_len: 16
+      data.batch_size: 256
       data.gen.enable: true
       data.gen.n_consumers: 1000
       data.gen.n_products: 1000
@@ -69,18 +66,19 @@ experiments:
     overrides:
       data.csv_dir: data/synth_c1k_p1k_s10
       data.max_len: 16
+      data.batch_size: 256
       data.gen.enable: true
       data.gen.n_consumers: 1000
       data.gen.n_products: 1000
       data.gen.seed: 10
       train.seed: 3
 
-  # max_len = 32
   - name: tf_len32_small_s1
     base: configs/transformer_base.yaml
     overrides:
       data.csv_dir: data/synth_c1k_p1k_s10
       data.max_len: 32
+      data.batch_size: 256
       data.gen.enable: true
       data.gen.n_consumers: 1000
       data.gen.n_products: 1000
@@ -92,6 +90,7 @@ experiments:
     overrides:
       data.csv_dir: data/synth_c1k_p1k_s10
       data.max_len: 32
+      data.batch_size: 256
       data.gen.enable: true
       data.gen.n_consumers: 1000
       data.gen.n_products: 1000
@@ -103,6 +102,7 @@ experiments:
     overrides:
       data.csv_dir: data/synth_c1k_p1k_s10
       data.max_len: 32
+      data.batch_size: 256
       data.gen.enable: true
       data.gen.n_consumers: 1000
       data.gen.n_products: 1000
@@ -114,6 +114,7 @@ experiments:
     overrides:
       data.csv_dir: data/synth_c1k_p1k_s10
       data.max_len: 32
+      data.batch_size: 256
       data.gen.enable: true
       data.gen.n_consumers: 1000
       data.gen.n_products: 1000
@@ -125,6 +126,7 @@ experiments:
     overrides:
       data.csv_dir: data/synth_c1k_p1k_s10
       data.max_len: 32
+      data.batch_size: 256
       data.gen.enable: true
       data.gen.n_consumers: 1000
       data.gen.n_products: 1000
@@ -136,279 +138,299 @@ experiments:
     overrides:
       data.csv_dir: data/synth_c1k_p1k_s10
       data.max_len: 32
+      data.batch_size: 256
       data.gen.enable: true
       data.gen.n_consumers: 1000
       data.gen.n_products: 1000
       data.gen.seed: 10
       train.seed: 3
 
-  # max_len = 64
-  - name: tf_len64_small_s1
-    base: configs/transformer_base.yaml
-    overrides:
-      data.csv_dir: data/synth_c1k_p1k_s10
-      data.max_len: 64
-      data.gen.enable: true
-      data.gen.n_consumers: 1000
-      data.gen.n_products: 1000
-      data.gen.seed: 10
-      train.seed: 1
-
-  - name: tf_len64_small_s2
-    base: configs/transformer_base.yaml
-    overrides:
-      data.csv_dir: data/synth_c1k_p1k_s10
-      data.max_len: 64
-      data.gen.enable: true
-      data.gen.n_consumers: 1000
-      data.gen.n_products: 1000
-      data.gen.seed: 10
-      train.seed: 2
-
-  - name: tf_len64_small_s3
-    base: configs/transformer_base.yaml
-    overrides:
-      data.csv_dir: data/synth_c1k_p1k_s10
-      data.max_len: 64
-      data.gen.enable: true
-      data.gen.n_consumers: 1000
-      data.gen.n_products: 1000
-      data.gen.seed: 10
-      train.seed: 3
-
-  - name: xlstm_len64_small_s1
-    base: configs/xlstm_base.yaml
-    overrides:
-      data.csv_dir: data/synth_c1k_p1k_s10
-      data.max_len: 64
-      data.gen.enable: true
-      data.gen.n_consumers: 1000
-      data.gen.n_products: 1000
-      data.gen.seed: 10
-      train.seed: 1
-
-  - name: xlstm_len64_small_s2
-    base: configs/xlstm_base.yaml
-    overrides:
-      data.csv_dir: data/synth_c1k_p1k_s10
-      data.max_len: 64
-      data.gen.enable: true
-      data.gen.n_consumers: 1000
-      data.gen.n_products: 1000
-      data.gen.seed: 10
-      train.seed: 2
-
-  - name: xlstm_len64_small_s3
-    base: configs/xlstm_base.yaml
-    overrides:
-      data.csv_dir: data/synth_c1k_p1k_s10
-      data.max_len: 64
-      data.gen.enable: true
-      data.gen.n_consumers: 1000
-      data.gen.n_products: 1000
-      data.gen.seed: 10
-      train.seed: 3
-
-  # -------------------------------
-  # MEDIUM dataset (5k consumers, 3k products)
-  # -------------------------------
-  # max_len = 16
-  - name: tf_len16_medium_s1
-    base: configs/transformer_base.yaml
-    overrides:
-      data.csv_dir: data/synth_c5k_p3k_s11
-      data.max_len: 16
-      data.gen.enable: true
-      data.gen.n_consumers: 5000
-      data.gen.n_products: 3000
-      data.gen.seed: 11
-      train.seed: 1
-
-  - name: tf_len16_medium_s2
-    base: configs/transformer_base.yaml
-    overrides:
-      data.csv_dir: data/synth_c5k_p3k_s11
-      data.max_len: 16
-      data.gen.enable: true
-      data.gen.n_consumers: 5000
-      data.gen.n_products: 3000
-      data.gen.seed: 11
-      train.seed: 2
-
-  - name: tf_len16_medium_s3
-    base: configs/transformer_base.yaml
-    overrides:
-      data.csv_dir: data/synth_c5k_p3k_s11
-      data.max_len: 16
-      data.gen.enable: true
-      data.gen.n_consumers: 5000
-      data.gen.n_products: 3000
-      data.gen.seed: 11
-      train.seed: 3
-
-  - name: xlstm_len16_medium_s1
-    base: configs/xlstm_base.yaml
-    overrides:
-      data.csv_dir: data/synth_c5k_p3k_s11
-      data.max_len: 16
-      data.gen.enable: true
-      data.gen.n_consumers: 5000
-      data.gen.n_products: 3000
-      data.gen.seed: 11
-      train.seed: 1
-
-  - name: xlstm_len16_medium_s2
-    base: configs/xlstm_base.yaml
-    overrides:
-      data.csv_dir: data/synth_c5k_p3k_s11
-      data.max_len: 16
-      data.gen.enable: true
-      data.gen.n_consumers: 5000
-      data.gen.n_products: 3000
-      data.gen.seed: 11
-      train.seed: 2
-
-  - name: xlstm_len16_medium_s3
-    base: configs/xlstm_base.yaml
-    overrides:
-      data.csv_dir: data/synth_c5k_p3k_s11
-      data.max_len: 16
-      data.gen.enable: true
-      data.gen.n_consumers: 5000
-      data.gen.n_products: 3000
-      data.gen.seed: 11
-      train.seed: 3
-
-  # max_len = 32
+  # ---------- MEDIUM ----------
   - name: tf_len32_medium_s1
     base: configs/transformer_base.yaml
     overrides:
-      data.csv_dir: data/synth_c5k_p3k_s11
+      data.csv_dir: data/synth_c50k_p20k_s11
       data.max_len: 32
+      data.batch_size: 256
       data.gen.enable: true
-      data.gen.n_consumers: 5000
-      data.gen.n_products: 3000
+      data.gen.n_consumers: 50000
+      data.gen.n_products: 20000
       data.gen.seed: 11
       train.seed: 1
 
   - name: tf_len32_medium_s2
     base: configs/transformer_base.yaml
     overrides:
-      data.csv_dir: data/synth_c5k_p3k_s11
+      data.csv_dir: data/synth_c50k_p20k_s11
       data.max_len: 32
+      data.batch_size: 256
       data.gen.enable: true
-      data.gen.n_consumers: 5000
-      data.gen.n_products: 3000
+      data.gen.n_consumers: 50000
+      data.gen.n_products: 20000
       data.gen.seed: 11
       train.seed: 2
 
   - name: tf_len32_medium_s3
     base: configs/transformer_base.yaml
     overrides:
-      data.csv_dir: data/synth_c5k_p3k_s11
+      data.csv_dir: data/synth_c50k_p20k_s11
       data.max_len: 32
+      data.batch_size: 256
       data.gen.enable: true
-      data.gen.n_consumers: 5000
-      data.gen.n_products: 3000
+      data.gen.n_consumers: 50000
+      data.gen.n_products: 20000
       data.gen.seed: 11
       train.seed: 3
 
   - name: xlstm_len32_medium_s1
     base: configs/xlstm_base.yaml
     overrides:
-      data.csv_dir: data/synth_c5k_p3k_s11
+      data.csv_dir: data/synth_c50k_p20k_s11
       data.max_len: 32
+      data.batch_size: 256
       data.gen.enable: true
-      data.gen.n_consumers: 5000
-      data.gen.n_products: 3000
+      data.gen.n_consumers: 50000
+      data.gen.n_products: 20000
       data.gen.seed: 11
       train.seed: 1
 
   - name: xlstm_len32_medium_s2
     base: configs/xlstm_base.yaml
     overrides:
-      data.csv_dir: data/synth_c5k_p3k_s11
+      data.csv_dir: data/synth_c50k_p20k_s11
       data.max_len: 32
+      data.batch_size: 256
       data.gen.enable: true
-      data.gen.n_consumers: 5000
-      data.gen.n_products: 3000
+      data.gen.n_consumers: 50000
+      data.gen.n_products: 20000
       data.gen.seed: 11
       train.seed: 2
 
   - name: xlstm_len32_medium_s3
     base: configs/xlstm_base.yaml
     overrides:
-      data.csv_dir: data/synth_c5k_p3k_s11
+      data.csv_dir: data/synth_c50k_p20k_s11
       data.max_len: 32
+      data.batch_size: 256
       data.gen.enable: true
-      data.gen.n_consumers: 5000
-      data.gen.n_products: 3000
+      data.gen.n_consumers: 50000
+      data.gen.n_products: 20000
       data.gen.seed: 11
       train.seed: 3
 
-  # max_len = 64
   - name: tf_len64_medium_s1
     base: configs/transformer_base.yaml
     overrides:
-      data.csv_dir: data/synth_c5k_p3k_s11
+      data.csv_dir: data/synth_c50k_p20k_s11
       data.max_len: 64
+      data.batch_size: 192
       data.gen.enable: true
-      data.gen.n_consumers: 5000
-      data.gen.n_products: 3000
+      data.gen.n_consumers: 50000
+      data.gen.n_products: 20000
       data.gen.seed: 11
       train.seed: 1
 
   - name: tf_len64_medium_s2
     base: configs/transformer_base.yaml
     overrides:
-      data.csv_dir: data/synth_c5k_p3k_s11
+      data.csv_dir: data/synth_c50k_p20k_s11
       data.max_len: 64
+      data.batch_size: 192
       data.gen.enable: true
-      data.gen.n_consumers: 5000
-      data.gen.n_products: 3000
+      data.gen.n_consumers: 50000
+      data.gen.n_products: 20000
       data.gen.seed: 11
       train.seed: 2
 
   - name: tf_len64_medium_s3
     base: configs/transformer_base.yaml
     overrides:
-      data.csv_dir: data/synth_c5k_p3k_s11
+      data.csv_dir: data/synth_c50k_p20k_s11
       data.max_len: 64
+      data.batch_size: 192
       data.gen.enable: true
-      data.gen.n_consumers: 5000
-      data.gen.n_products: 3000
+      data.gen.n_consumers: 50000
+      data.gen.n_products: 20000
       data.gen.seed: 11
       train.seed: 3
 
   - name: xlstm_len64_medium_s1
     base: configs/xlstm_base.yaml
     overrides:
-      data.csv_dir: data/synth_c5k_p3k_s11
+      data.csv_dir: data/synth_c50k_p20k_s11
       data.max_len: 64
+      data.batch_size: 192
       data.gen.enable: true
-      data.gen.n_consumers: 5000
-      data.gen.n_products: 3000
+      data.gen.n_consumers: 50000
+      data.gen.n_products: 20000
       data.gen.seed: 11
       train.seed: 1
 
   - name: xlstm_len64_medium_s2
     base: configs/xlstm_base.yaml
     overrides:
-      data.csv_dir: data/synth_c5k_p3k_s11
+      data.csv_dir: data/synth_c50k_p20k_s11
       data.max_len: 64
+      data.batch_size: 192
       data.gen.enable: true
-      data.gen.n_consumers: 5000
-      data.gen.n_products: 3000
+      data.gen.n_consumers: 50000
+      data.gen.n_products: 20000
       data.gen.seed: 11
       train.seed: 2
 
   - name: xlstm_len64_medium_s3
     base: configs/xlstm_base.yaml
     overrides:
-      data.csv_dir: data/synth_c5k_p3k_s11
+      data.csv_dir: data/synth_c50k_p20k_s11
       data.max_len: 64
+      data.batch_size: 192
       data.gen.enable: true
-      data.gen.n_consumers: 5000
-      data.gen.n_products: 3000
+      data.gen.n_consumers: 50000
+      data.gen.n_products: 20000
       data.gen.seed: 11
+      train.seed: 3
+
+  # ---------- LARGE ----------
+  - name: tf_len32_large_s1
+    base: configs/transformer_base.yaml
+    overrides:
+      data.csv_dir: data/synth_c250k_p60k_s12
+      data.max_len: 32
+      data.batch_size: 128
+      data.gen.enable: true
+      data.gen.n_consumers: 250000
+      data.gen.n_products: 60000
+      data.gen.seed: 12
+      train.seed: 1
+
+  - name: tf_len32_large_s2
+    base: configs/transformer_base.yaml
+    overrides:
+      data.csv_dir: data/synth_c250k_p60k_s12
+      data.max_len: 32
+      data.batch_size: 128
+      data.gen.enable: true
+      data.gen.n_consumers: 250000
+      data.gen.n_products: 60000
+      data.gen.seed: 12
+      train.seed: 2
+
+  - name: tf_len32_large_s3
+    base: configs/transformer_base.yaml
+    overrides:
+      data.csv_dir: data/synth_c250k_p60k_s12
+      data.max_len: 32
+      data.batch_size: 128
+      data.gen.enable: true
+      data.gen.n_consumers: 250000
+      data.gen.n_products: 60000
+      data.gen.seed: 12
+      train.seed: 3
+
+  - name: xlstm_len32_large_s1
+    base: configs/xlstm_base.yaml
+    overrides:
+      data.csv_dir: data/synth_c250k_p60k_s12
+      data.max_len: 32
+      data.batch_size: 128
+      data.gen.enable: true
+      data.gen.n_consumers: 250000
+      data.gen.n_products: 60000
+      data.gen.seed: 12
+      train.seed: 1
+
+  - name: xlstm_len32_large_s2
+    base: configs/xlstm_base.yaml
+    overrides:
+      data.csv_dir: data/synth_c250k_p60k_s12
+      data.max_len: 32
+      data.batch_size: 128
+      data.gen.enable: true
+      data.gen.n_consumers: 250000
+      data.gen.n_products: 60000
+      data.gen.seed: 12
+      train.seed: 2
+
+  - name: xlstm_len32_large_s3
+    base: configs/xlstm_base.yaml
+    overrides:
+      data.csv_dir: data/synth_c250k_p60k_s12
+      data.max_len: 32
+      data.batch_size: 128
+      data.gen.enable: true
+      data.gen.n_consumers: 250000
+      data.gen.n_products: 60000
+      data.gen.seed: 12
+      train.seed: 3
+
+  - name: tf_len64_large_s1
+    base: configs/transformer_base.yaml
+    overrides:
+      data.csv_dir: data/synth_c250k_p60k_s12
+      data.max_len: 64
+      data.batch_size: 96
+      data.gen.enable: true
+      data.gen.n_consumers: 250000
+      data.gen.n_products: 60000
+      data.gen.seed: 12
+      train.seed: 1
+
+  - name: tf_len64_large_s2
+    base: configs/transformer_base.yaml
+    overrides:
+      data.csv_dir: data/synth_c250k_p60k_s12
+      data.max_len: 64
+      data.batch_size: 96
+      data.gen.enable: true
+      data.gen.n_consumers: 250000
+      data.gen.n_products: 60000
+      data.gen.seed: 12
+      train.seed: 2
+
+  - name: tf_len64_large_s3
+    base: configs/transformer_base.yaml
+    overrides:
+      data.csv_dir: data/synth_c250k_p60k_s12
+      data.max_len: 64
+      data.batch_size: 96
+      data.gen.enable: true
+      data.gen.n_consumers: 250000
+      data.gen.n_products: 60000
+      data.gen.seed: 12
+      train.seed: 3
+
+  - name: xlstm_len64_large_s1
+    base: configs/xlstm_base.yaml
+    overrides:
+      data.csv_dir: data/synth_c250k_p60k_s12
+      data.max_len: 64
+      data.batch_size: 96
+      data.gen.enable: true
+      data.gen.n_consumers: 250000
+      data.gen.n_products: 60000
+      data.gen.seed: 12
+      train.seed: 1
+
+  - name: xlstm_len64_large_s2
+    base: configs/xlstm_base.yaml
+    overrides:
+      data.csv_dir: data/synth_c250k_p60k_s12
+      data.max_len: 64
+      data.batch_size: 96
+      data.gen.enable: true
+      data.gen.n_consumers: 250000
+      data.gen.n_products: 60000
+      data.gen.seed: 12
+      train.seed: 2
+
+  - name: xlstm_len64_large_s3
+    base: configs/xlstm_base.yaml
+    overrides:
+      data.csv_dir: data/synth_c250k_p60k_s12
+      data.max_len: 64
+      data.batch_size: 96
+      data.gen.enable: true
+      data.gen.n_consumers: 250000
+      data.gen.n_products: 60000
+      data.gen.seed: 12
       train.seed: 3

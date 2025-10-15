@@ -134,7 +134,7 @@ def generate_consumers(n_consumers: int) -> pd.DataFrame:
     consumer_features = pd.DataFrame(
         {
             "consumer_id": [f"c_{i}" for i in range(1, n_consumers + 1)],
-            "gender": np.random.choice(GENDERS, size = n_consumers, p=[0.4, 0.45, 0.15]),
+            "gender": np.random.choice(GENDERS, size = n_consumers, p = [0.4, 0.45, 0.15]),
             "country": np.random.choice(COUNTRIES, size = n_consumers),
             "age": np.clip(np.random.normal(AGE_MEAN, AGE_STD, size = n_consumers), 18, 65).astype(int),
         }
