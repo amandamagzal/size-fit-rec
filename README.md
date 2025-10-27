@@ -11,6 +11,7 @@ We compare two sequence encoders—**Transformer** and **xLSTM**—with everythi
 
 ## Repo layout (essentials)
 
+```
 .
 ├─ configs/
 │  ├─ transformer_base.yaml
@@ -40,6 +41,7 @@ We compare two sequence encoders—**Transformer** and **xLSTM**—with everythi
 ├─ README.md
 ├─ requirements.txt
 └─ .gitignore
+```
 
 ---
 
