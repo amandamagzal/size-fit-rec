@@ -35,7 +35,7 @@ We compare two sequence encoders—**Transformer** and **xLSTM**—with everythi
 │     ├─ data_module.py          # Dataset + collate (padding/masks)
 │     ├─ metrics.py              # accuracy / PRF / confusion
 │     ├─ models/
-│     │  ├─ encoders.py          # TransformerEncoderBackbone / xLSTMEncoder
+│     │  ├─ encoders.py          # TransformerEncoderBackbone / xLSTMEncoderBackbone
 │     │  └─ seqrec.py            # shared wrapper (embeddings → encoder → head)
 │     └─ train.py                # end-to-end train/eval
 ├─ README.md
@@ -111,7 +111,7 @@ Under `artifacts/runs/<timestamp>/`:
 
 ---
 
-## How the model works (one paragraph)
+## How the model works
 
 We create **next-step** examples per consumer: inputs are the **history** of item tokens (product type, material, size, optional section) plus **static** user features (gender, age-bin, optional country), and **current purchase** tokens at time *t* (product type/material/size/(section), known at purchase time; no leakage).
 These integers are embedded, summed per step, and passed to a **pluggable encoder** (Transformer or xLSTM). We pool the last valid history state, **fuse** it with the current-purchase embedding, and classify into the 4 outcomes.
@@ -120,11 +120,6 @@ These integers are embedded, summed per step, and passed to a **pluggable encode
 
 ## Notebooks
 
-* `notebooks/main.ipynb` shows how to:
-
-  * import paths (`from sizerec.paths import DATA_DIR, CONFIGS_DIR`)
-  * generate data
-  * run training with a config
 * `notebooks/data_exploration.ipynb` provides quick sanity plots.
 
 ---
