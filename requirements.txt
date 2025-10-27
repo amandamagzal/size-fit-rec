@@ -15,4 +15,4 @@ jupyterlab>=4.0
 
 torch>=2.2
 pyyaml>=6.0
-
+xlstm>=0.1.0

@@ -50,7 +50,7 @@ from sizerec.seq_prep import (
 from datagen.build_data import generate_and_read_data
 
 from sizerec.data_module import SequenceDataset, make_collate
-from sizerec.models.encoders import TransformerEncoderBackbone, xLSTMEncoder
+from sizerec.models.encoders import TransformerEncoderBackbone, xLSTMEncoderBackbone
 from sizerec.models.seqrec import SeqRec
 from sizerec.models.utils import count_params
 from sizerec.metrics import accuracy, precision_recall_f1_per_class, confusion_matrix
@@ -201,11 +201,13 @@ def main(cfg_path: str | None = None) -> None:
             dropout = float(model_cfg["dropout"]),
         )
     elif model_type == "xlstm":
-        encoder = xLSTMEncoder(
+        encoder = xLSTMEncoderBackbone(
             d_model = int(model_cfg["d_model"]),
             n_layers = int(model_cfg["n_layers"]),
+            n_heads = int(model_cfg["n_heads"]),
             dropout = float(model_cfg["dropout"]),
-            layernorm = True,
+            enable_mlstm = False,             # start with pure sLSTM (portable)
+            slstm_backend = "native",         # "cuda" only if you compile kernels
         )
     else:
         raise ValueError(f"Unknown model.type: {model_type}")
