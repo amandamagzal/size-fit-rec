@@ -267,6 +267,7 @@ def main(cfg_path: str | None = None) -> None:
                 loss = criterion(logits, batch["label"])
 
             scaler.scale(loss).backward()
+            scaler.unscale_(optimizer)
             nn.utils.clip_grad_norm_(model.parameters(), max_norm = grad_clip)
             scaler.step(optimizer)
             scaler.update()
