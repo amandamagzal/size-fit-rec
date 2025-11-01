@@ -2,7 +2,7 @@
 
 **Comparison of Transformer vs xLSTM encoders for next-step fit outcome prediction**
 
-## Descriptiom
+## Description
 
 A minimal, reproducible pipeline that predicts the **fit outcome** of a customer’s next purchase (`too small / fit / too large / not applicable`) from their **purchase history** and the **current item** they’re buying.
 We compare two sequence encoders—**Transformer** and **xLSTM**—with everything else held constant.
