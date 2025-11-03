@@ -1,9 +1,6 @@
 """
 Backbone encoders with a shared interface:
   forward(x: [B,T,d], padding_mask: [B,T] bool, causal_mask: [T,T] bool) -> [B,T,d]
-
-- TransformerEncoderBackbone: wraps PyTorch TransformerEncoder (causal + padding masks).
-- xLSTMEncoder: stacked uni-directional LSTM; handles padding via pack/pad. Causal by construction.
 """
 
 from __future__ import annotations

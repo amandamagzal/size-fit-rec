@@ -49,14 +49,14 @@ def _deep_update(d: Dict[str, Any], u: Dict[str, Any]) -> Dict[str, Any]:
 
 
 def _load_yaml(path: Path) -> Dict[str, Any]:
-    with open(path, "r", encoding="utf-8") as f:
+    with open(path, "r", encoding = "utf-8") as f:
         return yaml.safe_load(f)
 
 
 def _save_yaml(obj: Dict[str, Any], path: Path) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
-        yaml.safe_dump(obj, f, sort_keys=False)
+    path.parent.mkdir(parents = True, exist_ok = True)
+    with open(path, "w", encoding = "utf-8") as f:
+        yaml.safe_dump(obj, f, sort_keys = False)
 
 
 def run_experiments(matrix_path: str | Path = CONFIGS_DIR / "experiments.yaml") -> None:
