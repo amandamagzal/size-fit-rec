@@ -3,8 +3,8 @@ data:
   # Folder containing your CSVs from datagen (relative to repo root).
   csv_dir: data
 
-  # Max history steps the model can see (truncate to most recent L; left-pad shorter).
-  max_len: 128
+  # Max history steps the model can see (truncate to most recent L; right-pad shorter).
+  max_len: 16
 
   # DataLoader
   batch_size: 256
@@ -24,7 +24,7 @@ data:
 
 # ========= MODEL =========
 model:
-  type: transformer      # (kept for parity with future xlstm config)
+  type: transformer
   d_model: 256           # embedding width / Transformer hidden size
   n_layers: 4            # encoder layers
   n_heads: 4             # attention heads (must divide d_model)

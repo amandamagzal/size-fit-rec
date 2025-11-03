@@ -231,7 +231,7 @@ def split_by_consumer(
 def save_processed_splits(train_df: pd.DataFrame, val_df: pd.DataFrame, test_df: pd.DataFrame, out_dir: Path) -> None:
     """Save train/val/test as CSVs with list columns already JSON-encoded."""
     out_dir = Path(out_dir)
-    out_dir.mkdir(parents=True, exist_ok = True)
+    out_dir.mkdir(parents = True, exist_ok = True)
     train_df.to_csv(out_dir / "train.csv", index = False, encoding = "utf-8")
     val_df.to_csv(out_dir / "val.csv", index = False, encoding = "utf-8")
     test_df.to_csv(out_dir / "test.csv", index = False, encoding = "utf-8")
