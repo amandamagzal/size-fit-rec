@@ -117,7 +117,6 @@ class xLSTMEncoderBackbone(nn.Module):
         if enable_mlstm:
             mlstm_block_cfg = mLSTMBlockConfig(
                 mlstm = mLSTMLayerConfig(
-                    # keep defaults simple; you can tune these later
                     conv1d_kernel_size = conv1d_kernel_size,
                     qkv_proj_blocksize = 4,
                     num_heads = n_heads,
