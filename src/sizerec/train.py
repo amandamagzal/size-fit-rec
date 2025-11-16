@@ -303,6 +303,7 @@ def main(cfg_path: str | None = None) -> None:
             best_val_loss = val_loss
             best_state = {k: v.cpu() for k, v in model.state_dict().items()}
             stall = 0
+            torch.save(best_state, out_root / "checkpoint.pt")
         else:
             stall += 1
             if stall >= patience:
