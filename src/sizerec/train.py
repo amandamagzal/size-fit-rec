@@ -202,6 +202,7 @@ def main(cfg_path: str | None = None) -> None:
         )
     elif model_type == "xlstm":
         encoder = xLSTMEncoderBackbone(
+            context_length = int(data_cfg["max_len"]),
             d_model = int(model_cfg["d_model"]),
             n_layers = int(model_cfg["n_layers"]),
             n_heads = int(model_cfg["n_heads"]),
