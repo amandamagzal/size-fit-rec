@@ -16,3 +16,6 @@ Thumbs.db
 # IDE/project settings
 .vscode/
 .idea/
+
+artifacts/
+data/

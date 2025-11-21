@@ -165,6 +165,75 @@ def main(cfg_path: str | None = None) -> None:
         use_country = bool(data_cfg["use_country"]),
     )
     train_df, val_df, test_df = split_by_consumer(examples, seed = train_cfg.get("seed", 111))
+    # 4) a) Keep only "fit" events in val/test ===
+    fit_id = label_map["fit"]
+
+    val_df = val_df[val_df["label_id"] == fit_id].reset_index(drop=True)
+    test_df = test_df[test_df["label_id"] == fit_id].reset_index(drop=True)
+
+    # 4) b): Synthetic size expansion for val/test ===
+    # get inverse map: id -> size_token (string)
+    inv_size_vocab = {v: k for k, v in size_vocab.items()}
+
+    def expand_split(df):
+        """
+        Expand each validation/test example into multiple synthetic size-candidates.
+
+        For each purchased item, we generate one row per possible size in the size vocabulary.
+        Labels are automatically assigned as:
+            - "too small"   if candidate size < purchased size
+            - "too large"   if candidate size > purchased size
+            - "fit"         if candidate size == purchased size
+            - "not applicable" for non-numeric mismatched sizes
+
+        This expansion is used only for evaluation, so the model can choose the best size.
+        """
+             
+        rows = []
+        for _, r in df.iterrows():
+            purchased_size_id = int(r["size_id_t"])
+
+            # Convert vocab IDs back to numeric (when possible)
+            try:
+                purchased_size_float = float(inv_size_vocab[purchased_size_id])
+            except:
+                # fallback for non-numeric sizes
+                purchased_size_float = None
+
+            for candidate_id, size_token in inv_size_vocab.items():
+                # Try numeric comparison
+                try:
+                    candidate_float = float(size_token)
+                except:
+                    candidate_float = None
+
+                # Determine label for candidate size
+                if purchased_size_float is not None and candidate_float is not None:
+                    if candidate_float < purchased_size_float:
+                        new_label = label_map["too small"]
+                    elif candidate_float > purchased_size_float:
+                        new_label = label_map["too large"]
+                    else:
+                        new_label = label_map["fit"]
+                else:
+                    # For non-numeric sizes: only exact match counts as fit
+                    if candidate_id == purchased_size_id:
+                        new_label = label_map["fit"]
+                    else:
+                        new_label = label_map["not applicable"]
+
+                # clone example but override size and label
+                new_r = r.copy()
+                new_r["size_id_t"] = candidate_id
+                new_r["label_id"] = new_label
+                rows.append(new_r)
+
+        out = pd.DataFrame(rows).reset_index(drop=True)
+        
+        return out
+
+    val_df = expand_split(val_df)
+    test_df = expand_split(test_df)
     save_processed_splits(train_df, val_df, test_df, processed_dir)
 
     # 5) DataLoaders
@@ -340,10 +409,26 @@ def main(cfg_path: str | None = None) -> None:
     })
     (out_root / "run_info.json").write_text(json.dumps(run_info, ensure_ascii = False, indent = 2), encoding = "utf-8")
 
-    # 8) Final evaluation (val & test), write metrics + preds
+        # 8) Final evaluation (val & test), write metrics + preds
     def _eval_and_write(split_name: str, loader: torch.utils.data.DataLoader):
+        """
+        Run full evaluation on a split (val or test).
+
+        Computes:
+            • classification accuracy
+            • per-class precision/recall/F1
+            • confusion matrix
+            • size-accuracy: accuracy of choosing the correct size based on the highest fit logit
+
+        Writes:
+            • metrics_<split>.json
+            • preds_<split>.csv (includes fit_logit)
+        """
         model.eval()
         ys, ps = [], []
+        fit_scores = []
+        fit_class_idx = label_order.index("fit")
+
         with torch.no_grad():
             for batch in loader:
                 for k, v in batch.items():
@@ -351,22 +436,70 @@ def main(cfg_path: str | None = None) -> None:
                 logits = model(batch)
                 ys.extend(batch["label"].detach().cpu().tolist())
                 ps.extend(logits.argmax(dim = 1).detach().cpu().tolist())
-        y_true = np.asarray(ys, dtype = int) if ys else np.array([], dtype = int)
-        y_pred = np.asarray(ps, dtype = int) if ps else np.array([], dtype = int)
+                fit_scores.extend(logits[:, fit_class_idx].detach().cpu().tolist())
 
-        # Metrics
+        y_true = np.asarray(ys, dtype=int) if ys else np.array([], dtype=int)
+        y_pred = np.asarray(ps, dtype=int) if ps else np.array([], dtype=int)
+
+        # Base classification metrics (same as before)
         num_classes = len(label_order)
         acc = accuracy(y_true, y_pred)
         prf = precision_recall_f1_per_class(y_true, y_pred, num_classes)
         cm = confusion_matrix(y_true, y_pred, num_classes).tolist()
 
-        metrics = {"accuracy": acc, "per_class": prf, "confusion_matrix": cm}
+        metrics = {
+            "accuracy": acc,
+            "per_class": prf,
+            "confusion_matrix": cm,
+        }
+
+        try:
+            # load the expanded split CSV we created earlier
+            df_split = pd.read_csv(processed_dir / f"{split_name}.csv")
+
+            # sanity check: same number of rows as preds
+            if len(df_split) == len(fit_scores) and \
+               "consumer_id" in df_split.columns and \
+               "transaction_date_t" in df_split.columns:
+
+                df_split = df_split.copy()
+                df_split["fit_logit"] = fit_scores
+
+                groups = df_split.groupby(["consumer_id", "transaction_date_t"])
+                total = 0
+                correct = 0
+                fit_id = label_map["fit"]
+
+                for (_, _), g in groups:
+                    # true purchased size = the row labeled "fit"
+                    true_rows = g[g["label_id"] == fit_id]
+                    if true_rows.empty:
+                        continue
+                    true_size = true_rows["size_id_t"].iloc[0]
+
+                    # predicted size = size with highest fit logit
+                    pred_row = g.loc[g["fit_logit"].idxmax()]
+                    pred_size = pred_row["size_id_t"]
+
+                    if pred_size == true_size:
+                        correct += 1
+                    total += 1
+
+                size_acc = correct / total if total > 0 else 0.0
+                metrics["size_accuracy"] = float(size_acc)
+                print(f"{split_name}: size-accuracy={size_acc:.4f}")
+            else:
+                print(f"[WARN] Could not compute size-accuracy for split {split_name} (length/columns mismatch).")
+        except Exception as e:
+            print(f"[WARN] Error computing size-accuracy for split {split_name}: {e}")
+
+        # Save metrics JSON (now includes size_accuracy if computed)
         _save_json(metrics, out_root / f"metrics_{split_name}.json")
 
-        # Preds (id + true/pred)
-        pd.DataFrame({"y_true": y_true, "y_pred": y_pred}).to_csv(
-            out_root / f"preds_{split_name}.csv", index = False, encoding = "utf-8"
-        )
+        # Save preds with fit_logit (unchanged idea)
+        pd.DataFrame(
+            {"y_true": y_true, "y_pred": y_pred, "fit_logit": fit_scores}
+        ).to_csv(out_root / f"preds_{split_name}.csv", index=False, encoding="utf-8")
 
         print(f"{split_name}: acc={acc:.4f}, macroF1={prf['macro']['f1']:.4f}")
 
