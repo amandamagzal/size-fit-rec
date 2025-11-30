@@ -277,7 +277,7 @@ def main(cfg_path: str | None = None) -> None:
             n_heads = int(model_cfg["n_heads"]),
             dropout = float(model_cfg["dropout"]),
             enable_mlstm = False,             # start with pure sLSTM (portable)
-            slstm_backend = "native",         # "cuda" only if you compile kernels
+            slstm_backend = "vanilla",         # "cuda" only if you compile kernels
         )
     else:
         raise ValueError(f"Unknown model.type: {model_type}")
