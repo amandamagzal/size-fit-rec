@@ -47,6 +47,7 @@ from sizerec.seq_prep import (
     join_product_attrs,
 )
 
+from datagen.constants import SIZES as CLOTHING_SIZES
 from datagen.build_data import generate_and_read_data
 
 from sizerec.data_module import SequenceDataset, make_collate
@@ -128,6 +129,7 @@ def main(cfg_path: str | None = None) -> None:
     consumers = pd.read_csv(csv_dir / "consumers.csv", parse_dates = ["start_date"])
     products = pd.read_csv(csv_dir / "products.csv", converters = {"available_countries": json.loads})
     transactions = pd.read_csv(csv_dir / "transactions.csv", parse_dates = ["transaction_date"])
+    transactions = transactions[transactions["fit_outcome"] != "not applicable"].reset_index(drop=True)
 
     # 3) Build or load vocabs
     vocabs_dir = out_root / "vocabs"
@@ -135,8 +137,11 @@ def main(cfg_path: str | None = None) -> None:
     _ensure_dir(vocabs_dir); _ensure_dir(processed_dir)
 
     # Build label map from config order
-    label_order = data_cfg["label_order"]
-    label_map = build_fit_label_map(label_order)
+    valid_labels = ["too small", "fit", "too large"]
+    label_order = [l for l in data_cfg["label_order"] if l in valid_labels]
+    label_map = {label: idx for idx, label in enumerate(label_order)}
+    #label_order = data_cfg["label_order"]
+    #label_map = build_fit_label_map(label_order)
 
     # Fresh vocabs for this run
     size_vocab = build_size_vocab(transactions)
@@ -158,6 +163,10 @@ def main(cfg_path: str | None = None) -> None:
         use_section = bool(data_cfg["use_section"]),
         use_country = bool(data_cfg["use_country"]),
     )
+
+    encoded = encoded[encoded['fit_outcome'] != "not applicable"].copy()
+    encoded = encoded[encoded['label_id'].notna()].copy()
+
     examples = build_examples(
         encoded,
         max_len = int(data_cfg["max_len"]),
@@ -189,48 +198,78 @@ def main(cfg_path: str | None = None) -> None:
         This expansion is used only for evaluation, so the model can choose the best size.
         """
              
+        df = df.merge(products[["product_type"]], left_on="product_type_id_t", right_index=True, how="left")     
         rows = []
         for _, r in df.iterrows():
             purchased_size_id = int(r["size_id_t"])
+            purchased_token = inv_size_vocab[purchased_size_id]
+            product_type = r["product_type"]
+
+            # Select valid size candidates based on product type
+            if "shoe" in product_type.lower():
+                valid_tokens = [tok for tok in inv_size_vocab.values()
+                                if tok.replace(".", "", 1).isdigit()]
+            else:
+                valid_tokens = [tok for tok in inv_size_vocab.values()
+                                if tok in CLOTHING_SIZES]  # Clothing only
+
 
             # Convert vocab IDs back to numeric (when possible)
             try:
-                purchased_size_float = float(inv_size_vocab[purchased_size_id])
+                # purchased_size_float = float(inv_size_vocab[purchased_size_id])
+                purchased_val = float(purchased_token)
             except:
                 # fallback for non-numeric sizes
-                purchased_size_float = None
-
-            for candidate_id, size_token in inv_size_vocab.items():
-                # Try numeric comparison
+                # purchased_size_float = None
+                purchased_val = CLOTHING_SIZES.index(purchased_token) if purchased_token in CLOTHING_SIZES else None
+            if purchased_val is None:
+                continue
+            # for candidate_id, size_token in inv_size_vocab.items():
+            #     # Try numeric comparison
+            #     try:
+            #         candidate_float = float(size_token)
+            #     except:
+            #         candidate_float = None
+            for token in valid_tokens:
+                # Convert candidate size
                 try:
-                    candidate_float = float(size_token)
+                    cand_val = float(token)
                 except:
-                    candidate_float = None
+                    cand_val = CLOTHING_SIZES.index(token) if token in CLOTHING_SIZES else None
 
-                # Determine label for candidate size
-                if purchased_size_float is not None and candidate_float is not None:
-                    if candidate_float < purchased_size_float:
-                        new_label = label_map["too small"]
-                    elif candidate_float > purchased_size_float:
-                        new_label = label_map["too large"]
-                    else:
-                        new_label = label_map["fit"]
+                if cand_val is None:
+                    continue
+                # Assign labels too small / too large / fit
+                if cand_val < purchased_val:
+                    new_label = label_map["too small"]
+                elif cand_val > purchased_val:
+                    new_label = label_map["too large"]
                 else:
-                    # For non-numeric sizes: only exact match counts as fit
-                    if candidate_id == purchased_size_id:
-                        new_label = label_map["fit"]
-                    else:
-                        new_label = label_map["not applicable"]
+                    new_label = label_map["fit"]
+
+                # # Determine label for candidate size
+                # if purchased_size_float is not None and candidate_float is not None:
+                #     if candidate_float < purchased_size_float:
+                #         new_label = label_map["too small"]
+                #     elif candidate_float > purchased_size_float:
+                #         new_label = label_map["too large"]
+                #     else:
+                #         new_label = label_map["fit"]
+                # else:
+                #     # For non-numeric sizes: only exact match counts as fit
+                #     if candidate_id == purchased_size_id:
+                #         new_label = label_map["fit"]
+                #     else:
+                #         new_label = label_map["not applicable"]
 
                 # clone example but override size and label
-                new_r = r.copy()
-                new_r["size_id_t"] = candidate_id
-                new_r["label_id"] = new_label
-                rows.append(new_r)
+                new_row = r.copy()
+                new_row["size_id_t"] = size_vocab[token]
+                new_row["label_id"] = new_label
+                rows.append(new_row)
 
-        out = pd.DataFrame(rows).reset_index(drop=True)
-        
-        return out
+
+        return pd.DataFrame(rows).reset_index(drop=True)
 
     val_df = expand_split(val_df)
     test_df = expand_split(test_df)
@@ -293,7 +332,8 @@ def main(cfg_path: str | None = None) -> None:
         d_model = int(model_cfg["d_model"]),
         dropout = float(model_cfg["dropout"]),
         max_len = int(data_cfg["max_len"]),
-        num_classes = len(label_order),
+        # num_classes = len(label_order),
+        num_classes = len(valid_labels),
         encoder = encoder,
     ).to(device)
 
@@ -348,29 +388,86 @@ def main(cfg_path: str | None = None) -> None:
 
         # Validation
         model.eval()
-        val_loss, ys, ps = 0.0, [], []
+        fit_class_idx = label_order.index("fit")
+
+        ys, ps = [], []
+        fit_scores = []
+        all_logits = []
+
         with torch.no_grad():
             for batch in val_loader:
                 for k, v in batch.items():
                     batch[k] = v.to(device) if torch.is_tensor(v) else v
-                with torch.cuda.amp.autocast(enabled = False):
-                    logits = model(batch)
-                    loss = criterion(logits, batch["label"])
-                val_loss += loss.item()
+
+                logits = model(batch)  # [B, C]
+                all_logits.append(logits.detach().cpu())
+
                 ys.extend(batch["label"].detach().cpu().tolist())
-                ps.extend(logits.argmax(dim = 1).detach().cpu().tolist())
-        val_loss /= max(len(val_loader), 1)
-        y_true = np.asarray(ys, dtype = int) if ys else np.array([], dtype = int)
-        y_pred = np.asarray(ps, dtype = int) if ps else np.array([], dtype = int)
-        val_acc = accuracy(y_true, y_pred)
+                ps.extend(logits.argmax(dim=1).detach().cpu().tolist())
+                fit_scores.extend(logits[:, fit_class_idx].detach().cpu().tolist())
 
-        print(f"Epoch {epoch:03d} | train_loss={train_loss:.4f}  val_loss={val_loss:.4f}  val_acc={val_acc:.4f}")
+        # Full logits tensor, aligned with val.csv rows
+        logits_val = torch.cat(all_logits, dim=0)   # [N_val, C]
 
-        epoch_times.append(perf_counter() - t_epoch0)
+        # -------------------------------
+        # Load expanded val.csv
+        # -------------------------------
+        val_df = pd.read_csv(processed_dir / "val.csv").copy()
+
+        # Sanity check
+        if len(val_df) != len(logits_val):
+            raise RuntimeError(
+                f"Validation alignment error: val_df rows={len(val_df)} "
+                f"but logits rows={len(logits_val)}"
+            )
+
+        val_df["fit_logit"] = fit_scores
+
+        # -------------------------------
+        # Compute size-accuracy + size-loss
+        # -------------------------------
+        groups = val_df.groupby(["consumer_id", "transaction_date_t"])
+        correct = 0
+        total = 0
+        val_losses = []
+        fit_id = label_map["fit"]
+
+        criterion_no_smooth = nn.CrossEntropyLoss()  # for clean per-row CE without smoothing
+
+        for (_, _), g in groups:
+            true_rows = g[g["label_id"] == fit_id]
+            if true_rows.empty:
+                continue
+
+            true_idx = true_rows.index[0]
+            true_size = true_rows["size_id_t"].iloc[0]
+
+            # Predicted size = candidate with max fit logit
+            pred_idx = g["fit_logit"].idxmax()
+            pred_size = val_df.loc[pred_idx, "size_id_t"]
+
+            if pred_size == true_size:
+                correct += 1
+            total += 1
+
+            # ---- Correct size-loss using full logits ----
+            logit_row = logits_val[true_idx].unsqueeze(0).to(device)  # [1, C]
+            label_tensor = torch.tensor([fit_id], dtype=torch.long).to(device)
+
+            loss = criterion_no_smooth(logit_row, label_tensor)
+            val_losses.append(loss.item())
+
+        size_acc = correct / total if total > 0 else 0.0
+        val_size_loss = float(np.mean(val_losses)) if val_losses else 0.0
+
+        print(
+            f"Epoch {epoch:03d} | train_loss={train_loss:.4f} "
+            f"val_size_acc={size_acc:.4f}  val_size_loss={val_size_loss:.4f}"
+        )
 
         # Early stopping
-        if val_loss < best_val_loss - 1e-6:
-            best_val_loss = val_loss
+        if val_size_loss < best_val_loss - 1e-6:
+            best_val_loss = val_size_loss
             best_state = {k: v.cpu() for k, v in model.state_dict().items()}
             stall = 0
             torch.save(best_state, out_root / "checkpoint.pt")
@@ -379,6 +476,7 @@ def main(cfg_path: str | None = None) -> None:
             if stall >= patience:
                 print("Early stopping.")
                 break
+        epoch_times.append(perf_counter() - t_epoch0)
 
     # Save best checkpoint
     if best_state is not None:
