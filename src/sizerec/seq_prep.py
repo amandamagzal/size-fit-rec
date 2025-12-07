@@ -24,6 +24,7 @@ import numpy as np
 import pandas as pd
 
 from sizerec.vocab import _normalize_shoe_str
+from datagen.constants import SIZES as CLOTHING_SIZES
 
 # ---------------------------
 # 1) Join product attributes
@@ -107,7 +108,14 @@ def encode_features(
     
     size_str = df["purchased_size"].apply(_to_size_token)
     df["size_id"] = size_str.map(size_vocab)
+        # numeric meaning of size ---
+    def _to_numeric_size(token):
+        try:
+            return float(token)   # numeric sizes (like shoes)
+        except:
+            return CLOTHING_SIZES.index(token) if token in CLOTHING_SIZES else None
 
+    df["size_numeric"] = size_str.apply(_to_numeric_size)
     # label
     df["label_id"] = df["fit_outcome"].astype(str).map(label_map)
 
@@ -150,6 +158,8 @@ def build_examples(
         step_vals = {col: grp[col].tolist() for col in step_cols}
         labels = grp["label_id"].tolist()
         dates = grp["transaction_date"].tolist()
+        size_numeric_vals = grp["size_numeric"].tolist()   # <-- NEW: numeric sizes per transaction
+
 
         # Static (same for all examples of this consumer)
         static_vals = {col: int(grp[col].iloc[0]) for col in static_cols}
@@ -168,8 +178,8 @@ def build_examples(
                 "product_type_id_t": int(grp["product_type_id"].iloc[t]),
                 "material_id_t": int(grp["material_id"].iloc[t]),
                 "size_id_t": int(grp["size_id"].iloc[t]),
+                "size_numeric_t": float(size_numeric_vals[t]) if size_numeric_vals[t] is not None else np.nan,
             }
-
             if use_section:
                 rec["section_id_t"] = int(grp["section_id"].iloc[t])
 
@@ -190,7 +200,7 @@ def build_examples(
           + [f"{c}s" for c in step_cols] \
           + static_cols \
           + ["label_id",
-             "product_type_id_t", "material_id_t", "size_id_t"] \
+             "product_type_id_t", "material_id_t", "size_id_t", "size_numeric_t"] \
           + (["section_id_t"] if use_section else []) \
           + ["transaction_date_t"]
     return out[ordered]

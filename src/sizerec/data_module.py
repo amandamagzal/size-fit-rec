@@ -61,9 +61,8 @@ class SequenceDataset(Dataset):
         self.path = Path(csv_path)
         self.use_section = use_section
         self.use_country = use_country
-
+        
         df = pd.read_csv(self.path)
-
         # decode list columns (stored as JSON strings)
         def loads(x):
             return json.loads(x) if isinstance(x, str) else x
@@ -90,8 +89,9 @@ class SequenceDataset(Dataset):
         self.pt_t   = df["product_type_id_t"].astype(int).tolist()
         self.mat_t  = df["material_id_t"].astype(int).tolist()
         self.size_t = df["size_id_t"].astype(int).tolist()
+        self.size_numeric_t = df["size_numeric_t"].astype(float).tolist()
         self.sec_t  = df["section_id_t"].astype(int).tolist() if self.use_section else None
-
+        
 
     def __len__(self) -> int:
         return len(self.label_id)
@@ -108,6 +108,7 @@ class SequenceDataset(Dataset):
             "pt_t": self.pt_t[idx],
             "mat_t": self.mat_t[idx],
             "size_t": self.size_t[idx],
+            "size_numeric_t": float(self.size_numeric_t[idx]),
         }
         if self.use_section and self.section_ids is not None:
             item["section"] = self.section_ids[idx]      # list[int], 1-based ids
@@ -155,38 +156,39 @@ def make_collate(max_len: Optional[int] = None):
 
         # allocate tensors
         def zeros_bt():
-            return torch.full((B, T), fill_value = PAD_ID, dtype = torch.long)
+            return torch.full((B, T), fill_value=PAD_ID, dtype=torch.long)
 
         pt = zeros_bt()
         mat = zeros_bt()
         siz = zeros_bt()
         sec = zeros_bt() if ("section" in batch[0]) else None
 
-        gender = torch.empty(B, dtype = torch.long)
-        age_bin = torch.empty(B, dtype = torch.long)
-        country = torch.empty(B, dtype = torch.long) if ("country" in batch[0]) else None
-        label = torch.empty(B, dtype = torch.long)
+        gender = torch.empty(B, dtype=torch.long)
+        age_bin = torch.empty(B, dtype=torch.long)
+        country = torch.empty(B, dtype=torch.long) if ("country" in batch[0]) else None
+        label = torch.empty(B, dtype=torch.long)
 
-        pt_t   = torch.empty(B, dtype = torch.long)
-        mat_t  = torch.empty(B, dtype = torch.long)
-        size_t = torch.empty(B, dtype = torch.long)
-        sec_t  = torch.empty(B, dtype = torch.long) if ("sec_t" in batch[0]) else None
+        pt_t = torch.empty(B, dtype=torch.long)
+        mat_t = torch.empty(B, dtype=torch.long)
+        size_t = torch.empty(B, dtype=torch.long)
+        size_numeric_t = torch.empty(B, dtype=torch.float32)
+        sec_t = torch.empty(B, dtype=torch.long) if ("sec_t" in batch[0]) else None
 
-
-        padding_mask = torch.ones((B, T), dtype = torch.bool)  # True=PAD
+        padding_mask = torch.ones((B, T), dtype=torch.bool)  # True=PAD
 
         for i, b in enumerate(batch):
             # step-wise ids are already 1-based on disk; just pad/truncate
-            pt[i] = torch.tensor(_pad_1d(b["product_type"], T), dtype = torch.long)
-            mat[i] = torch.tensor(_pad_1d(b["material"], T), dtype = torch.long)
-            siz[i] = torch.tensor(_pad_1d(b["size"], T), dtype = torch.long)
-            
-            pt_t[i]   = b["pt_t"]
-            mat_t[i]  = b["mat_t"]
+            pt[i] = torch.tensor(_pad_1d(b["product_type"], T), dtype=torch.long)
+            mat[i] = torch.tensor(_pad_1d(b["material"], T), dtype=torch.long)
+            siz[i] = torch.tensor(_pad_1d(b["size"], T), dtype=torch.long)
+
+            pt_t[i] = b["pt_t"]
+            mat_t[i] = b["mat_t"]
             size_t[i] = b["size_t"]
-            
+            size_numeric_t[i] = float(b["size_numeric_t"])
+
             if sec is not None and "section" in b:
-                sec[i] = torch.tensor(_pad_1d(b["section"], T), dtype = torch.long)
+                sec[i] = torch.tensor(_pad_1d(b["section"], T), dtype=torch.long)
                 sec_t[i] = b["sec_t"]
 
             L = min(b["seq_len"], T)
@@ -200,7 +202,7 @@ def make_collate(max_len: Optional[int] = None):
             label[i] = b["label"]
 
         # causal mask [T, T]: block attention to future positions (upper triangle)
-        causal_mask = torch.triu(torch.ones((T, T), dtype = torch.bool), diagonal = 1)
+        causal_mask = torch.triu(torch.ones((T, T), dtype=torch.bool), diagonal=1)
 
         out = {
             "product_type": pt,
@@ -211,9 +213,10 @@ def make_collate(max_len: Optional[int] = None):
             "label": label,
             "padding_mask": padding_mask,
             "causal_mask": causal_mask,
-            "pt_t": pt_t, 
-            "mat_t": mat_t, 
-            "size_t": size_t
+            "pt_t": pt_t,
+            "mat_t": mat_t,
+            "size_t": size_t,
+            "size_numeric_t": size_numeric_t,   # <-- NEW
         }
         if sec is not None:
             out["section"] = sec

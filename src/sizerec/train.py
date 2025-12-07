@@ -31,6 +31,7 @@ import torch
 import torch.nn as nn
 from torch.optim import AdamW
 import yaml
+import torch.nn.functional as F
 
 from sizerec.vocab import (
     build_fit_label_map,
@@ -101,7 +102,6 @@ def main(cfg_path: str | None = None) -> None:
     else:
         device = torch.device("cpu")
 
-    # device = torch.device("cpu")
     
     # Prepare run directory
     run_id = datetime.now().strftime("%Y%m%d-%H%M%S")
@@ -174,6 +174,76 @@ def main(cfg_path: str | None = None) -> None:
         use_country = bool(data_cfg["use_country"]),
     )
     train_df, val_df, test_df = split_by_consumer(examples, seed = train_cfg.get("seed", 111))
+    print("[TRAIN EXPAND] Expanding train_df only on FIT rows...")
+
+    fit_id = label_map["fit"]
+    inv_size_vocab = {v: k for k, v in size_vocab.items()}  # id → token
+
+    def to_numeric(tok):
+        try:
+            return float(tok)
+        except:
+            return CLOTHING_SIZES.index(tok)
+
+    # merge product_type info to know which sizes are valid
+    _train = train_df.merge(
+        products[["product_type"]],
+        left_on="product_type_id_t",
+        right_index=True,
+        how="left"
+    )
+
+    # keep only real FIT rows
+    fit_only = _train[_train["label_id"] == fit_id]
+    print("[TRAIN EXPAND] FIT rows:", len(fit_only))
+
+    expanded = []
+
+    for _, r in fit_only.iterrows():
+        purchased_id = int(r["size_id_t"])
+        purchased_tok = inv_size_vocab[purchased_id]
+
+        try:
+            purchased_val = float(purchased_tok)
+        except:
+            purchased_val = CLOTHING_SIZES.index(purchased_tok)
+
+        product_type = r["product_type"].lower()
+
+        # valid candidate sizes
+        if "shoe" in product_type:
+            valid_tokens = [
+                tok for tok in inv_size_vocab.values()
+                if tok.replace(".", "", 1).isdigit()
+            ]
+        else:
+            valid_tokens = [
+                tok for tok in inv_size_vocab.values()
+                if tok in CLOTHING_SIZES
+            ]
+
+        for tok in valid_tokens:
+            cand_id = size_vocab[tok]
+            try:
+                cand_val = float(tok)
+            except:
+                cand_val = CLOTHING_SIZES.index(tok)
+
+            if cand_id == purchased_id:
+                new_label = fit_id
+            elif cand_val < purchased_val:
+                new_label = label_map["too small"]
+            else:
+                new_label = label_map["too large"]
+
+            new_row = r.copy()
+            new_row["size_id_t"] = cand_id
+            new_row["size_numeric_t"] = cand_val
+            new_row["label_id"] = new_label
+            expanded.append(new_row)
+
+    train_df = pd.DataFrame(expanded).reset_index(drop=True)
+    print("[TRAIN EXPAND] New train size:", len(train_df))
     # 4) a) Keep only "fit" events in val/test ===
     fit_id = label_map["fit"]
 
@@ -265,6 +335,7 @@ def main(cfg_path: str | None = None) -> None:
                 # clone example but override size and label
                 new_row = r.copy()
                 new_row["size_id_t"] = size_vocab[token]
+                new_row["size_numeric_t"] = cand_val  
                 new_row["label_id"] = new_label
                 rows.append(new_row)
 
@@ -373,8 +444,13 @@ def main(cfg_path: str | None = None) -> None:
 
             optimizer.zero_grad(set_to_none = True)
             with torch.cuda.amp.autocast(enabled = amp_enabled):
-                logits = model(batch)          # [B, C]
-                loss = criterion(logits, batch["label"])
+                class_logits, size_pred = model(batch)
+                ce_loss = criterion(class_logits, batch["label"])
+                true_size = batch["size_numeric_t"]
+                mse_loss = F.mse_loss(size_pred, true_size)
+                # weighting factor 
+                alpha = 0.1
+                loss = ce_loss + alpha * mse_loss
 
             scaler.scale(loss).backward()
             scaler.unscale_(optimizer)
@@ -399,12 +475,16 @@ def main(cfg_path: str | None = None) -> None:
                 for k, v in batch.items():
                     batch[k] = v.to(device) if torch.is_tensor(v) else v
 
-                logits = model(batch)  # [B, C]
-                all_logits.append(logits.detach().cpu())
+                class_logits, size_pred = model(batch)
+
+                # store only classification logits here (size preds not used in val CE)
+                all_logits.append(class_logits.detach().cpu())
 
                 ys.extend(batch["label"].detach().cpu().tolist())
-                ps.extend(logits.argmax(dim=1).detach().cpu().tolist())
-                fit_scores.extend(logits[:, fit_class_idx].detach().cpu().tolist())
+                ps.extend(class_logits.argmax(dim=1).detach().cpu().tolist())
+                # fit_scores.extend(class_logits[:, fit_class_idx].detach().cpu().tolist())
+                probs = F.softmax(class_logits, dim=1)
+                fit_scores.extend(probs[:, fit_class_idx].detach().cpu().tolist())
 
         # Full logits tensor, aligned with val.csv rows
         logits_val = torch.cat(all_logits, dim=0)   # [N_val, C]
@@ -421,7 +501,7 @@ def main(cfg_path: str | None = None) -> None:
                 f"but logits rows={len(logits_val)}"
             )
 
-        val_df["fit_logit"] = fit_scores
+        val_df["fit_prob"] = fit_scores
 
         # -------------------------------
         # Compute size-accuracy + size-loss
@@ -442,8 +522,8 @@ def main(cfg_path: str | None = None) -> None:
             true_idx = true_rows.index[0]
             true_size = true_rows["size_id_t"].iloc[0]
 
-            # Predicted size = candidate with max fit logit
-            pred_idx = g["fit_logit"].idxmax()
+            # Predicted size = candidate with max fit prob
+            pred_idx = g["fit_prob"].idxmax()
             pred_size = val_df.loc[pred_idx, "size_id_t"]
 
             if pred_size == true_size:
@@ -520,7 +600,7 @@ def main(cfg_path: str | None = None) -> None:
 
         Writes:
             • metrics_<split>.json
-            • preds_<split>.csv (includes fit_logit)
+            • preds_<split>.csv (includes fit_prob)
         """
         model.eval()
         ys, ps = [], []
@@ -531,10 +611,12 @@ def main(cfg_path: str | None = None) -> None:
             for batch in loader:
                 for k, v in batch.items():
                     batch[k] = v.to(device) if torch.is_tensor(v) else v
-                logits = model(batch)
+                class_logits, size_pred = model(batch)
                 ys.extend(batch["label"].detach().cpu().tolist())
-                ps.extend(logits.argmax(dim = 1).detach().cpu().tolist())
-                fit_scores.extend(logits[:, fit_class_idx].detach().cpu().tolist())
+                ps.extend(class_logits.argmax(dim = 1).detach().cpu().tolist())
+                # fit_scores.extend(class_logits[:, fit_class_idx].detach().cpu().tolist())
+                probs = F.softmax(class_logits, dim=1)
+                fit_scores.extend(probs[:, fit_class_idx].detach().cpu().tolist())
 
         y_true = np.asarray(ys, dtype=int) if ys else np.array([], dtype=int)
         y_pred = np.asarray(ps, dtype=int) if ps else np.array([], dtype=int)
@@ -561,7 +643,7 @@ def main(cfg_path: str | None = None) -> None:
                "transaction_date_t" in df_split.columns:
 
                 df_split = df_split.copy()
-                df_split["fit_logit"] = fit_scores
+                df_split["fit_prob"] = fit_scores
 
                 groups = df_split.groupby(["consumer_id", "transaction_date_t"])
                 total = 0
@@ -576,7 +658,7 @@ def main(cfg_path: str | None = None) -> None:
                     true_size = true_rows["size_id_t"].iloc[0]
 
                     # predicted size = size with highest fit logit
-                    pred_row = g.loc[g["fit_logit"].idxmax()]
+                    pred_row = g.loc[g["fit_prob"].idxmax()]
                     pred_size = pred_row["size_id_t"]
 
                     if pred_size == true_size:
@@ -594,9 +676,9 @@ def main(cfg_path: str | None = None) -> None:
         # Save metrics JSON (now includes size_accuracy if computed)
         _save_json(metrics, out_root / f"metrics_{split_name}.json")
 
-        # Save preds with fit_logit (unchanged idea)
+        # Save preds with fit_prob
         pd.DataFrame(
-            {"y_true": y_true, "y_pred": y_pred, "fit_logit": fit_scores}
+            {"y_true": y_true, "y_pred": y_pred, "fit_prob": fit_scores}
         ).to_csv(out_root / f"preds_{split_name}.csv", index=False, encoding="utf-8")
 
         print(f"{split_name}: acc={acc:.4f}, macroF1={prf['macro']['f1']:.4f}")

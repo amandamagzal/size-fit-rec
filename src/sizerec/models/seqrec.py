@@ -65,6 +65,10 @@ class SeqRec(nn.Module):
         self.head = nn.Linear(d_model, num_classes)
         nn.init.xavier_uniform_(self.head.weight); nn.init.zeros_(self.head.bias)
 
+        self.reg_head = nn.Linear(d_model, 1)
+        nn.init.xavier_uniform_(self.reg_head.weight)
+        nn.init.zeros_(self.reg_head.bias)
+
     def _sum_history_embeddings(self, batch: Dict[str, torch.Tensor]) -> torch.Tensor:
         pt, mat, siz = batch["product_type"], batch["material"], batch["size"]  # [B,T]
         x = self.emb_product_type(pt) + self.emb_material(mat) + self.emb_size(siz)
@@ -114,4 +118,7 @@ class SeqRec(nn.Module):
         fused = last_states + cand
 
         # 4) Classify
-        return self.head(fused)  # [B, num_classes]
+        class_logits = self.head(fused)  # [B, num_classes]
+        size_pred = self.reg_head(fused).squeeze(-1)  # [B]
+
+        return class_logits, size_pred
