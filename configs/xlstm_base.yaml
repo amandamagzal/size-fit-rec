@@ -1,5 +1,10 @@
 data:
   csv_dir: data
+  gen:
+    enable: true
+    n_consumers: 1000000
+    n_products: 1000000
+    seed: 10
   use_section: true
   use_country: true
   age_bins: [18,25,30,35,40,45,50,60,200]
