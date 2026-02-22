@@ -6,7 +6,7 @@ data:
   # Generate data
   gen:
     enable: true
-    n_consumers: 100000
+    n_consumers: 1000000
     n_products: 100000
     seed: 10
 
