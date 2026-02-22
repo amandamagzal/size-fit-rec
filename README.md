@@ -50,7 +50,7 @@ We compare two sequence encoders—**Transformer** and **xLSTM**—with everythi
 ### 1) Environment
 
 ```bash
-python -m venv .venv
+python3.11 -m venv .venv
 source .venv/bin/activate            # Windows: .venv\Scripts\activate
 python -m pip install --upgrade pip
 pip install -r requirements.txt

@@ -444,13 +444,8 @@ def main(cfg_path: str | None = None) -> None:
 
             optimizer.zero_grad(set_to_none = True)
             with torch.cuda.amp.autocast(enabled = amp_enabled):
-                class_logits, size_pred = model(batch)
-                ce_loss = criterion(class_logits, batch["label"])
-                true_size = batch["size_numeric_t"]
-                mse_loss = F.mse_loss(size_pred, true_size)
-                # weighting factor 
-                alpha = 0.1
-                loss = ce_loss + alpha * mse_loss
+                class_logits = model(batch)
+                loss = criterion(class_logits, batch["label"])
 
             scaler.scale(loss).backward()
             scaler.unscale_(optimizer)
@@ -464,7 +459,7 @@ def main(cfg_path: str | None = None) -> None:
 
         # Validation
         model.eval()
-        fit_class_idx = label_order.index("fit")
+        fit_class_idx = label_map["fit"]
 
         ys, ps = [], []
         fit_scores = []
@@ -475,7 +470,7 @@ def main(cfg_path: str | None = None) -> None:
                 for k, v in batch.items():
                     batch[k] = v.to(device) if torch.is_tensor(v) else v
 
-                class_logits, size_pred = model(batch)
+                class_logits = model(batch)
 
                 # store only classification logits here (size preds not used in val CE)
                 all_logits.append(class_logits.detach().cpu())
@@ -587,7 +582,7 @@ def main(cfg_path: str | None = None) -> None:
     })
     (out_root / "run_info.json").write_text(json.dumps(run_info, ensure_ascii = False, indent = 2), encoding = "utf-8")
 
-        # 8) Final evaluation (val & test), write metrics + preds
+    # 8) Final evaluation (val & test), write metrics + preds
     def _eval_and_write(split_name: str, loader: torch.utils.data.DataLoader):
         """
         Run full evaluation on a split (val or test).
@@ -605,13 +600,13 @@ def main(cfg_path: str | None = None) -> None:
         model.eval()
         ys, ps = [], []
         fit_scores = []
-        fit_class_idx = label_order.index("fit")
+        fit_class_idx = label_map["fit"]
 
         with torch.no_grad():
             for batch in loader:
                 for k, v in batch.items():
                     batch[k] = v.to(device) if torch.is_tensor(v) else v
-                class_logits, size_pred = model(batch)
+                class_logits = model(batch)
                 ys.extend(batch["label"].detach().cpu().tolist())
                 ps.extend(class_logits.argmax(dim = 1).detach().cpu().tolist())
                 # fit_scores.extend(class_logits[:, fit_class_idx].detach().cpu().tolist())
