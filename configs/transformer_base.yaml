@@ -4,10 +4,11 @@ data:
   csv_dir: data
 
   # Generate data
-  gen.enable: true
-  gen.n_consumers: 1000
-  gen.n_products: 1000
-  gen.seed: 10
+  gen:
+    enable: true
+    n_consumers: 1000
+    n_products: 1000
+    seed: 10
 
   # Max history steps the model can see (truncate to most recent L; right-pad shorter).
   max_len: 16
