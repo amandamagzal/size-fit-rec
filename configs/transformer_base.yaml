@@ -3,6 +3,12 @@ data:
   # Folder containing your CSVs from datagen (relative to repo root).
   csv_dir: data
 
+  # Generate data
+  gen.enable: true
+  gen.n_consumers: 1000
+  gen.n_products: 1000
+  gen.seed: 10
+
   # Max history steps the model can see (truncate to most recent L; right-pad shorter).
   max_len: 16
 
