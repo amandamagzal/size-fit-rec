@@ -6,8 +6,8 @@ data:
   # Generate data
   gen:
     enable: true
-    n_consumers: 1000
-    n_products: 1000
+    n_consumers: 1000000
+    n_products: 1000000
     seed: 10
 
   # Max history steps the model can see (truncate to most recent L; right-pad shorter).
