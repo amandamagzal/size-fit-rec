@@ -82,6 +82,11 @@ python -m sizerec.train configs/transformer_base.yaml
 python -m sizerec.train configs/xlstm_base.yaml
 ```
 
+### 5) Run Experiments
+```bash
+python -m sizerec.runner configs/experiments.yaml
+```
+
 ---
 
 ## What the configs control
