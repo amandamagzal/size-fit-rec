@@ -126,6 +126,17 @@ def main(cfg_path: str | None = None) -> None:
             seed = int(gen_cfg.get("seed", 10)),
         )
 
+    print("CWD:", os.getcwd())
+    print("csv_dir:", csv_dir)
+    print("csv_dir resolved:", csv_dir.resolve())
+    print("data dir exists?", csv_dir.exists())
+    if csv_dir.exists():
+        print("data dir contents:", sorted([p.name for p in csv_dir.glob("*")])[:50])
+
+    target = (csv_dir / "consumers.csv")
+    print("consumers.csv resolved:", target.resolve())
+    print("consumers.csv exists?", target.exists())
+
     csv_dir = Path(data_cfg["csv_dir"])
     if not csv_dir.is_absolute():
         csv_dir = REPO_ROOT / csv_dir
