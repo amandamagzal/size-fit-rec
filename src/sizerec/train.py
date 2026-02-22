@@ -57,7 +57,7 @@ from sizerec.models.seqrec import SeqRec
 from sizerec.models.utils import count_params
 from sizerec.metrics import accuracy, precision_recall_f1_per_class, confusion_matrix
 
-from sizerec.paths import CONFIGS_DIR, DATA_DIR, RUNS_DIR, ensure_dir, run_dir
+from sizerec.paths import REPO_ROOT, CONFIGS_DIR, DATA_DIR, RUNS_DIR, ensure_dir, run_dir
 
 
 # ---------------------------
@@ -125,6 +125,11 @@ def main(cfg_path: str | None = None) -> None:
             n_products = int(gen_cfg.get("n_products", 1000)),
             seed = int(gen_cfg.get("seed", 10)),
         )
+
+    csv_dir = Path(data_cfg["csv_dir"])
+    if not csv_dir.is_absolute():
+        csv_dir = REPO_ROOT / csv_dir
+    csv_dir.mkdir(parents=True, exist_ok=True)
 
     consumers = pd.read_csv(csv_dir / "consumers.csv", parse_dates = ["start_date"])
     products = pd.read_csv(csv_dir / "products.csv", converters = {"available_countries": json.loads})
