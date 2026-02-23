@@ -52,7 +52,7 @@ from datagen.constants import SIZES as CLOTHING_SIZES
 from datagen.build_data import generate_and_read_data
 
 from sizerec.data_module import SequenceDataset, make_collate
-from sizerec.models.encoders import TransformerEncoderBackbone, xLSTMEncoderBackbone
+from sizerec.models.encoders import TransformerEncoderBackbone, xLSTMEncoderBackbone, LSTMEncoderBackbone
 from sizerec.models.seqrec import SeqRec
 from sizerec.models.utils import count_params
 from sizerec.metrics import accuracy, precision_recall_f1_per_class, confusion_matrix
@@ -382,6 +382,12 @@ def main(cfg_path: str | None = None) -> None:
             d_model = int(model_cfg["d_model"]),
             n_layers = int(model_cfg["n_layers"]),
             n_heads = int(model_cfg["n_heads"]),
+            dropout = float(model_cfg["dropout"]),
+        )
+    elif model_type == "lstm":
+        encoder = LSTMEncoderBackbone(
+            d_model = int(model_cfg["d_model"]),
+            n_layers = int(model_cfg["n_layers"]),
             dropout = float(model_cfg["dropout"]),
         )
     elif model_type == "xlstm":

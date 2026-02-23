@@ -11,7 +11,7 @@ data:
     seed: 10
 
   # Max history steps the model can see (truncate to most recent L; right-pad shorter).
-  max_len: 16
+  max_len: 32
 
   # DataLoader
   batch_size: 256
@@ -23,8 +23,7 @@ data:
   use_timegap: false    # optional: binned time since previous purchase per step
 
   # Age encoding as bins (inclusive left edges; last edge is "catch-all")
-  # Example: 18–24, 25–29, ..., 60–65, 66+
-  age_bins: [18, 25, 30, 35, 40, 45, 50, 55, 60, 66, 200]
+  age_bins: [18, 25, 35, 45, 55, 65, 100]
 
   # Fit-outcome label order (frozen for the whole project)
   label_order: ["too small", "fit", "too large", "not applicable"]
@@ -34,14 +33,14 @@ model:
   type: transformer
   d_model: 256           # embedding width / Transformer hidden size
   n_layers: 4            # encoder layers
-  n_heads: 4             # attention heads (must divide d_model)
+  n_heads: 8             # attention heads (must divide d_model)
   dropout: 0.1
   use_cls: false         # false = pool last valid step; true = prepend CLS token
 
 # ========= TRAINING =========
 train:
-  epochs: 30
-  lr: 0.001              # AdamW learning rate
+  epochs: 20
+  lr: 0.0003             # AdamW learning rate
   weight_decay: 0.01
   betas: [0.9, 0.999]
   label_smoothing: 0.0   # set 0.05 if you see overconfidence
@@ -51,7 +50,7 @@ train:
 
   # Early stopping on validation loss
   early_stopping_patience: 5
-  seed: 42
+  seed: 10
 
 # ========= EVAL / LOGGING =========
 logging:

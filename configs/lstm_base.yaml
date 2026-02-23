@@ -14,12 +14,10 @@ data:
   num_workers: 0
 
 model:
-  type: xlstm
+  type: lstm
   d_model: 256
   n_layers: 4
-  n_heads: 8         # ignored by xLSTM
   dropout: 0.1
-  use_cls: false     # ignored by SeqRec
 
 train:
   seed: 10

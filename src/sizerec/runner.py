@@ -11,7 +11,7 @@ For each experiment:
 
 from __future__ import annotations
 import json
-import os
+import sys
 from pathlib import Path
 from time import perf_counter
 from typing import Any, Dict
@@ -110,4 +110,7 @@ def run_experiments(matrix_path: str | Path = CONFIGS_DIR / "experiments.yaml") 
 
 
 if __name__ == "__main__":
-    run_experiments()
+    if len(sys.argv) > 1:
+        run_experiments(sys.argv[1])
+    else:
+        run_experiments()
