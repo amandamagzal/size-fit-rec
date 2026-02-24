@@ -42,6 +42,12 @@ class TransformerEncoderBackbone(nn.Module):
         padding_mask: torch.Tensor,     # [B,T] True=PAD
         causal_mask: Optional[torch.Tensor] = None,  # [T,T] True=block future
     ) -> torch.Tensor:
+        
+        if causal_mask is not None:
+            causal_mask = causal_mask.to(torch.bool)
+
+        padding_mask = padding_mask.to(torch.bool)
+
         return self.encoder(x, mask = causal_mask, src_key_padding_mask = padding_mask)
 
 
@@ -144,7 +150,6 @@ class xLSTMEncoderBackbone(nn.Module):
         padding_mask: torch.Tensor,     # [B,T] True=PAD
         causal_mask: Optional[torch.Tensor] = None,  # not needed (xLSTM is causal)
     ) -> torch.Tensor:
-        # Zero-out padded positions to avoid positional embedding leakage into recurrence
         if padding_mask is not None:
             x = x.masked_fill(padding_mask.unsqueeze(-1), 0.0)
 

@@ -26,7 +26,7 @@ data:
   age_bins: [18, 25, 35, 45, 55, 65, 100]
 
   # Fit-outcome label order (frozen for the whole project)
-  label_order: ["too small", "fit", "too large", "not applicable"]
+  label_order: ["too small", "fit", "too large"]
 
 # ========= MODEL =========
 model:

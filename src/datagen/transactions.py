@@ -14,10 +14,10 @@ import numpy as np
 import pandas as pd
 from scipy.stats import truncnorm
 
-from datagen.constants import SIZES, SHOE_SIZES
+from datagen.constants import SIZES, SHOE_SIZES, SIZE_MAPPING
 
 
-def generate_purchases(max_purchases: int = 3000) -> int:
+def generate_purchases(max_purchases: int = 100) -> int:
     """Sample a realistic number of purchases for a consumer.
 
     Uses a truncated normal distribution with a small probability mass at 1.
@@ -58,13 +58,14 @@ def generate_sequential_purchases(start_date: pd.Timestamp, num_purchases: int) 
         List of purchase timestamps (length == num_purchases).
     """
     purchase_dates = []
-    current = start_date
+    current_date = start_date
+    purchase_dates.append(current_date)
 
-    for _ in range(num_purchases):
+    for _ in range(num_purchases - 1):
         # Randomized days between purchases
         days_between = np.random.randint(1, 90)
-        current = current + timedelta(days=days_between)
-        purchase_dates.append(current)
+        current_date = current_date + timedelta(days=days_between)
+        purchase_dates.append(current_date)
 
     return purchase_dates
 
@@ -125,21 +126,20 @@ def calculate_fit(
         purchased_size: Purchased size (string for apparel, float for shoes).
 
     Returns:
-        One of: 'too small', 'too large', 'fit', 'not applicable'.
-    """
-    size_mapping = {"2XS": 1, "XS": 2, "S": 3, "M": 4, "L": 5, "XL": 6, "2XL": 7}
+        One of: 'too small', 'too large', 'fit'.
+    """ 
 
     # Determine true size
     if "Shoes" in product_type:
         true_size = consumer["shoe_size"]
     elif "Pants & Leggings" in product_type:
-        true_size = size_mapping[consumer["lower_size"]]
+        true_size = SIZE_MAPPING[consumer["lower_size"]]
     else:
-        true_size = size_mapping[consumer["upper_size"]]
+        true_size = SIZE_MAPPING[consumer["upper_size"]]
 
     # Convert purchased size if needed
     if isinstance(purchased_size, str):
-        purchased_size = size_mapping[purchased_size]
+        purchased_size = SIZE_MAPPING[purchased_size]
 
     # Adjustments and tolerances
     tol_small = consumer["consumer_tolerance_too_small"]
@@ -152,11 +152,8 @@ def calculate_fit(
         return "too small"
     elif purchased_size > adjusted_size + tol_large:
         return "too large"
-    elif (true_size + tol_large > purchased_size + fit_offset) and (
-        true_size + tol_small < purchased_size + fit_offset
-    ):
+    else:
         return "fit"
-    return "not applicable"
 
 
 def generate_transactions(consumer_features: pd.DataFrame, product_features: pd.DataFrame) -> pd.DataFrame:
@@ -187,7 +184,11 @@ def generate_transactions(consumer_features: pd.DataFrame, product_features: pd.
         ]
 
         for purchase_date in purchase_dates:
-            product = available.sample(1).iloc[0]
+
+            if available.empty:
+                continue
+            else:
+                product = available.sample(1).iloc[0]
             product_type = product["product_type"]
 
             purchased_size = sample_purchased_size(consumer, product_type)

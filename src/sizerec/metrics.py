@@ -1,5 +1,5 @@
 """
-Metrics for 4-class fit_outcome classification.
+Metrics for 3-class fit_outcome classification.
 """
 
 from typing import Dict, Tuple

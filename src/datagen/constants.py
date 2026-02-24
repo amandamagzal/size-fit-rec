@@ -28,6 +28,7 @@ AGE_STD = 10
 
 # Universal clothing sizes (ordinal, smallest → largest)
 SIZES = ["2XS", "XS", "S", "M", "L", "XL", "2XL"]
+SIZE_MAPPING = {"2XS": 1, "XS": 2, "S": 3, "M": 4, "L": 5, "XL": 6, "2XL": 7}
 
 # Clothing size distributions by gender (must sum to 1.0)
 SIZE_DISTS = {

@@ -35,7 +35,7 @@ class SeqRec(nn.Module):
         d_model: int = 256,
         dropout: float = 0.1,
         max_len: int = 512,
-        num_classes: int = 4,
+        num_classes: int = 3,
         # pluggable encoder module
         encoder: nn.Module = None,
     ) -> None:
@@ -102,6 +102,9 @@ class SeqRec(nn.Module):
         # 1) History → embeddings → encoder
         x = self._sum_history_embeddings(batch)       # [B,T,d]
         enc = self.encoder(x, padding_mask = pad_mask, causal_mask = attn_mask)  # [B,T,d]
+
+        # Zero padded positions (prevents PAD state pollution in Transformer)
+        enc = enc.masked_fill(pad_mask.unsqueeze(-1), 0.0)
 
         # 2) Pool last valid step
         lengths = (~pad_mask).sum(dim=1).clamp(min=1)             # [B]

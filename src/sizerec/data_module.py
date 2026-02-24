@@ -4,7 +4,7 @@ Dataset + collate for fit_outcome prediction (1-based step-wise IDs).
 - Reads processed split CSVs produced by seq_prep.save_processed_splits().
 - Decodes list columns (JSON) back to Python lists of ints.
 - Pads batches with PAD_ID=0 (reserved), builds padding & causal masks.
-- Returns integer tensors only (no strings).
+- Returns integer tensors + size_numeric_t float.
 
 Expected columns in each split CSV:
   consumer_id (str)
@@ -12,11 +12,11 @@ Expected columns in each split CSV:
   product_type_ids (JSON list[int])   # step-wise, IDs start at 1
   material_ids     (JSON list[int])   # step-wise, IDs start at 1
   size_ids         (JSON list[int])   # step-wise, IDs start at 1
-  section_ids      (JSON list[int])   # step-wise, IDs start at 1  [optional if use_section=False]
+  section_ids      (JSON list[int])   # step-wise, IDs start at 1   [optional if use_section=False]
   gender_id        (int)              # static, can be 0-based
   country_id       (int)              # static, can be 0-based      [optional if use_country=False]
   age_bin_id       (int)              # static, can be 0-based
-  label_id         (int)              # target class in {0..3}
+  label_id         (int)              # target class in {0..2}
   product_type_id_t (int)             # for analysis; not used here
   transaction_date_t                  # for analysis; not used here
 """
@@ -103,7 +103,7 @@ class SequenceDataset(Dataset):
             "size": self.size_ids[idx],                  # list[int], 1-based ids
             "gender": int(self.gender_id[idx]),          # int
             "age_bin": int(self.age_bin_id[idx]),        # int
-            "label": int(self.label_id[idx]),            # int (0..3)
+            "label": int(self.label_id[idx]),            # int (0..2)
             "seq_len": int(self.seq_len[idx]),           # int
             "pt_t": self.pt_t[idx],
             "mat_t": self.mat_t[idx],
@@ -216,7 +216,7 @@ def make_collate(max_len: Optional[int] = None):
             "pt_t": pt_t,
             "mat_t": mat_t,
             "size_t": size_t,
-            "size_numeric_t": size_numeric_t,   # <-- NEW
+            "size_numeric_t": size_numeric_t,
         }
         if sec is not None:
             out["section"] = sec
