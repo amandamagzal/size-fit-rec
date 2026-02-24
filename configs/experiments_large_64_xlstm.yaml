@@ -1,0 +1,37 @@
+experiments:
+
+  - name: xlstm_len64_large_s1
+    base: configs/xlstm_base.yaml
+    overrides:
+      data.csv_dir: data/synth_c250k_p60k_s10
+      data.max_len: 64
+      data.batch_size: 96
+      data.gen.enable: false
+      data.gen.n_consumers: 250000
+      data.gen.n_products: 60000
+      data.gen.seed: 10
+      train.seed: 1
+
+  - name: xlstm_len64_large_s2
+    base: configs/xlstm_base.yaml
+    overrides:
+      data.csv_dir: data/synth_c250k_p60k_s10
+      data.max_len: 64
+      data.batch_size: 96
+      data.gen.enable: false
+      data.gen.n_consumers: 250000
+      data.gen.n_products: 60000
+      data.gen.seed: 10
+      train.seed: 2
+
+  - name: xlstm_len64_large_s3
+    base: configs/xlstm_base.yaml
+    overrides:
+      data.csv_dir: data/synth_c250k_p60k_s10
+      data.max_len: 64
+      data.batch_size: 96
+      data.gen.enable: false
+      data.gen.n_consumers: 250000
+      data.gen.n_products: 60000
+      data.gen.seed: 10
+      train.seed: 3
