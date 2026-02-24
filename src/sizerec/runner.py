@@ -6,7 +6,6 @@ For each experiment:
   - merge overrides onto a base YAML config
   - write a temp merged config under artifacts/tmp/
   - call sizerec.train.main(merged_cfg_path)
-  - read/write run_info.json (params, times, memory, etc.)
 """
 
 from __future__ import annotations

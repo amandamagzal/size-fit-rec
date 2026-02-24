@@ -1,61 +1,208 @@
-# Sequence-Based Size & Fit Recommender
+# Sequence-Based Size Recommendation
 
-**Comparison of Transformer vs xLSTM encoders for next-step size selection**
-
-## Description
-
-A minimal, reproducible pipeline for **personalized next-step size recommendation** from purchase histories.
-
-For each consumer and purchase event, the model scores candidate sizes using a three-class fit label
-`{too small / fit / too large}` and selects the size with the highest predicted probability of `fit`.
-
-We compare three sequence encoders:
-
-* **Transformer (causal self-attention)**
-* **xLSTM (modern recurrent backbone)**
-* **LSTM (classical recurrent baseline)**
-
-All other components (embeddings, pooling, classifier head, optimization, batching) are held constant to isolate backbone differences.
+**Comparison of LSTM, Transformer, and xLSTM encoders for next-step size selection**
 
 ---
 
-## Task formulation
+## Overview
 
-This is a causal next-step size-selection problem.
+This repository implements a **causal sequence model for size recommendation** using synthetic purchase histories.
 
-For each purchase at time *t*:
+We compare three sequence backbones under a shared architecture:
 
-1. We condition only on:
+* **LSTM** (baseline)
+* **Transformer** (causal self-attention)
+* **xLSTM** (modern recurrent)
 
-   * Past purchase history `(x₁,…,x_{t-1})`
-   * Current item attributes at time *t* (product type, material, candidate size, optional section)
-   * Static consumer features (gender, age-bin, optional country)
-
-2. Each purchase event is expanded into multiple candidate-size rows:
-
-   * One row per valid size in the appropriate size vocabulary
-   * Labels assigned deterministically as:
-
-     * `too small`
-     * `fit`
-     * `too large`
-
-3. The final predicted size is:
-
-   ```
-   argmax P(fit | history, current item, candidate size)
-   ```
+All other components (embeddings, pooling, head, optimizer, training schedule) are held constant to isolate backbone differences.
 
 ---
 
-## Repo layout
+## Problem Setup
+
+The core modeling task is:
+
+> **Next-step fit outcome classification**
+
+For each consumer and purchase step `t > 0`:
+
+* **Input**: history up to `t-1`
+* **Target**: fit outcome at `t`
+
+  * `too small`
+  * `fit`
+  * `too large`
+
+The model is strictly causal:
+
+* History excludes the current step
+* Transformer uses a causal mask
+* LSTM/xLSTM are inherently causal
+
+---
+
+## From Fit Prediction to Size Recommendation
+
+We convert fit classification into a size recommendation problem via **synthetic candidate expansion**.
+
+### Training
+
+1. Build next-step examples.
+2. Keep only rows where the original purchased outcome was `"fit"`.
+   (This ensures exactly one true “fit” candidate per purchase event.)
+3. Expand each example into one row per valid size.
+4. Assign labels deterministically:
+
+```
+candidate < purchased → too small
+candidate > purchased → too large
+candidate == purchased → fit
+```
+
+Labels during expansion are based purely on ordinal size comparison (not on internal synthetic fit offsets).
+
+---
+
+### Inference & Evaluation
+
+For each purchase event:
+
+```
+predicted_size = argmax P(fit | history, current_item, candidate_size)
+```
+
+Candidates are grouped by:
+
+```
+(consumer_id, transaction_date_t)
+```
+
+### Primary Metric
+
+**Test Size Accuracy**
+
+Fraction of events where the selected size matches the true purchased size.
+
+### Secondary Metrics
+
+Computed **only on true purchased rows (one per event)** and reported for reference:
+
+* Classification accuracy
+* Per-class precision / recall / F1
+* Macro-F1
+* Confusion matrix
+
+---
+
+## Model Architecture
+
+### Inputs (per history step)
+
+* product_type
+* material
+* purchased size
+* optional section
+
+### Static Features (broadcast across time)
+
+* gender
+* age_bin
+* optional country
+
+All embeddings are summed with a learned positional embedding.
+
+### Backbone Encoders
+
+| Model       | Description                       |
+| ----------- | --------------------------------- |
+| LSTM        | Packed unidirectional LSTM        |
+| Transformer | Causal masked self-attention      |
+| xLSTM       | Block stack (sLSTM configuration) |
+
+### Pooling & Prediction
+
+1. Encode full history
+2. Extract **last valid time step**
+3. Add candidate embedding (current item + size)
+4. Linear layer → 3-class logits
+
+No CLS token is used in the current implementation.
+
+---
+
+## Synthetic Dataset
+
+Data is fully synthetic and reproducible.
+
+### Consumers
+
+* Gender, country, age
+* Upper/lower clothing size
+* Shoe size
+* Personal tolerance margins
+
+### Products
+
+* Section
+* Product type
+* Material
+* Fit type
+* Size accuracy
+* Internal `fit_offset` (used only during data generation)
+
+### Transactions
+
+* Sequential purchase timestamps
+* Purchased size sampled near true size
+* Fit outcome computed using tolerance + fit_offset
+
+**Important:**
+The model never receives `fit_offset` as input.
+
+---
+
+## Experimental Setup
+
+We evaluate:
+
+* 3 models
+* Multiple dataset scales
+* Multiple history lengths
+* 3 training seeds per configuration
+
+Primary focus:
+
+* **RQ1:** Performance comparison (Transformer vs xLSTM vs LSTM)
+* **RQ2:** Effect of dataset scale and history length
+* **RQ3:** Efficiency trade-offs (parameters, runtime, memory)
+
+---
+
+## Efficiency Metrics
+
+Per run:
+
+* Trainable parameters
+* Mean epoch time
+* Total training time
+* Peak GPU memory
+
+Results can be consolidated using:
+
+```
+python -m sizerec.collect_runs
+```
+
+---
+
+## Repository Structure
 
 ```
 .
 ├─ configs/
 │  ├─ transformer_base.yaml
 │  ├─ xlstm_base.yaml
-|  ├─ lstm_base.yaml
+│  ├─ lstm_base.yaml
 │  └─ experiments.yaml
 ├─ data/                          # generated CSVs
 ├─ notebooks/
@@ -77,7 +224,7 @@ For each purchase at time *t*:
 │     │  ├─ encoders.py          # Transformer / xLSTM / LSTM backbones
 │     │  └─ seqrec.py            # shared wrapper
 │     ├─ train.py                # end-to-end training & evaluation
-|     ├─ runner.py               # experiments wrapper
+│     ├─ runner.py               # experiments wrapper
 │     └─ collect_runs.py         # experiments consolidation
 ├─ README.md
 ├─ pyproject.toml
@@ -157,7 +304,7 @@ Key YAML fields:
 * `model.type` – `transformer`, `xlstm`, or `lstm`
 * `model.d_model`
 * `model.n_layers`
-* `model.n_heads` (Transformer only)
+* `model.n_heads` – number of heads (Transformer and xLSTM)
 * `model.dropout`
 
 ### Training
@@ -166,7 +313,7 @@ Key YAML fields:
 * `train.lr`
 * `train.weight_decay`
 * `train.amp`
-* `train.patience` (early stopping)
+* `train.early_stopping_patience`
 
 ### Logging
 
@@ -196,57 +343,12 @@ You’ll find:
 
 ---
 
-## Evaluation metrics
+## Design Principles
 
-Primary metric:
-
-### **Size-Accuracy**
-
-Fraction of purchase events where:
-
-```
-argmax P(fit)  ==  true purchased size
-```
-
-Secondary metrics:
-
-* Size-loss (cross-entropy on `fit` class for true row)
-* Classification metrics computed only on true purchased rows
+* Strict causality
+* No consumer ID embeddings
+* No fit_offset leakage
+* Controlled backbone comparison
+* Fully reproducible via configs and seeds
 
 ---
-
-## How the model works
-
-1. Step-wise tokens (product type, material, size, optional section) and static user features are embedded.
-2. Context history is encoded with a **pluggable causal backbone**:
-   * Transformer (masked self-attention)
-   * xLSTM (modern recurrent)
-   * LSTM (baseline)
-3. We pool the last valid history state.
-4. We fuse it with the current purchase candidate embedding.
-5. A linear head outputs 3-class logits.
-6. The recommended size is the candidate with highest `P(fit)`.
-
-All non-backbone components are shared across models to ensure fair architectural comparison.
-
----
-
-## Synthetic data
-
-The dataset is fully synthetic and reproducible.
-
-* Consumer sizes and tolerances are generated with controlled distributions.
-* Products receive systematic fit offsets.
-* Fit labels are deterministically assigned based on tolerance bands.
-* Only realistic, decision-time features are used (no leakage from label-generating internals).
-
----
-
-## Design principles
-
-* Strict causality (masking or recurrence)
-* No consumer ID embeddings (scalable design)
-* No leakage from internal fit offsets
-* Backbone comparison under matched capacity
-* Fully reproducible runs via seeds + idempotent data generation
-
