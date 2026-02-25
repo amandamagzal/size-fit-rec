@@ -113,6 +113,7 @@ def main(cfg_path: str | None = None) -> str:
 
     # 2) Load raw CSVs
     csv_dir = Path(data_cfg["csv_dir"])
+    gen_cfg = (data_cfg.get("gen") or {})
 
     use_preprocessed = True
 
