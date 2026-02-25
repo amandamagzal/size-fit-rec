@@ -18,7 +18,7 @@ from typing import Any, Dict
 import yaml
 
 from sizerec.paths import CONFIGS_DIR, ARTIFACTS_DIR, ensure_dir
-from sizerec.train import main as train_main  # uses the existing training entrypoint
+from sizerec.train_copy import main as train_main  # uses the existing training entrypoint
 
 
 def _deep_update(d: Dict[str, Any], u: Dict[str, Any]) -> Dict[str, Any]:
